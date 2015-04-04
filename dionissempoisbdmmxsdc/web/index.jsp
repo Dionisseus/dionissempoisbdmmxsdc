@@ -8,6 +8,7 @@
 <t:if test="${sessionScope['sessionEmail']!=null}">
     <% response.sendRedirect("home.jsp");%>
 </t:if>
+
 <!DOCTYPE>
 <html>
 <head>
@@ -38,11 +39,12 @@
 			</div>
 		</nav>
 	</header>
-    <div id="divMenu">
+        <div id="divMenu">
+
         </div>
-    <div id="divContent">
-        
-    </div>
+        <div id="divContent">
+
+        </div>
   	<div class="shadow">
   		<div class="loginContainer">  
   		<button class="toggle" id="botonCerrar" ></button>
