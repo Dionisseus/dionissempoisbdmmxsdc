@@ -9,6 +9,7 @@ import POJO.Usuario;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import xClasses.DBUtil;
 
 /**
  *
@@ -34,33 +35,32 @@ public class UsuarioDao {
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
         ResultSet rs = null;
-        //////////////////////////
-//        
-//              try {
-//            cs = conn.prepareCall("{ call buscar_empleado(?) }");
-//            cs.setString(1, emailUsuario);
-//            rs = cs.executeQuery();
-//            if (rs.next()) {
-//                Usuario emp = new Usuario(rs.getString("idUsuario"), rs.getString("emailUsuario"), rs.getString("passwordUsuario"),
-//                        rs.getString("emailUsuario"), rs.getString("emailUsuario"), rs.getString("emailUsuario"),
-//                        rs.getInt("telefonoUsuario"), null, true, true);
-//                       
-//                
-//                return emp;
-//            }
-//            return null;
-//        } catch (Exception ex) {
-//            ex.printStackTrace();
-//            return null;
-//            
-//        } finally {
-//            DBUtil.closeResultSet(rs);
-//            DBUtil.closeStatement(cs);
-//            pool.freeConnection(connection);
-//        }
-//        
-        //////////////////
-        return null;
+        ////////////////////////
+        
+              try {
+            cs = conn.prepareCall("{ call buscar_usuario(?) }");
+            cs.setString(1, emailUsuario);
+            rs = cs.executeQuery();
+            if (rs.next()) {
+                Usuario emp = new Usuario(rs.getString("idUsuario"), rs.getString("emailUsuario"), rs.getString("passwordUsuario"),
+                        rs.getString("emailUsuario"), rs.getString("emailUsuario"), rs.getString("emailUsuario"),
+                        rs.getInt("telefonoUsuario"), null, true, true);
+                       
+                
+                return emp;
+            }
+            return null;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+            
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closeStatement(cs);
+            pool.freeConnection(conn);
+        }
+        
+     
 
     }
 

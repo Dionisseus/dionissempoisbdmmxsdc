@@ -35,6 +35,7 @@ public class Login extends HttpServlet{
       protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
            HttpSession respuesta = request.getSession(true);
+           String url = "home.jsp";
            String emailUsuario = request.getParameter("emailUsuario");
            String passwordUsuario = request.getParameter("passwordUsuario");  
           Pattern pattern = Pattern.compile("^([0-9a-zA-Z]([_.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+([a-zA-Z]{2,9}.)+[a-zA-Z]{2,3})$");
@@ -44,11 +45,12 @@ public class Login extends HttpServlet{
         //campos vacios
         if (emailUsuario.isEmpty() || passwordUsuario.isEmpty()) {
             respuesta.setAttribute("error", "Hay campos vacios");
- 
+               url ="index.jsp"; 
         } else {
             //No hay campos vacios, veo que la direccion de email sea válida
             if (!_matcher.find()) {
                 respuesta.setAttribute("error", "La direccion de email no es correcta");
+                url ="index.jsp"; 
  
             } else {
                 //La direccion de email si es correcta, verifico que la contraseña tambien lo sea
@@ -61,17 +63,20 @@ public class Login extends HttpServlet{
                                 Usuario user = UsuarioDao.buscar(emailUsuario, passwordUsuario);
                                respuesta.setAttribute("sessionNombre", user.getNombreUsuario());
                                respuesta.setAttribute("sessionEmail", user.getEmailUsuario());
+                                url ="home.jsp"; 
                                 
                             } else {
                                 respuesta.setAttribute("error", "Favor de registrarse.");
+                                 url ="index.jsp"; 
                             }
                         } catch (Exception e) {}
                 } else {
                     respuesta.setAttribute("error", "Contraseña no es válida");
+                     url ="index.jsp"; 
                 }
             }
         }
-        response.sendRedirect("home.jsp");       
+        response.sendRedirect(url);       
     }
 
     @Override

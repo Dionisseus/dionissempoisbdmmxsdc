@@ -46,10 +46,10 @@
   		<h3 id="hIngresar" style="font-family:Arial, Helvetica, sans-serif;">Ingrese un usuario</h3>	
   		 <table style="margin-top:40px;">
 		 <tr>
-			<td><label class="logLab">Correo Electronico: </label></td><td><input id="emailUsuario" class="logtxt" type="text" /></td>
+			<td><label class="logLab">Correo Electronico: </label></td><td><input name="emailUsuario" class="logtxt" type="text" /></td>
 		 </tr> 
 		 <tr>
-			<td><label class="logLab">Contraseña: </label></td><td><input id="passwordUsuario" class="logtxt" type="password"/></td>
+			<td><label class="logLab">Contraseña: </label></td><td><input name="passwordUsuario" class="logtxt" type="password"/></td>
 		 </tr>	
 		</table>
 		<input type="submit" value="Iniciar Sesion">
