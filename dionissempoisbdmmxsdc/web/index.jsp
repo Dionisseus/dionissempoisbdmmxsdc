@@ -8,7 +8,7 @@
 <t:if test="${sessionScope['sessionEmail']!=null}">
     <% response.sendRedirect("home.jsp");%>
 </t:if>
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="css/index.css">
@@ -38,24 +38,32 @@
 			</div>
 		</nav>
 	</header>
-    
+    <div id="divMenu">
+        </div>
+    <div id="divContent">
+        
+    </div>
   	<div class="shadow">
   		<div class="loginContainer">  
-                    <button class="toggle" id="botonCerrar" ></button>
-             <form action="Login" method="post"> 	
+  		<button class="toggle" id="botonCerrar" ></button>
   		<h3 id="hIngresar" style="font-family:Arial, Helvetica, sans-serif;">Ingrese un usuario</h3>	
   		 <table style="margin-top:40px;">
 		 <tr>
+<<<<<<< HEAD
 			<td><label class="logLab">Correo Electronico: </label></td><td><input name="emailUsuario" class="logtxt" type="text" /></td>
 		 </tr> 
 		 <tr>
 			<td><label class="logLab">Contraseña: </label></td><td><input name="passwordUsuario" class="logtxt" type="password"/></td>
+=======
+			<td><label class="logLab">Nombre de usuario: </label></td><td><input id="txtNombre" class="logtxt" type="text" /></td>
+		 </tr> 
+		 <tr>
+			<td><label class="logLab">Contraseña: </label></td><td><input id="txtContra" class="logtxt" type="text"/></td>
+>>>>>>> origin/master
 		 </tr>	
 		</table>
-		<input type="submit" value="Iniciar Sesion">
-                </form> 
-                    <br><br>
-		<a href="registrarUsuario.jsp">¿No tienes cuenta? Regístrate ahora</a>
+		<input type="submit" value="Entrar"><br><br>
+		<a href="registrarUsuario.jsp">¿No tienes cuenta? Regístrare ahora</a>
   		</div>
   	</div>
 </body>
