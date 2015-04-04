@@ -1,0 +1,76 @@
+body{
+	z-index:10;
+	background: #F5F8FF;
+}
+.shadow{
+	position:fixed;
+	height:100%;
+	width:100%;
+	z-index:20!important;
+	top:0!important;	
+	left:0!important;
+	background-color:rgba(0,0,0,0.9);
+}
+
+a{
+ font-family: tahoma;
+}
+
+.loginContainer{
+	width:40%;
+	height:50%;
+	margin-left:25%;
+	margin-top:12.5%;
+	background-color:#FFFFB5;
+	border-radius: 10px;
+	padding:1.5%;
+}
+
+.nav{
+width: 40%;
+float: right;
+}
+
+#divHeader{
+	background-color: #0E2A71;
+	height:60px;
+	width: 100%;
+}
+
+.nav li{	
+	cursor: pointer;
+	font-family: verdana;
+	font-size: 14px;
+	color: white;
+	display: inline;
+	padding-right: 30px;
+	float: right;
+	
+}
+
+.logLab{
+	font-family: Arial, Helvetica, sans-serif;
+	float: right;
+}
+
+.logtxt{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left:1%;
+	height: 30px;
+	width: 250px;
+	border-radius: 5px;
+
+}
+
+#botonCerrar{
+	background: url(../imagenes/botonCerrar.jpg);
+	left: center;
+	height: 20px;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-attachment: inherit;
+	background-position: center; 
+	float: right;
+	border-radius: 10px;
+}

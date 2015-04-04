@@ -8,6 +8,7 @@ package DAO;
 import POJO.Usuario;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
 
 /**
  *
@@ -16,32 +17,61 @@ import java.sql.Connection;
 public class UsuarioDao {
 
     public static void insertar() {
-        establecerConnectionPool();
+       ConnectionPool pool = ConnectionPool.getInstance();
+        Connection conn = pool.getConnection();
+        CallableStatement cs = null;
     }
 
     public static void borrar() {
-        establecerConnectionPool();
+       ConnectionPool pool = ConnectionPool.getInstance();
+        Connection conn = pool.getConnection();
+        CallableStatement cs = null;
 
     }
 
     public static Usuario buscar(String emailUsuario, String passwordUsuario) {
-        establecerConnectionPool();
-        
-        
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection conn = pool.getConnection();
+        CallableStatement cs = null;
+        ResultSet rs = null;
+        //////////////////////////
+//        
+//              try {
+//            cs = conn.prepareCall("{ call buscar_empleado(?) }");
+//            cs.setString(1, emailUsuario);
+//            rs = cs.executeQuery();
+//            if (rs.next()) {
+//                Usuario emp = new Usuario(rs.getString("idUsuario"), rs.getString("emailUsuario"), rs.getString("passwordUsuario"),
+//                        rs.getString("emailUsuario"), rs.getString("emailUsuario"), rs.getString("emailUsuario"),
+//                        rs.getInt("telefonoUsuario"), null, true, true);
+//                       
+//                
+//                return emp;
+//            }
+//            return null;
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//            return null;
+//            
+//        } finally {
+//            DBUtil.closeResultSet(rs);
+//            DBUtil.closeStatement(cs);
+//            pool.freeConnection(connection);
+//        }
+//        
+        //////////////////
         return null;
 
     }
 
     public static void actualizar() {
-        establecerConnectionPool();
-
-    }
-
-    public static void establecerConnectionPool() {
-        ConnectionPool pool = ConnectionPool.getInstance();
+       ConnectionPool pool = ConnectionPool.getInstance();
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
+
     }
+
+  
 
     public static boolean exists(String emailUsuario, String passwordUsuario) {
         if (UsuarioDao.buscar(emailUsuario, passwordUsuario)!= null) {
