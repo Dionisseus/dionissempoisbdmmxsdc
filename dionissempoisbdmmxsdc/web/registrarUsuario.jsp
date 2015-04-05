@@ -38,16 +38,19 @@
 					<legend style="font-family:Arial, Helvetica, sans-serif;">Datos del usuario</legend>
 					<dl>
 						<dt><label class="registroLab">Nombre completo </label></dt>
-						 	<dd><input id="txtNombre" class="regtxt" type="text" /></dd>
+						 	<dd><input id="txtNombre" class="regtxt" name="nombre" type="text" /></dd>
 						<dt><label class="registroLab">Apellido Paterno</label></dt>
-							<dd><input id="txtPaterno" class="regtxt" type="text"/></dd>
+                                                <dd><input id="txtPaterno" class="regtxt" name="aPaterno" type="text"/></dd>
 						<dt><label class="registroLab">Apellido Materno</label></dt>
-							<dd><input id="txtMaterno" class="regtxt" type="text"/></dd>
+                                                <dd><input id="txtMaterno" class="regtxt" name="aMaterno" type="text"/></dd>
 						<dt><label class="registroLab">Teléfono</label></dt>
-							<dd><input id="txtTelefono" class="regtxt" type="tel"/></dd>
+                                                <dd><input id="txtTelefono" class="regtxt" name="telefono" type="tel"/></dd>
 						<dt><label class="registroLab">Correo electrónico</label></dt>
-						 	<dd><input id="txtCorreo" class="regtxt" type="email"/></dd>
+                                                <dd><input id="txtCorreo" class="regtxt" name="email" type="email"/></dd>
+                                                <dt><label class="registroLab">Contraseña</label></dt>
+                                                <dd><input id="txtContra" class="regtxt" name="password" type="email"/></dd>
 					</dl>	
+                                        <input type="submit" value="Registrarse"/>
 				</fieldset>					
 		    </form>
 		</div>
