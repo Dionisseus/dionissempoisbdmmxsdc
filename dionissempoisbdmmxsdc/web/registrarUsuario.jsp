@@ -33,7 +33,7 @@
 		<h3>Registro de usuario</h3>
 		<div id="divRegistro">
 
-			<form method="post">
+			<form action = "Register" method="post">
 				<fieldset class="fSet">
 					<legend style="font-family:Arial, Helvetica, sans-serif;">Datos del usuario</legend>
 					<dl>

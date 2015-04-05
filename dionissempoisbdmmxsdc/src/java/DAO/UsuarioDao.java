@@ -9,6 +9,7 @@ import POJO.Usuario;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import xClasses.DBUtil;
 
 /**
@@ -17,10 +18,28 @@ import xClasses.DBUtil;
  */
 public class UsuarioDao {
 
-    public static void insertar() {
+    public static void insertar(Usuario user) {
        ConnectionPool pool = ConnectionPool.getInstance();
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
+         try {
+            cs = conn.prepareCall("{ call insertar_usuario(?,?,?,?,?,?,?,?,?) }");
+            cs.setString(1, user.getEmailUsuario());
+            cs.setString(2, user.getPasswordUsuario());
+            cs.setString(3, user.getNicknameUsuario());
+            cs.setString(4, user.getNombreUsuario());
+            cs.setString(5, user.getApellidoUsuario());
+            cs.setInt(6, user.getTelefonoUsuario());
+            cs.setBlob(7, user.getAvatarUsuario());
+            cs.setBoolean(8, user.isConfirmadoUsuario());
+            cs.setBoolean(9, user.isActivoUsuario());
+            cs.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            DBUtil.closeStatement(cs);
+            pool.freeConnection(conn);
+        }
     }
 
     public static void borrar() {

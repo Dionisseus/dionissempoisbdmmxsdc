@@ -38,7 +38,7 @@ public class Login extends HttpServlet{
            String url = "home.jsp";
            String emailUsuario = request.getParameter("emailUsuario");
            String passwordUsuario = request.getParameter("passwordUsuario");  
-          Pattern pattern = Pattern.compile("^([0-9a-zA-Z]([_.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+([a-zA-Z]{2,9}.)+[a-zA-Z]{2,3})$");
+           Pattern pattern = Pattern.compile("^([0-9a-zA-Z]([_.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+([a-zA-Z]{2,9}.)+[a-zA-Z]{2,3})$");
          Matcher _matcher = pattern.matcher(emailUsuario);
           Validador v = new Validador();
         

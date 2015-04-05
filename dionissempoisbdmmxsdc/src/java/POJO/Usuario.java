@@ -24,6 +24,19 @@ public class Usuario {
     boolean confirmadoUsuario;
     boolean activoUsuario;
 
+    public Usuario( String emailUsuario, String passwordUsuario, String nicknameUsuario,
+            String nombreUsuario, String apellidoUsuario, int telefonoUsuario, Blob avatarUsuario, boolean confirmadoUsuario, boolean activoUsuario) {
+      //  this.idUsuario = idUsuario;
+        this.emailUsuario = emailUsuario;
+        this.passwordUsuario = passwordUsuario;
+        this.nicknameUsuario = nicknameUsuario;
+        this.nombreUsuario = nombreUsuario;
+        this.apellidoUsuario = apellidoUsuario;
+        this.telefonoUsuario = telefonoUsuario;
+        this.avatarUsuario = avatarUsuario;
+        this.confirmadoUsuario = confirmadoUsuario;
+        this.activoUsuario = activoUsuario;
+    }
     public Usuario(String idUsuario, String emailUsuario, String passwordUsuario, String nicknameUsuario,
             String nombreUsuario, String apellidoUsuario, int telefonoUsuario, Blob avatarUsuario, boolean confirmadoUsuario, boolean activoUsuario) {
         this.idUsuario = idUsuario;
@@ -37,6 +50,8 @@ public class Usuario {
         this.confirmadoUsuario = confirmadoUsuario;
         this.activoUsuario = activoUsuario;
     }
+
+
 
     public String getIdUsuario() {
         return idUsuario;

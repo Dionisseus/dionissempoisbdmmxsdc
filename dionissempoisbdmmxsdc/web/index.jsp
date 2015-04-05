@@ -48,6 +48,7 @@
   	<div class="shadow">
   		<div class="loginContainer">  
   		<button class="toggle" id="botonCerrar" ></button>
+                <form action ="Login" method="post">
   		<h3 id="hIngresar" style="font-family:Arial, Helvetica, sans-serif;">Ingrese un usuario</h3>	
   		 <table style="margin-top:40px;">
 		 <tr>
@@ -58,6 +59,7 @@
 		 </tr>	
 		</table>
 		<input type="submit" value="Entrar"><br><br>
+                </form>
 		<a href="registrarUsuario.jsp">¿No tienes cuenta? Regístrare ahora</a>
   		</div>
   	</div>
