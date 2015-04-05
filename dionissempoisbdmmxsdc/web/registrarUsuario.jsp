@@ -37,7 +37,7 @@
 				<fieldset class="fSet">
 					<legend style="font-family:Arial, Helvetica, sans-serif;">Datos del usuario</legend>
 					<dl>
-						<dt><label class="registroLab">Nombre completo </label></dt>
+						<dt><label class="registroLab">Nombre completo </label></dt>        
 						 	<dd><input id="txtNombre" class="regtxt" name="nombre" type="text" /></dd>
 						<dt><label class="registroLab">Apellido Paterno</label></dt>
                                                 <dd><input id="txtPaterno" class="regtxt" name="aPaterno" type="text"/></dd>
@@ -48,7 +48,7 @@
 						<dt><label class="registroLab">Correo electrónico</label></dt>
                                                 <dd><input id="txtCorreo" class="regtxt" name="email" type="email"/></dd>
                                                 <dt><label class="registroLab">Contraseña</label></dt>
-                                                <dd><input id="txtContra" class="regtxt" name="password" type="email"/></dd>
+                                                <dd><input id="txtContra" class="regtxt" name="password" type="password"/></dd>
 					</dl>	
                                         <input type="submit" value="Registrarse"/>
 				</fieldset>					

@@ -36,6 +36,7 @@ public class UsuarioDao {
             cs.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
+            
         } finally {
             DBUtil.closeStatement(cs);
             pool.freeConnection(conn);

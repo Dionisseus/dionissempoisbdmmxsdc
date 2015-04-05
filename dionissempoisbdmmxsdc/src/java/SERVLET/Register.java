@@ -8,7 +8,7 @@ package SERVLET;
 import DAO.UsuarioDao;
 import POJO.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.Blob;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.servlet.ServletException;
@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sql.rowset.serial.SerialBlob;
 import xClasses.Validador;
 
 /**
@@ -39,12 +40,12 @@ public class Register extends HttpServlet {
             throws ServletException, IOException {
     HttpSession respuesta = request.getSession(true);
      String url = "index.jsp";           
-           String nombreUsuario = request.getParameter("txtNombre");
-           String apellidosUsuario = request.getParameter("txtPaterno"); 
-           String apellidoMaterno = request.getParameter("txtMaterno");
-           int telefonoUsuario = Integer.parseInt(request.getParameter("txtTelefono"));
-           String emailUsuario = request.getParameter("txtCorreo");    
-           String passwordUsuario = request.getParameter("txtPassword");
+           String nombreUsuario = request.getParameter("nombre");
+           String apellidosUsuario = request.getParameter("aPaterno"); 
+           String apellidoMaterno = request.getParameter("aMaterno");
+           String telefonoUsuario = request.getParameter("telefono");
+           String emailUsuario = request.getParameter("email");    
+           String passwordUsuario = request.getParameter("password");
            Pattern pattern = Pattern.compile("^([0-9a-zA-Z]([_.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+([a-zA-Z]{2,9}.)+[a-zA-Z]{2,3})$");
            Matcher _matcher = pattern.matcher(emailUsuario);
            Validador v = new Validador();
@@ -65,7 +66,8 @@ public class Register extends HttpServlet {
                         try {
                            
                             if (!UsuarioDao.exists(emailUsuario, passwordUsuario)) {
-                               Usuario user = new Usuario(emailUsuario,passwordUsuario,"",nombreUsuario,apellidosUsuario+""+apellidoMaterno,telefonoUsuario,null,true,true);
+                              byte[] bytes = {0};
+                               Usuario user = new Usuario(emailUsuario,passwordUsuario,"",nombreUsuario,apellidosUsuario+""+apellidoMaterno,Integer.parseInt(telefonoUsuario),(Blob)new SerialBlob(bytes),true,true);
                                 UsuarioDao.insertar(user);
                                 url ="home.jsp"; 
                                 
@@ -73,7 +75,9 @@ public class Register extends HttpServlet {
                                 respuesta.setAttribute("error", "Usuario ya existente.");
                                  url ="index.jsp"; 
                             }
-                        } catch (Exception e) {}
+                        } catch (Exception e) {
+                        e.getCause();
+                        }
                 } else {
                     respuesta.setAttribute("error", "Contraseña no es válida");
                      url ="index.jsp"; 
