@@ -10,6 +10,9 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
+import java.util.ArrayList;
+import java.util.List;
 import xClasses.DBUtil;
 
 /**
@@ -43,10 +46,21 @@ public class UsuarioDao {
         }
     }
 
-    public static void borrar() {
+    public static void borrar(Usuario user) {
        ConnectionPool pool = ConnectionPool.getInstance();
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
+          try {
+            cs = conn.prepareCall("{ call baja_usuario(?) }");
+            cs.setString(1, user.getIdUsuario());
+            cs.execute();
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            DBUtil.closeStatement(cs);
+            pool.freeConnection(conn);
+        }
 
     }
 
@@ -84,14 +98,31 @@ public class UsuarioDao {
 
     }
 
-    public static void actualizar() {
+    public static void actualizar(Usuario user) {
        ConnectionPool pool = ConnectionPool.getInstance();
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
+                try {
+            cs = conn.prepareCall("{ call actualizar_usuario(?, ?, ?, ?, ?, ?,?,?) }");
+            cs.setString(1, user.getIdUsuario());
+            cs.setString(2, user.getEmailUsuario());
+            cs.setString(3, user.getPasswordUsuario());
+            cs.setString(4, user.getNicknameUsuario());
+            cs.setString(5, user.getNombreUsuario());
+            cs.setString(6, user.getApellidoUsuario());
+            cs.setInt(7, user.getTelefonoUsuario());
+            cs.setBlob(8, user.getAvatarUsuario());
+            cs.execute();
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            
+        } finally {
+            DBUtil.closeStatement(cs);
+            pool.freeConnection(conn);
+        }
 
     }
-
-  
 
     public static boolean exists(String emailUsuario, String passwordUsuario) {
         if (UsuarioDao.buscar(emailUsuario, passwordUsuario)!= null) {
@@ -100,8 +131,41 @@ public class UsuarioDao {
         else{
         return false;
         }
-        
     }
-
-   
+    
+     public static List<Usuario> lista() {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection conn = pool.getConnection();
+        CallableStatement cs = null;
+        ResultSet rs = null;
+        try {
+            cs = conn.prepareCall("{ call buscar_empleados() }");
+            rs = cs.executeQuery();
+            List<Usuario> userLista = new ArrayList<Usuario>();
+            while (rs.next()) {
+                Usuario user = new Usuario(
+                        rs.getString("idUsuario"), 
+                        rs.getString("emailUsuario"), 
+                        rs.getString("passwordUsuario"), 
+                        rs.getString("nicknameUsuario"), 
+                        rs.getString("nombreUsuario"),
+                        rs.getString("apelidoUsuario"),
+                        rs.getInt("telefonoUsuario"),
+                        rs.getBlob("avatarUsuario"),
+                        rs.getBoolean("confirmadoUsuario"),
+                        rs.getBoolean("activoUsuario")
+                );
+               
+                userLista.add(user);
+            }
+            return userLista;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closeStatement(cs);
+            pool.freeConnection(conn);
+        }
+    }
 }
