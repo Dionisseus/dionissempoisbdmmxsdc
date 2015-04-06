@@ -26,7 +26,7 @@ public class UsuarioDao {
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
          try {
-            cs = conn.prepareCall("{ call insertar_usuario(?,?,?,?,?,?,?,?,?) }");
+            cs = conn.prepareCall("{ call usuario_insertar(?,?,?,?,?,?,?,?,?) }");
             cs.setString(1, user.getEmailUsuario());
             cs.setString(2, user.getPasswordUsuario());
             cs.setString(3, user.getNicknameUsuario());
@@ -51,7 +51,7 @@ public class UsuarioDao {
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
           try {
-            cs = conn.prepareCall("{ call baja_usuario(?) }");
+            cs = conn.prepareCall("{ call usuario_baja(?) }");
             cs.setString(1, user.getIdUsuario());
             cs.execute();
             
@@ -72,7 +72,7 @@ public class UsuarioDao {
         ////////////////////////
         
               try {
-            cs = conn.prepareCall("{ call buscar_usuario(?) }");
+            cs = conn.prepareCall("{ call usuario_baja(?) }");
             cs.setString(1, emailUsuario);
             rs = cs.executeQuery();
             if (rs.next()) {
@@ -103,7 +103,7 @@ public class UsuarioDao {
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
                 try {
-            cs = conn.prepareCall("{ call actualizar_usuario(?, ?, ?, ?, ?, ?,?,?) }");
+            cs = conn.prepareCall("{ call usuario_actualizar(?, ?, ?, ?, ?, ?,?,?) }");
             cs.setString(1, user.getIdUsuario());
             cs.setString(2, user.getEmailUsuario());
             cs.setString(3, user.getPasswordUsuario());
