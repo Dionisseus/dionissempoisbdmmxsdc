@@ -11,57 +11,92 @@
 
 <!DOCTYPE>
 <html>
-<head>
-	<link rel="stylesheet" type="text/css" href="css/index.css">
+    <head>
+        <!-- Demo CSS -->
+	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+
+        <!-- Modernizr -->
+        <script src="js/modernizr.js"></script>
+        <script defer src="js/jquery.flexslider.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<meta charset="utf-8">
 	<title></title>
 	<script>
-		$(function(){
-			$(".shadow").toggle();
-			$(".toggle").click(function(){
-				$(".shadow").toggle();
-			});
-
-		});
+                $(window).load(function() {
+                  $('.flexslider').flexslider({
+                    animation: "slide",
+                    animationLoop: false,
+                    itemWidth: 210,
+                    itemMargin: 5,
+                    minItems: 2,
+                    maxItems: 4
+                  });
+                });
 	</script>
 </head>
 <body>
-	<header>
-		<nav>
-			<div id="divHeader">
-			<input type="text" id="txtBuscar" style="position: absolute; right:43%; width:28%;height: 33px; margin-top:10px;border-radius: 3px;">
-				<ul class="nav">
-					<li class="toggle">
-						Iniciar Sesión
-					</li>
-				</ul>
-			</div>
-		</nav>
-	</header>
-        <div id="divMenu">
-
-        </div>
-        <div id="divContent">
-
-        </div>
-  	<div class="shadow">
-  		<div class="loginContainer">  
-  		<button class="toggle" id="botonCerrar" ></button>
-                <form action ="Login" method="post">
-  		<h3 id="hIngresar" style="font-family:Arial, Helvetica, sans-serif;">Ingrese un usuario</h3>	
-  		 <table style="margin-top:40px;">
-		 <tr>
-			<td><label class="logLab">Correo Electronico: </label></td><td><input name="emailUsuario" class="logtxt" type="text" /></td>
-		 </tr> 
-		 <tr>
-			<td><label class="logLab">Contraseña: </label></td><td><input name="passwordUsuario" class="logtxt" type="password"/></td>
-		 </tr>	
-		</table>
-		<input type="submit" value="Entrar"><br><br>
-                </form>
-		<a href="registrarUsuario.jsp">¿No tienes cuenta? Regístrare ahora</a>
-  		</div>
-  	</div>
-</body>
+    <%@include file="general.jsp" %>
+        <div id="divContent" >
+                <div class="slider">
+                    <h3>Lo mas vendido</h3>
+                  <div class="flexslider carousel">
+                    <ul class="slides">
+                        <li>
+                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_cheesecake_brownie.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_lemon.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_donut.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_caramel.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_cheesecake_brownie.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_lemon.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_donut.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_caramel.jpg" /></a>
+                        </li>
+                    </ul>
+                  </div>            
+            <h3>Lo mas buscado</h3>
+                  <div class="flexslider carousel">
+                    <ul class="slides">
+                        <li>
+                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_cheesecake_brownie.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_lemon.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_donut.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_caramel.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_cheesecake_brownie.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_lemon.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_donut.jpg" /></a>
+                        </li>
+                        <li>
+                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_caramel.jpg" /></a>
+                        </li>
+                    </ul>
+                  </div>
+                </div>
+            </div>
+     </body>
 </html>   
