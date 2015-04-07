@@ -5,12 +5,13 @@
  */
 package DAO;
 
+import POJO.Categoria;
+import POJO.Producto;
 import POJO.Usuario;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import xClasses.DBUtil;
@@ -19,23 +20,16 @@ import xClasses.DBUtil;
  *
  * @author Diosio
  */
-public class UsuarioDao {
-
-    public static void insertar(Usuario user) {
+public class CategoriaDAO {
+     public static void insertar(Categoria cat) {
        ConnectionPool pool = ConnectionPool.getInstance();
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
          try {
-            cs = conn.prepareCall("{ call usuario_insertar(?,?,?,?,?,?,?,?,?) }");
-            cs.setString(1, user.getEmailUsuario());
-            cs.setString(2, user.getPasswordUsuario());
-            cs.setString(3, user.getNicknameUsuario());
-            cs.setString(4, user.getNombreUsuario());
-            cs.setString(5, user.getApellidoUsuario());
-            cs.setInt(6, user.getTelefonoUsuario());
-            cs.setBlob(7, user.getAvatarUsuario());
-            cs.setBoolean(8, user.isConfirmadoUsuario());
-            cs.setBoolean(9, user.isActivoUsuario());
+            cs = conn.prepareCall("{ call insertar_categoria(?,?) }");
+            cs.setString(1, cat.getNombreCategoria());
+            cs.setBoolean(2, cat.isActivoCategoria());
+            
             cs.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -46,13 +40,13 @@ public class UsuarioDao {
         }
     }
 
-    public static void borrar(Usuario user) {
+    public static void borrar(Categoria cat) {
        ConnectionPool pool = ConnectionPool.getInstance();
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
           try {
-            cs = conn.prepareCall("{ call usuario_baja(?) }");
-            cs.setString(1, user.getIdUsuario());
+            cs = conn.prepareCall("{ call baja_categoria(?) }");
+            cs.setInt(1, cat.getIdCategoria());
             cs.execute();
             
         } catch (Exception ex) {
@@ -61,10 +55,9 @@ public class UsuarioDao {
             DBUtil.closeStatement(cs);
             pool.freeConnection(conn);
         }
-
     }
 
-    public static Usuario buscar(String emailUsuario, String passwordUsuario) {
+    public static Categoria buscar(String idCategoria, String nombreCategoria) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
@@ -72,16 +65,14 @@ public class UsuarioDao {
         ////////////////////////
         
               try {
-            cs = conn.prepareCall("{ call usuario_buscar(?) }");
-            cs.setString(1, emailUsuario);
+            cs = conn.prepareCall("{ call buscar_producto(?) }");
+            cs.setString(1, idCategoria);
             rs = cs.executeQuery();
             if (rs.next()) {
-                Usuario emp = new Usuario(rs.getString("idUsuario"), rs.getString("emailUsuario"), rs.getString("passwordUsuario"),
-                        rs.getString("emailUsuario"), rs.getString("emailUsuario"), rs.getString("emailUsuario"),
-                        rs.getInt("telefonoUsuario"), null, true, true);
+                Categoria cat = new Categoria(rs.getInt("idCategoria"), rs.getString("nombreCategoria"), rs.getBoolean("activoCategoria"));
                        
                 
-                return emp;
+                return cat;
             }
             return null;
         } catch (Exception ex) {
@@ -98,20 +89,15 @@ public class UsuarioDao {
 
     }
 
-    public static void actualizar(Usuario user) {
+    public static void actualizar(Categoria cat) {
        ConnectionPool pool = ConnectionPool.getInstance();
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
                 try {
-            cs = conn.prepareCall("{ call usuario_actualizar(?, ?, ?, ?, ?, ?,?,?) }");
-            cs.setString(1, user.getIdUsuario());
-            cs.setString(2, user.getEmailUsuario());
-            cs.setString(3, user.getPasswordUsuario());
-            cs.setString(4, user.getNicknameUsuario());
-            cs.setString(5, user.getNombreUsuario());
-            cs.setString(6, user.getApellidoUsuario());
-            cs.setInt(7, user.getTelefonoUsuario());
-            cs.setBlob(8, user.getAvatarUsuario());
+            cs = conn.prepareCall("{ call categoria_actualizar(?, ?, ?, ?, ?, ?,?,?,?,?,?) }");
+            cs.setInt(1, cat.getIdCategoria());
+            cs.setString(2, cat.getNombreCategoria());
+            cs.setBoolean(3,cat.isActivoCategoria());
             cs.execute();
             
         } catch (Exception ex) {
@@ -124,8 +110,8 @@ public class UsuarioDao {
 
     }
 
-    public static boolean exists(String emailUsuario, String passwordUsuario) {
-        if (UsuarioDao.buscar(emailUsuario, passwordUsuario)!= null) {
+    public static boolean exists(String idCategoria, String nombreCategoria) {
+        if (CategoriaDAO.buscar(idCategoria , nombreCategoria)!= null) {
          return true;   
         }
         else{
@@ -133,7 +119,7 @@ public class UsuarioDao {
         }
     }
     
-     public static List<Usuario> lista() {
+     public static List<Categoria> lista() {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
@@ -141,24 +127,16 @@ public class UsuarioDao {
         try {
             cs = conn.prepareCall("{ call buscar_empleados() }");
             rs = cs.executeQuery();
-            List<Usuario> userLista = new ArrayList<Usuario>();
+            List<Categoria> categoriaLista = new ArrayList<Categoria>();
             while (rs.next()) {
-                Usuario user = new Usuario(
-                        rs.getString("idUsuario"), 
-                        rs.getString("emailUsuario"), 
-                        rs.getString("passwordUsuario"), 
-                        rs.getString("nicknameUsuario"), 
-                        rs.getString("nombreUsuario"),
-                        rs.getString("apelidoUsuario"),
-                        rs.getInt("telefonoUsuario"),
-                        rs.getBlob("avatarUsuario"),
-                        rs.getBoolean("confirmadoUsuario"),
-                        rs.getBoolean("activoUsuario")
-                );
-               
-                userLista.add(user);
+                Categoria cat = new Categoria(
+                        rs.getInt("idCategoria"), 
+                        rs.getString("nombreCategoria"), 
+                        rs.getBoolean("activoCategoria")
+                );      
+                categoriaLista.add(cat);
             }
-            return userLista;
+            return categoriaLista;
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
@@ -168,4 +146,7 @@ public class UsuarioDao {
             pool.freeConnection(conn);
         }
     }
+    
+    
+    
 }

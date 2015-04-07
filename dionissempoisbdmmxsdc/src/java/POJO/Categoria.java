@@ -19,6 +19,12 @@ public class Categoria {
         this.nombreCategoria = nombreCategoria;
         this.activoCategoria = activoCategoria;
     }
+     public Categoria( String nombreCategoria, boolean activoCategoria) {
+        
+        this.nombreCategoria = nombreCategoria;
+        this.activoCategoria = activoCategoria;
+    }
+    
 
     public int getIdCategoria() {
         return idCategoria;
