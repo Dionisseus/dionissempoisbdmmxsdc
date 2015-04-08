@@ -93,9 +93,6 @@ public class UsuarioDao {
             DBUtil.closeStatement(cs);
             pool.freeConnection(conn);
         }
-        
-     
-
     }
 
     public static void actualizar(Usuario user) {
