@@ -61,7 +61,7 @@
                 </div>
                     <ul class="nav">
                             <li class="toggle">
-                                    Iniciar Sesión
+                                Iniciar Sesión
                             </li>
                     </ul>
 		</div>
