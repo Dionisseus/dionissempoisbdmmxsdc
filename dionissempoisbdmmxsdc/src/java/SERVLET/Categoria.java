@@ -37,12 +37,7 @@ public class Categoria extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet de las Categorias</title>");
-            out.println("</head>");
-            out.println("<body>");
+
             out.println("<label id=\"labCategorias\">Categorías</label>\n"
                     + "            <div class=\"menu-wrap\">\n"
                     + "                <nav class=\"menu\">\n"
@@ -55,20 +50,16 @@ public class Categoria extends HttpServlet {
                         + "                            <a href=\"#\">" + listaCategoria.get(i).getNombreCategoria() + "<span class=\"arrow\">&#9660;</span></a>\n"
                         + "                            <ul class=\"sub-menu\">\n");
                 List<POJO.Subcategoria> listaSubcategoria = SubcategoriaDAO.lista(listaCategoria.get(i).getIdCategoria());
-                /////////////////
                 for (int j = 0; j < listaSubcategoria.size(); j++) {
                     out.println("                                <li><a href=\"#\">"+listaSubcategoria.get(j).getNombreSubcategoria()+"</a></li>\n");
 
                 }
-                ///////////////
                 out.println("                            </ul>\n"
                         + "                        </li>\n");
             }
             out.println("                    </ul>\n"
                     + "                </nav>\n"
                     + "            </div>");
-            out.println("</body>");
-            out.println("</html>");
         }
     }
 

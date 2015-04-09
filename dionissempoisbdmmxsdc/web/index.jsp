@@ -35,8 +35,9 @@
 	</script>
 </head>
 <body>
-    <%@include file="general.jsp" %>
+  
         <div id="divContent" >
+              
                 <div class="slider">
                     <h3>Lo mas vendido</h3>
                   <div class="flexslider carousel">
@@ -95,8 +96,9 @@
                             <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_caramel.jpg" /></a>
                         </li>
                     </ul>
-                  </div>
-                </div>
+                  </div> 
+                </div>         
             </div>
+    <%@include file="general.jsp" %>
      </body>
 </html>   
