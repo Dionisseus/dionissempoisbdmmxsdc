@@ -7,6 +7,32 @@ p{
     font-family: tahoma;
 }
 
+label{
+    font-family: tahoma;
+    font-weight: bold;
+    color: #05AFCE;
+}
+
+.btnRespuesta{
+    border-radius: 5px;
+    width: 10%;
+    height: 30px;
+    background-color: blue;
+}
+
+.tablaDC{
+    border-spacing: 15px;
+}
+
+.tablaDC td{
+    font-family: tahoma;
+}
+
+.tablaDC input{
+    border-radius: 5px;
+    width: 50px;
+}
+
 #slider {
   position: absolute;
   overflow: hidden;
@@ -39,7 +65,7 @@ p{
 a.control_prev, a.control_next {
   position: absolute;
   top: 40%;
-  z-index: 999;
+  z-index: 10;
   display: block;
   padding: 4% 3%;
   width: auto;
@@ -76,14 +102,50 @@ a.control_next {
 
 #datosCompra{
    float: right;
-   margin-right: 20%;
-   margin-top: 3%;
+   margin-right: 10%;
+   margin-top: 5%;
+   border-style: solid;
+   border-color: #D5E1FB;
 }
 
-#descripcion{
+#divDescripcion{
   margin-left: 12%;
   margin-top: 35%;
-  width: 45%;
+  width: 43%;
   background-color:whitesmoke;
   border-radius: 4px;
+  border-style: solid;
+  border-color: #ECECEC;
+}
+
+#divPreguntas{
+    width: 80%;
+    height: 50%;
+    background-color:whitesmoke;
+    float: right;
+    margin-right: 15%;
+    margin-top: 5%;
+    position: relative;
+}
+
+#textPregunta{
+    width: 80%;
+    height: 150px;
+    resize: none;
+}
+
+.pregunta{
+    font-family: verdana;
+    font-size: 14px;
+    color: #AEAB01;
+}
+
+.respuesta{
+    list-style-type: none; 
+}
+
+.respuesta li{
+    font-family: verdana;
+    font-size: 12px;
+    color: #00359F;
 }

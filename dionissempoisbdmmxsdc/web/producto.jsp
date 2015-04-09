@@ -57,36 +57,70 @@
                   $('a.control_next').click(function () {
                       moveRight();
                   });
-
+                  
+                  //console.log($('#textPregunta').val());
+                  $('#hacerPregunta').submit(function(){
+                      if($('#textPregunta').val() === ""){
+                          alert("Formule una pregunta antes de enviarla");
+                      }
+                  });
+                    
               }); 
         </script>
     </head>
     <body>
-        <%@include file="general.jsp" %>
         <div id="divContent" role="main">
             <h2>Titulo producto</h2>
             <div id="slider">
                 <a href="#" class="control_next">></a>
                 <a href="#" class="control_prev"><</a>
                 <ul>
-                  <li>Foto 1</li>
-                  <li>Foto 2</li>
-                  <li>Foto 3</li>
-                  <li>Foto 4</li>
+                    <li>Foto 1</li>
+                    <li>Foto 2</li>
+                    <li>Foto 3</li>
+                    <li>Foto 4</li>
+                    <li>Video 1</li>
+                    <li>Video 2</li>
+                    <li>Video 3</li>
                 </ul>  
             </div>
             <div id="datosCompra">
-                <p>Métodos de pago</p>
-                <select>
-                    <option value="default" selected>Elegir</option>
-                    <option>Efectivo</option>
-                    <option>Targeta crédito/débito</option>
-                    <option>Paypal</option>
-                </select>
+                <table class="tablaDC">
+                    <tr>
+                        <td colspan="2">Métodos de pago
+                        <select>
+                            <option value="default" selected>Elegir</option>
+                            <option>Efectivo</option>
+                            <option>Targeta crédito/débito</option>
+                            <option>Paypal</option>
+                        </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Precio</td>
+                        <td>Existencias: <input type="text" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Vigencia: <input type="text" readonly/></td>
+                    </tr>
+                </table>
             </div>
-            <div id="descripcion">
+            <div id="divDescripcion">
                 <p>Descripcion del producto</p>
             </div>
+            <div id="divPreguntas">
+                <h2>Preguntas</h2><br>
+                <label>Hacer una pregunta</label><br>
+                <form id="hacerPregunta" method="post">
+                    <textarea id="textPregunta" name="pregunta"></textarea><br>
+                    <input type="submit" class="btnRespuesta" value="Preguntar"/>
+                </form>
+                <p class="pregunta">Pregunta</p>
+                <ul class="respuesta">
+                    <li>Respuesta</li>
+                </ul>                
+            </div>
         </div>
+        <%@include file="general.jsp" %>
     </body>
 </html>
