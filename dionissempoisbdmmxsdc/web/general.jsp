@@ -12,28 +12,60 @@
 <!DOCTYPE>
 <html>
 <head>
+        <meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<meta charset="utf-8">
-	<title></title>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script>
 		$(function(){
 			$(".shadow").toggle();
 			$(".toggle").click(function(){
 				$(".shadow").toggle();
+<<<<<<< HEAD
 			});
+=======
+			});                    
+                        $(".datepicker").each(function(){
+                          $(this).datepicker();
+
+>>>>>>> origin/master
 		});
+            });
 	</script>
 </head>
 <body>
 	<header>
 		<nav>
 		<div id="divHeader">
-                    <a href="index.jsp"><img id="imgHome" src="imagenes/home_w.png" /></a>
-                <input type="text" id="txtBuscar" style="position: absolute; right:43%; width:28%;height: 33px; margin-top:10px;border-radius: 3px;">
+                   <a href="index.jsp"><img id="imgHome" src="imagenes/home_w.png" /></a>
+                   <span class="sBuscar"><input type="text" id="txtBuscar" /><button id="botonBus"></button></span>
+                <div class="menu-wrapF">
+                    <nav class="menuF">
+                        <ul class="clearfixF">
+                            <li>
+                                <a href="#" class="filtrar">Filtrar búsqueda<span class="arrow">&#9660;</span></a>
+                                <ul class="sub-menuF">
+                                    <li><input type="checkbox" class="busqueda"/>Fecha: Entre <input type="text" class="datepicker" readonly/> y <input type="text" class="datepicker" readonly/></li>
+                                            <li>
+                                                <input type="checkbox" class="busqueda"/>Usuario 
+                                                <select>
+                                                    <option></option>
+                                                    <option>Usuario1</option>
+                                                    <option>Usuario2</option>
+                                                    <option>Usuario3</option>
+                                                </select>
+                                            </li>
+                                    <li><input type="checkbox" class="busqueda"/>Subcategoria 3</li>
+                                    <li><input type="checkbox" class="busqueda"/>Subcategoria 4</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
                     <ul class="nav">
                             <li class="toggle">
-                                    Iniciar Sesión
+                                Iniciar Sesión
                             </li>
                     </ul>
 		</div>
