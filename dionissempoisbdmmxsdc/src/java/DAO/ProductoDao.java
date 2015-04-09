@@ -136,7 +136,7 @@ public class ProductoDao {
         }
     }
     
-     public static List<Usuario> lista() {
+     public static List<Producto> lista() {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
@@ -144,23 +144,23 @@ public class ProductoDao {
         try {
             cs = conn.prepareCall("{ call buscar_empleados() }");
             rs = cs.executeQuery();
-            List<Usuario> userLista = new ArrayList<Usuario>();
+            List<Producto> prodLista = new ArrayList<Producto>();
             while (rs.next()) {
-                Usuario user = new Usuario(
-                        rs.getString("idUsuario"), 
-                        rs.getString("emailUsuario"), 
-                        rs.getString("passwordUsuario"), 
-                        rs.getString("nicknameUsuario"), 
-                        rs.getString("nombreUsuario"),
-                        rs.getString("apelidoUsuario"),
-                        rs.getInt("telefonoUsuario"),
-                        rs.getBlob("avatarUsuario"),
-                        rs.getBoolean("confirmadoUsuario"),
-                        rs.getBoolean("activoUsuario")
+                Producto user = new Producto(
+                        rs.getString("nombreProducto"), 
+                        rs.getString("descripcionProducto"), 
+                        rs.getFloat("precioProducto"), 
+                        rs.getInt("existenciaProducto"), 
+                        rs.getString("vigenciaProducto"),
+                        rs.getString("caracteristicaProducto"),
+                        rs.getString("fechaProducto"),
+                        rs.getString("horaProducto"),
+                        rs.getInt("idUsuarioProducto"),
+                        rs.getBoolean("activoProducto")
                 );      
-                userLista.add(user);
+                prodLista.add(user);
             }
-            return userLista;
+            return prodLista;
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;

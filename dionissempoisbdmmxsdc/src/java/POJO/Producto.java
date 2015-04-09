@@ -35,6 +35,21 @@ public class Producto {
         this.idUsuarioProducto = idUsuarioProducto;
         this.activoProducto = activoProducto;
     }
+     public Producto( String nombreProducto, String descripcionProducto, 
+             float precioProducto, int existenciaProducto, String vigenciaProducto,
+             String caracteristicaProducto, String fechaProducto, String horaProducto,
+             int idUsuarioProducto, boolean activoProducto) {
+        this.nombreProducto = nombreProducto;
+        this.descripcionProducto = descripcionProducto;
+        this.precioProducto = precioProducto;
+        this.existenciaProducto = existenciaProducto;
+        this.vigenciaProducto = vigenciaProducto;
+        this.caracteristicaProducto = caracteristicaProducto;
+        this.fechaProducto = fechaProducto;
+        this.horaProducto = horaProducto;
+        this.idUsuarioProducto = idUsuarioProducto;
+        this.activoProducto = activoProducto;
+    }
 
     public int getIdProducto() {
         return idProducto;

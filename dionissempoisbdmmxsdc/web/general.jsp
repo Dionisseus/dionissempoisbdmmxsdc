@@ -22,8 +22,6 @@
 			$(".toggle").click(function(){
 				$(".shadow").toggle();
 			});
-                        
-
 		});
 	</script>
 </head>
