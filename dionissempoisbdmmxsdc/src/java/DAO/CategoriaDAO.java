@@ -94,7 +94,7 @@ public class CategoriaDAO {
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
                 try {
-            cs = conn.prepareCall("{ call categoria_actualizar(?, ?, ?, ?, ?, ?,?,?,?,?,?) }");
+            cs = conn.prepareCall("{ call categoria_actualizar(?, ?, ?) }");
             cs.setInt(1, cat.getIdCategoria());
             cs.setString(2, cat.getNombreCategoria());
             cs.setBoolean(3,cat.isActivoCategoria());
@@ -125,7 +125,7 @@ public class CategoriaDAO {
         CallableStatement cs = null;
         ResultSet rs = null;
         try {
-            cs = conn.prepareCall("{ call buscar_empleados() }");
+            cs = conn.prepareCall("{ call todasCategorias() }");
             rs = cs.executeQuery();
             List<Categoria> categoriaLista = new ArrayList<Categoria>();
             while (rs.next()) {

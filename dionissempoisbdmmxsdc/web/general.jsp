@@ -42,7 +42,8 @@
 		</nav>
 	</header>
         <div id="divMenu">
-            <label id="labCategorias">Categorías</label>
+            <jsp:include page ="Categoria"/>
+<!--            <label id="labCategorias">Categorías</label>
             <div class="menu-wrap">
                 <nav class="menu">
                     <ul class="clearfix">
@@ -75,7 +76,7 @@
                         </li>
                     </ul>
                 </nav>
-            </div>
+            </div>-->
         </div>
   	<div class="shadow">
   		<div class="loginContainer">  

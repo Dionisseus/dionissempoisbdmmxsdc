@@ -26,7 +26,7 @@ public class SubcategoriaDAO {
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
          try {
-            cs = conn.prepareCall("{ call insertar_subcategoria(?,?) }");
+            cs = conn.prepareCall("{ call insertar_subcategoria(?,?,?) }");
             cs.setString(1, cat.getNombreSubcategoria());
             cs.setBoolean(3, cat.isActivoSubcategoria());
             cs.setInt(2, cat.getIdCategoriaSubcategoria());
@@ -119,23 +119,26 @@ public class SubcategoriaDAO {
         }
     }
     
-     public static List<Subcategoria> lista() {
+     public static List<Subcategoria> lista(int idCategoria) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
         ResultSet rs = null;
         try {
-            cs = conn.prepareCall("{ call buscar_empleados() }");
+            cs = conn.prepareCall("{ call todasSubcategorias(?) }");
+            cs.setInt(1, idCategoria);
             rs = cs.executeQuery();
             List<Subcategoria> categoriaLista = new ArrayList<Subcategoria>();
             while (rs.next()) {
-                Subcategoria cat = new Subcategoria(
+                if ( rs.getInt("idCategoriaSubcategoria")== idCategoria) {
+                  Subcategoria cat = new Subcategoria(
                         rs.getInt("idSubcategoria"), 
-                        rs.getString("nombreSubategoria"), 
+                        rs.getString("nombreSubcategoria"), 
                         rs.getInt("idCategoriaSubcategoria"),
                         rs.getBoolean("activoSubcategoria")
                 );      
-                categoriaLista.add(cat);
+                categoriaLista.add(cat);  
+                }
             }
             return categoriaLista;
         } catch (SQLException ex) {
