@@ -35,9 +35,7 @@
 	</script>
 </head>
 <body>
-  
         <div id="divContent" >
-              
                 <div class="slider">
                     <h3>Lo mas vendido</h3>
                   <div class="flexslider carousel">
