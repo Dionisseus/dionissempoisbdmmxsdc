@@ -18,20 +18,17 @@
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script>
-		$(function(){
-			$(".shadow").toggle();
-			$(".toggle").click(function(){
-				$(".shadow").toggle();
-<<<<<<< HEAD
-			});
-=======
-			});                    
-                        $(".datepicker").each(function(){
-                          $(this).datepicker();
+            $(function(){
+                    $(".shadow").toggle();
+                    $(".toggle").click(function(){
+                            $(".shadow").toggle();
+                    });
 
->>>>>>> origin/master
-		});
-            });
+                    $(".datepicker").each(function(){
+                      $(this).datepicker();
+
+                    });
+                });
 	</script>
 </head>
 <body>
@@ -64,13 +61,31 @@
                     </nav>
                 </div>
                     <ul class="nav">
-                            <li class="toggle">
-                                Iniciar Sesión
-                            </li>
+                        <li class="toggle">
+                            Iniciar Sesión
+                        </li>
                     </ul>
 		</div>
 		</nav>
 	</header>
+        <div class="shadow">
+  		<div class="loginContainer">  
+                    <form action="Login" method="post">
+  		<button class="toggle" id="botonCerrar" ></button>
+  		<h3 id="hIngresar" style="font-family:Arial, Helvetica, sans-serif;">Ingrese un usuario</h3>	
+  		 <table style="margin-top:40px;">
+		 <tr>
+			<td><label class="logLab">Correo Electronico: </label></td><td><input name="emailUsuario" class="logtxt" type="text" /></td>
+		 </tr> 
+		 <tr>
+			<td><label class="logLab">Contraseña: </label></td><td><input name="passwordUsuario" class="logtxt" type="password"/></td>
+		 </tr>	
+		</table>
+		<input type="submit" value="Entrar"><br><br>
+                    </form>
+		<a href="registrarUsuario.jsp">¿No tienes cuenta? Regístrare ahora</a>
+  		</div>
+  	</div>
         <div id="divMenu">
             <jsp:include page ="Categoria"/>
 <!--            <label id="labCategorias">Categorías</label>
@@ -108,23 +123,5 @@
                 </nav>
             </div>-->
         </div>
-  	<div class="shadow">
-  		<div class="loginContainer">  
-                    <form action="Login" method="post">
-  		<button class="toggle" id="botonCerrar" ></button>
-  		<h3 id="hIngresar" style="font-family:Arial, Helvetica, sans-serif;">Ingrese un usuario</h3>	
-  		 <table style="margin-top:40px;">
-		 <tr>
-			<td><label class="logLab">Correo Electronico: </label></td><td><input name="emailUsuario" class="logtxt" type="text" /></td>
-		 </tr> 
-		 <tr>
-			<td><label class="logLab">Contraseña: </label></td><td><input name="passwordUsuario" class="logtxt" type="password"/></td>
-		 </tr>	
-		</table>
-		<input type="submit" value="Entrar"><br><br>
-                    </form>
-		<a href="registrarUsuario.jsp">¿No tienes cuenta? Regístrare ahora</a>
-  		</div>
-  	</div>
 </body>
 </html>   
