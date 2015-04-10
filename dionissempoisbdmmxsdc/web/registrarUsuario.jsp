@@ -18,31 +18,31 @@
 	</script>
 </head>
 	<body>
-        <%@include file="general.jsp" %>
         <div id="divContent" >
             <h3>Registro de usuario</h3>
             <div id="divRegistro">
                 <form action="Register" method="post">
-                            <fieldset class="fSet">
-                                    <legend style="font-family:Arial, Helvetica, sans-serif;">Datos del usuario</legend>
-                                    <dl>
-                                            <dt><label class="registroLab">Nombre completo </label></dt>
-                                                    <dd><input id="txtNombre" class="regtxt" name="nombre" type="text" /></dd>
-                                            <dt><label class="registroLab">Apellido Paterno</label></dt>
-                                            <dd><input id="txtPaterno" class="regtxt" name="aPaterno" type="text"/></dd>
-                                            <dt><label class="registroLab">Apellido Materno</label></dt>
-                                            <dd><input id="txtMaterno" class="regtxt" name="aMaterno" type="text"/></dd>
-                                            <dt><label class="registroLab">Teléfono</label></dt>
-                                            <dd><input id="txtTelefono" class="regtxt" name="telefono" type="tel"/></dd>
-                                            <dt><label class="registroLab">Correo electrónico</label></dt>
-                                            <dd><input id="txtCorreo" class="regtxt" name="email" type="email"/></dd>
-                                            <dt><label class="registroLab">Contraseña</label></dt>
-                                            <dd><input id="txtContra" class="regtxt" name="password" type="password"/></dd>
-                                    </dl>	
-                                    <input type="submit" value="Registrarse"/>
-                            </fieldset>					
+                        <fieldset class="fSet">
+                                <legend style="font-family:Arial, Helvetica, sans-serif;">Datos del usuario</legend>
+                                <dl>
+                                        <dt><label class="registroLab">Nombre completo </label></dt>
+                                                <dd><input id="txtNombre" class="regtxt" name="nombre" type="text" /></dd>
+                                        <dt><label class="registroLab">Apellido Paterno</label></dt>
+                                        <dd><input id="txtPaterno" class="regtxt" name="aPaterno" type="text"/></dd>
+                                        <dt><label class="registroLab">Apellido Materno</label></dt>
+                                        <dd><input id="txtMaterno" class="regtxt" name="aMaterno" type="text"/></dd>
+                                        <dt><label class="registroLab">Teléfono</label></dt>
+                                        <dd><input id="txtTelefono" class="regtxt" name="telefono" type="tel"/></dd>
+                                        <dt><label class="registroLab">Correo electrónico</label></dt>
+                                        <dd><input id="txtCorreo" class="regtxt" name="email" type="email"/></dd>
+                                        <dt><label class="registroLab">Contraseña</label></dt>
+                                        <dd><input id="txtContra" class="regtxt" name="password" type="password"/></dd>
+                                </dl>	
+                                <input type="submit" value="Registrarse"/>
+                        </fieldset>					
                 </form>
             </div>
         </div>
+            <%@include file="general.jsp" %>
 	</body>
 </html>   

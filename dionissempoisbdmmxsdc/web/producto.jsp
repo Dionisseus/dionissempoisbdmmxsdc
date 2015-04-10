@@ -69,7 +69,7 @@
         </script>
     </head>
     <body>
-        <div id="divContent" role="main">
+        <div id="divContent">
             <h2>Titulo producto</h2>
             <div id="slider">
                 <a href="#" class="control_next">></a>
@@ -110,7 +110,7 @@
             </div>
             <div id="divPreguntas">
                 <h2>Preguntas</h2><br>
-                <label>Hacer una pregunta</label><br>
+                <label id="labPreguntas">Hacer una pregunta</label><br>
                 <form id="hacerPregunta" method="post">
                     <textarea id="textPregunta" name="pregunta"></textarea><br>
                     <input type="submit" class="btnRespuesta" value="Preguntar"/>

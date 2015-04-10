@@ -7,7 +7,7 @@ p{
     font-family: tahoma;
 }
 
-label{
+#labPreguntas{
     font-family: tahoma;
     font-weight: bold;
     color: #05AFCE;
@@ -121,7 +121,6 @@ a.control_next {
 #divPreguntas{
     width: 80%;
     height: 50%;
-    background-color:whitesmoke;
     float: right;
     margin-right: 15%;
     margin-top: 5%;

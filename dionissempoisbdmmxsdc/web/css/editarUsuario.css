@@ -1,0 +1,28 @@
+h2{
+    font-family: tahoma;
+    margin-left: 40%;
+}
+
+.setEditar{
+    width: 60%;
+    margin-left: 20%;
+}
+
+.legendEditar{
+    font-family: verdana;
+    
+}
+
+.pEditar{
+    font-family: arial;
+    font-size: 14px;
+    float: right;
+}
+
+#btnGuardar{
+    margin-left: 20%;
+    height: 35px;
+    border-radius: 3px;
+    color: whitesmoke;
+    background-color: #05AFCE;
+}
