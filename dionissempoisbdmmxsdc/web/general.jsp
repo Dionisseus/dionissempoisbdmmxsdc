@@ -5,9 +5,9 @@
 --%>
 <%@taglib prefix="t" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<t:if test="${sessionScope['sessionEmail']!=null}">
-    <% response.sendRedirect("home.jsp");%>
-</t:if>
+<%--<t:if test="${sessionScope['sessionEmail']!=null}">
+    <% response.sendRedirect("asdf.jsp");%>
+</t:if>--%>
 
 <!DOCTYPE>
 <html>
@@ -23,7 +23,6 @@
                     $(".toggle").click(function(){
                             $(".shadow").toggle();
                     });
-
                     $(".datepicker").each(function(){
                       $(this).datepicker();
 
@@ -62,7 +61,12 @@
                 </div>
                     <ul class="nav">
                         <li class="toggle">
-                            Iniciar Sesión
+                            <t:if test="${sessionScope['sessionNombre']!=null}">
+                            <%= session.getAttribute("sessionNombre")%>
+                            </t:if>
+                           <t:if test="${sessionScope['sessionEmail']==null}">
+                           Iniciar Sesion
+                            </t:if>
                         </li>
                     </ul>
 		</div>
@@ -88,40 +92,7 @@
   	</div>
         <div id="divMenu">
             <jsp:include page ="Categoria"/>
-<!--            <label id="labCategorias">Categorías</label>
-            <div class="menu-wrap">
-                <nav class="menu">
-                    <ul class="clearfix">
-                        <li>
-                            <a href="#">Categoría 1<span class="arrow">&#9660;</span></a>
-                            <ul class="sub-menu">
-                                <li><a href="#">Subcategoria 1</a></li>
-                                <li><a href="#">Subcategoria 2</a></li>
-                                <li><a href="#">Subcategoria 3</a></li>
-                                <li><a href="#">Subcategoria 4</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Caregoría 2<span class="arrow">&#9660;</span></a>
-                            <ul class="sub-menu">
-                                <li><a href="#">Subcategoria 1</a></li>
-                                <li><a href="#">Subcategoria 2</a></li>
-                                <li><a href="#">Subcategoria 3</a></li>
-                                <li><a href="#">Subcategoria 4</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Categoría 3<span class="arrow">&#9660;</span></a>
-                            <ul class="sub-menu">
-                                <li><a href="#">Subcategoria 1</a></li>
-                                <li><a href="#">Subcategoria 2</a></li>
-                                <li><a href="#">Subcategoria 3</a></li>
-                                <li><a href="#">Subcategoria 4</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </div>-->
+
         </div>
 </body>
 </html>   

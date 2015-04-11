@@ -5,9 +5,9 @@
 --%>
 <%@taglib prefix="t" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<t:if test="${sessionScope['sessionEmail']!=null}">
+<%--<t:if test="${sessionScope['sessionEmail']!=null}">
     <% response.sendRedirect("home.jsp");%>
-</t:if>
+</t:if>--%>
 
 <!DOCTYPE>
 <html>

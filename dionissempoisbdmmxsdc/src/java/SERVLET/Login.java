@@ -5,7 +5,7 @@
  */
 package SERVLET;
 
-import DAO.UsuarioDao;
+import DAO.UsuarioDAO;
 import POJO.Usuario;
 import java.io.IOException;
 import java.util.regex.Matcher;
@@ -34,7 +34,10 @@ public class Login extends HttpServlet{
     
       protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-           HttpSession respuesta = request.getSession(true);
+           HttpSession session = request.getSession(false);
+           if (session == null) {
+              session = request.getSession(true);
+          }
            String url = "home.jsp";
            String emailUsuario = request.getParameter("emailUsuario");
            String passwordUsuario = request.getParameter("passwordUsuario");  
@@ -44,12 +47,12 @@ public class Login extends HttpServlet{
         
         //campos vacios
         if (emailUsuario.isEmpty() || passwordUsuario.isEmpty()) {
-            respuesta.setAttribute("error", "Hay campos vacios");
+            session.setAttribute("error", "Hay campos vacios");
                url ="index.jsp"; 
         } else {
             //No hay campos vacios, veo que la direccion de email sea válida
             if (!_matcher.find()) {
-                respuesta.setAttribute("error", "La direccion de email no es correcta");
+                session.setAttribute("error", "La direccion de email no es correcta");
                 url ="index.jsp"; 
  
             } else {
@@ -57,26 +60,27 @@ public class Login extends HttpServlet{
                 if (v.isUsernameOrPasswordValid(passwordUsuario)) {
                         try {
                            
-                            if (UsuarioDao.exists(emailUsuario, passwordUsuario)) {
+                            if (UsuarioDAO.exists(emailUsuario, passwordUsuario)) {
                                 //Significa que la cuenta si existe
                                 //OBTENGO EL NOMBRE DEL USUARIO Y LO GUARDO EN UNA SESION
-                                Usuario user = UsuarioDao.buscar(emailUsuario, passwordUsuario);
-                               respuesta.setAttribute("sessionNombre", user.getNombreUsuario());
-                               respuesta.setAttribute("sessionEmail", user.getEmailUsuario());
-                                url ="home.jsp"; 
+                                Usuario user = UsuarioDAO.buscar(emailUsuario, passwordUsuario);
+                               session.setAttribute("sessionNombre", user.getNombreUsuario());
+                               session.setAttribute("sessionEmail", user.getEmailUsuario());
+                                url ="index.jsp"; 
                                 
                             } else {
-                                respuesta.setAttribute("error", "Favor de registrarse.");
+                                session.setAttribute("error", "Favor de registrarse.");
                                  url ="index.jsp"; 
                             }
                         } catch (Exception e) {}
                 } else {
-                    respuesta.setAttribute("error", "Contraseña no es válida");
+                    session.setAttribute("error", "Contraseña no es válida");
                      url ="index.jsp"; 
                 }
             }
         }
-        response.sendRedirect(url);       
+       // response.sendRedirect(url);      
+        request.getRequestDispatcher(url).include(request, response);
     }
 
     @Override

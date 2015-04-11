@@ -5,7 +5,7 @@
  */
 package SERVLET;
 
-import DAO.UsuarioDao;
+import DAO.UsuarioDAO;
 import POJO.Usuario;
 import java.io.IOException;
 import java.sql.Blob;
@@ -65,10 +65,10 @@ public class Register extends HttpServlet {
                 if (v.isUsernameOrPasswordValid(passwordUsuario)) {
                         try {
                            
-                            if (!UsuarioDao.exists(emailUsuario, passwordUsuario)) {
+                            if (!UsuarioDAO.exists(emailUsuario, passwordUsuario)) {
                               byte[] bytes = {0};
                                Usuario user = new Usuario(emailUsuario,passwordUsuario,"",nombreUsuario,apellidosUsuario+""+apellidoMaterno,Integer.parseInt(telefonoUsuario),(Blob)new SerialBlob(bytes),true,true);
-                                UsuarioDao.insertar(user);
+                                UsuarioDAO.insertar(user);
                                 url ="home.jsp"; 
                                 
                             } else {
@@ -84,6 +84,7 @@ public class Register extends HttpServlet {
                 }
             }
         }
+          
         response.sendRedirect(url);                  
     }
 
