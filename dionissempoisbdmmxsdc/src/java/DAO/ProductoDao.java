@@ -19,7 +19,7 @@ import xClasses.DBUtil;
  *
  * @author Diosio
  */
-public class ProductoDao {
+public class ProductoDAO {
     
      public static void insertar(Producto user) {
        ConnectionPool pool = ConnectionPool.getInstance();
@@ -128,7 +128,7 @@ public class ProductoDao {
     }
 
     public static boolean exists(String idProducto, String nombreProducto) {
-        if (ProductoDao.buscar(idProducto, nombreProducto)!= null) {
+        if (ProductoDAO.buscar(idProducto, nombreProducto)!= null) {
          return true;   
         }
         else{

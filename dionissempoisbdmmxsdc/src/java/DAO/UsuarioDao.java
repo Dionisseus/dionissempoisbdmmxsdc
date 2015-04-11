@@ -19,7 +19,7 @@ import xClasses.DBUtil;
  *
  * @author Diosio
  */
-public class UsuarioDao {
+public class UsuarioDAO {
 
     public static void insertar(Usuario user) {
        ConnectionPool pool = ConnectionPool.getInstance();
@@ -77,7 +77,7 @@ public class UsuarioDao {
             rs = cs.executeQuery();
             if (rs.next()) {
                 Usuario emp = new Usuario(rs.getString("idUsuario"), rs.getString("emailUsuario"), rs.getString("passwordUsuario"),
-                        rs.getString("emailUsuario"), rs.getString("emailUsuario"), rs.getString("emailUsuario"),
+                        rs.getString("nicknameUsuario"), rs.getString("nombreUsuario"), rs.getString("apellidoUsuario"),
                         rs.getInt("telefonoUsuario"), null, true, true);
                        
                 
@@ -122,7 +122,7 @@ public class UsuarioDao {
     }
 
     public static boolean exists(String emailUsuario, String passwordUsuario) {
-        if (UsuarioDao.buscar(emailUsuario, passwordUsuario)!= null) {
+        if (UsuarioDAO.buscar(emailUsuario, passwordUsuario)!= null) {
          return true;   
         }
         else{
