@@ -25,7 +25,9 @@
                     });
                     $(".datepicker").each(function(){
                       $(this).datepicker();
-
+                      $(".buttonEditUser").click(function (){
+                         window.location.href = '/dionissempoisbdmmxsdc/editarUsuario.jsp';
+                      })
                     });
                 });
 	</script>
