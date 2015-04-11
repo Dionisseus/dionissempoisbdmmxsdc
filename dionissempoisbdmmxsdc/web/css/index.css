@@ -31,6 +31,30 @@ h3{
     padding-bottom: 5px;
 }
 
+
+
+
+.menuInicioSesion:hover {
+   opacity: 1;
+}
+
+.menuInicioSesion:hover > .subMenuInicioSesion{
+    opacity: 1;
+    visibility: visible;
+}
+
+.subMenuInicioSesion{
+    opacity: 0;
+    bottom:0px;
+    font-size:12px;
+    padding:10px;
+    background:#fff;
+    color:#333;
+    visibility: hidden;
+    text-align:left;
+}
+
+
 /*----- Menu Outline -----*/
 .menu-wrap {
     width:100%;

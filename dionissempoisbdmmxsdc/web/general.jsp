@@ -62,10 +62,15 @@
                     <ul class="nav">
                         <li class="toggle">
                             <t:if test="${sessionScope['sessionNombre']!=null}">
-                            <%= session.getAttribute("sessionNombre")%>
+                               <div class="menuInicioSesion">
+                              <%= session.getAttribute("sessionNombre")%>
+                             <div class="subMenuInicioSesion">
+                                 <input type="button" class="buttonEditUser" value="Editar Usuario">
+                             </div>
+                             </div>
                             </t:if>
                            <t:if test="${sessionScope['sessionEmail']==null}">
-                           Iniciar Sesion
+                            Iniciar Sesion
                             </t:if>
                         </li>
                     </ul>
