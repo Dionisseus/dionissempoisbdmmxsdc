@@ -14,7 +14,7 @@
     </head>
     <body>
         <div id="divContent">
-            <form method="post" action="EditUser">
+            <form method="post" action="EditUser" enctype="multipart/form-data">
             <h2>Editar Usuario</h2>
             <fieldset class="setEditar">
                 <legend class="legendEditar">Datos del usuario</legend>

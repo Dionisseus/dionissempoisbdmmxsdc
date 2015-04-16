@@ -20,7 +20,7 @@ public class Usuario {
     String nombreUsuario;
     String apellidoUsuario;
     int telefonoUsuario;
-    Blob avatarUsuario;
+   Blob avatarUsuario;
     boolean confirmadoUsuario;
     boolean activoUsuario;
 
