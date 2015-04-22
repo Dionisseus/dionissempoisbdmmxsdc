@@ -35,68 +35,68 @@
 	</script>
 </head>
 <body>
-        <div id="divContent" >
-                <div class="slider">
-                    <h3>Lo mas vendido</h3>
-                  <div class="flexslider carousel">
-                    <ul class="slides">
-                        <li>
-                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_cheesecake_brownie.jpg" /></a>
-                        </li>
-                        <li>
-                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_lemon.jpg" /></a>
-                        </li>
-                        <li>
-                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_donut.jpg" /></a>
-                        </li>
-                        <li>
-                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_caramel.jpg" /></a>
-                        </li>
-                        <li>
-                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_cheesecake_brownie.jpg" /></a>
-                        </li>
-                        <li>
-                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_lemon.jpg" /></a>
-                        </li>
-                        <li>
-                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_donut.jpg" /></a>
-                        </li>
-                        <li>
-                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_caramel.jpg" /></a>
-                        </li>
-                    </ul>
-                  </div>            
-            <h3>Lo mas buscado</h3>
-                  <div class="flexslider carousel">
-                    <ul class="slides">
-                        <li>
-                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_cheesecake_brownie.jpg" /></a>
-                        </li>
-                        <li>
-                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_lemon.jpg" /></a>
-                        </li>
-                        <li>
-                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_donut.jpg" /></a>
-                        </li>
-                        <li>
-                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_caramel.jpg" /></a>
-                        </li>
-                        <li>
-                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_cheesecake_brownie.jpg" /></a>
-                        </li>
-                        <li>
-                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_lemon.jpg" /></a>
-                        </li>
-                        <li>
-                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_donut.jpg" /></a>
-                        </li>
-                        <li>
-                            <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_caramel.jpg" /></a>
-                        </li>
-                    </ul>
-                  </div> 
-                </div>         
-            </div>
+    <div id="divContent" >
+            <div class="slider">
+                <h3>Lo mas vendido</h3>
+              <div class="flexslider carousel">
+                <ul class="slides">
+                    <li>
+                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_cheesecake_brownie.jpg" /></a>
+                    </li>
+                    <li>
+                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_lemon.jpg" /></a>
+                    </li>
+                    <li>
+                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_donut.jpg" /></a>
+                    </li>
+                    <li>
+                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_caramel.jpg" /></a>
+                    </li>
+                    <li>
+                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_cheesecake_brownie.jpg" /></a>
+                    </li>
+                    <li>
+                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_lemon.jpg" /></a>
+                    </li>
+                    <li>
+                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_donut.jpg" /></a>
+                    </li>
+                    <li>
+                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_caramel.jpg" /></a>
+                    </li>
+                </ul>
+              </div>            
+        <h3>Lo mas buscado</h3>
+              <div class="flexslider carousel">
+                <ul class="slides">
+                    <li>
+                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_cheesecake_brownie.jpg" /></a>
+                    </li>
+                    <li>
+                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_lemon.jpg" /></a>
+                    </li>
+                    <li>
+                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_donut.jpg" /></a>
+                    </li>
+                    <li>
+                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_caramel.jpg" /></a>
+                    </li>
+                    <li>
+                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_cheesecake_brownie.jpg" /></a>
+                    </li>
+                    <li>
+                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_lemon.jpg" /></a>
+                    </li>
+                    <li>
+                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_donut.jpg" /></a>
+                    </li>
+                    <li>
+                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_caramel.jpg" /></a>
+                    </li>
+                </ul>
+              </div> 
+            </div>         
+        </div>
     <%@include file="general.jsp" %>
      </body>
 </html>   
