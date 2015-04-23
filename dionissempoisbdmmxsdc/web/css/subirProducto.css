@@ -1,0 +1,36 @@
+legend{
+    font-family: verdana;
+}
+
+table{
+    width: 80%;
+}
+
+textarea{
+    width: 200px;
+    resize: none;
+}
+
+.txtEditar{
+    
+}
+
+.setSubir{
+    width: 60%;
+    margin-left: 20%;
+}
+
+.pSubir{
+    font-family: arial;
+    font-size: 14px;
+    float: right; 
+    margin-right:40%;
+}
+
+#btnGuardar{
+    margin-left: 20%;
+    height: 35px;
+    border-radius: 3px;
+    color: whitesmoke;
+    background-color: #05AFCE;
+}
