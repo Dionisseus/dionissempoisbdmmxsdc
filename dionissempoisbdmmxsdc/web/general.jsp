@@ -29,7 +29,7 @@
                     });
                     $(".buttonEditUser").click(function (){
                          window.location.href = '/dionissempoisbdmmxsdc/editarUsuario.jsp';
-                      })
+                      });
                 });
 	</script>
 </head>
@@ -63,17 +63,19 @@
             </nav>
         </div>
         <ul class="nav">
-            <li class="toggle">
+            <li>
               <t:if test="${sessionScope['sessionNombre']!=null}">
               <div class="menuInicioSesion">
+                <img id="imgUsuario" src="http://cdn.lamborghini.com/content/masterpieces/murcielago_lp670_sv/lamborghini_murcielago_sv.jpg">
                 <%= session.getAttribute("sessionNombre")%>
                 <div class="subMenuInicioSesion">
-                    <input type="button" class="buttonEditUser" value="Editar Usuario">
+                    <a class="buttonEditUser" >Editar Usuario</a> <br>
+                    <a class="cerrarSesion">Salir</a>
                 </div>
               </div>
               </t:if>
               <t:if test="${sessionScope['sessionEmail']==null}">
-                Iniciar Sesion
+                  <label class="toggle">Iniciar Sesion</label>
               </t:if>
             </li>
         </ul>
