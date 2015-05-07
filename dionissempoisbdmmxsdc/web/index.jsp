@@ -36,65 +36,179 @@
 </head>
 <body>
     <div id="divContent" >
-            <div class="slider">
+            <div class="divPrductos">
+                <h3>Lo mas reciente</h3>
+                    <div class="masReciente">
+                    <div class="contenido">
+                        <div class="divImgProducto"><a href="producto.jsp"><img class="imgProducto" src="imagenes/kitchen_adventurer_lemon.jpg" /></a></div>
+                        <div class="infoProducto">
+                            Descripcion breve<br>
+                            Precio<br>
+                            Nickname de Usuario<br>
+                            Fecha y hora<br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="contenido">
+                        <div class="divImgProducto"><a href="producto.jsp"><img class="imgProducto" src="imagenes/kitchen_adventurer_lemon.jpg" /></a></div>
+                        <div class="infoProducto">
+                            Descripcion breve<br>
+                            Precio<br>
+                            Nickname de Usuario<br>
+                            Fecha y hora<br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="contenido">
+                        <div class="divImgProducto"><a href="producto.jsp"><img class="imgProducto" src="imagenes/kitchen_adventurer_lemon.jpg" /></a></div>
+                        <div class="infoProducto">
+                            Descripcion breve<br>
+                            Precio<br>
+                            Nickname de Usuario<br>
+                            Fecha y hora<br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="contenido">
+                        <div class="divImgProducto"><a href="producto.jsp"><img class="imgProducto" src="imagenes/kitchen_adventurer_lemon.jpg" /></a></div>
+                        <div class="infoProducto">
+                            Descripcion breve<br>
+                            Precio<br>
+                            Nickname de Usuario<br>
+                            Fecha y hora<br>
+                            <br>
+                        </div>
+                    </div>
+                </div>            
                 <h3>Lo mas vendido</h3>
-              <div class="flexslider carousel">
-                <ul class="slides">
-                    <li>
-                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_cheesecake_brownie.jpg" /></a>
-                    </li>
-                    <li>
-                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_lemon.jpg" /></a>
-                    </li>
-                    <li>
-                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_donut.jpg" /></a>
-                    </li>
-                    <li>
-                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_caramel.jpg" /></a>
-                    </li>
-                    <li>
-                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_cheesecake_brownie.jpg" /></a>
-                    </li>
-                    <li>
-                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_lemon.jpg" /></a>
-                    </li>
-                    <li>
-                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_donut.jpg" /></a>
-                    </li>
-                    <li>
-                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_caramel.jpg" /></a>
-                    </li>
-                </ul>
-              </div>            
-        <h3>Lo mas buscado</h3>
-              <div class="flexslider carousel">
-                <ul class="slides">
-                    <li>
-                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_cheesecake_brownie.jpg" /></a>
-                    </li>
-                    <li>
-                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_lemon.jpg" /></a>
-                    </li>
-                    <li>
-                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_donut.jpg" /></a>
-                    </li>
-                    <li>
-                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_caramel.jpg" /></a>
-                    </li>
-                    <li>
-                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_cheesecake_brownie.jpg" /></a>
-                    </li>
-                    <li>
-                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_lemon.jpg" /></a>
-                    </li>
-                    <li>
-                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_donut.jpg" /></a>
-                    </li>
-                    <li>
-                        <a href="producto.jsp"><img src="imagenes/kitchen_adventurer_caramel.jpg" /></a>
-                    </li>
-                </ul>
-              </div> 
+                <div class="masVendido">
+                    <div class="contenido">
+                        <div class="divImgProducto"><a href="producto.jsp"><img class="imgProducto" src="imagenes/kitchen_adventurer_cheesecake_brownie.jpg" /></a></div>
+                        <div class="infoProducto">
+                            Descripcion breve<br>
+                            Precio<br>
+                            Nickname de Usuario<br>
+                            Fecha y hora<br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="contenido">
+                        <div class="divImgProducto"><a href="producto.jsp"><img class="imgProducto" src="imagenes/kitchen_adventurer_cheesecake_brownie.jpg" /></a></div>
+                        <div class="infoProducto">
+                            Descripcion breve<br>
+                            Precio<br>
+                            Nickname de Usuario<br>
+                            Fecha y hora<br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="contenido">
+                        <div class="divImgProducto"><a href="producto.jsp"><img class="imgProducto" src="imagenes/kitchen_adventurer_cheesecake_brownie.jpg" /></a></div>
+                        <div class="infoProducto">
+                            Descripcion breve<br>
+                            Precio<br>
+                            Nickname de Usuario<br>
+                            Fecha y hora<br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="contenido">
+                        <div class="divImgProducto"><a href="producto.jsp"><img class="imgProducto" src="imagenes/kitchen_adventurer_cheesecake_brownie.jpg" /></a></div>
+                        <div class="infoProducto">
+                            Descripcion breve<br>
+                            Precio<br>
+                            Nickname de Usuario<br>
+                            Fecha y hora<br>
+                            <br>
+                        </div>
+                    </div>
+                </div>    
+                <h3>Lo mas comentado</h3>
+                <div class="masComentado">
+                    <div class="contenido">
+                        <div class="divImgProducto"><a href="producto.jsp"><img class="imgProducto" src="imagenes/kitchen_adventurer_donut.jpg" /></a></div>
+                        <div class="infoProducto">
+                            Descripcion breve<br>
+                            Precio<br>
+                            Nickname de Usuario<br>
+                            Fecha y hora<br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="contenido">
+                        <div class="divImgProducto"><a href="producto.jsp"><img class="imgProducto" src="imagenes/kitchen_adventurer_donut.jpg" /></a></div>
+                        <div class="infoProducto">
+                            Descripcion breve<br>
+                            Precio<br>
+                            Nickname de Usuario<br>
+                            Fecha y hora<br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="contenido">
+                        <div class="divImgProducto"><a href="producto.jsp"><img class="imgProducto" src="imagenes/kitchen_adventurer_donut.jpg" /></a></div>
+                        <div class="infoProducto">
+                            Descripcion breve<br>
+                            Precio<br>
+                            Nickname de Usuario<br>
+                            Fecha y hora<br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="contenido">
+                        <div class="divImgProducto"><a href="producto.jsp"><img class="imgProducto" src="imagenes/kitchen_adventurer_donut.jpg" /></a></div>
+                        <div class="infoProducto">
+                            Descripcion breve<br>
+                            Precio<br>
+                            Nickname de Usuario<br>
+                            Fecha y hora<br>
+                            <br>
+                        </div>
+                    </div>
+                </div>    
+                <h3>Lo mas caro</h3>
+                <div class="masCaro">
+                    <div class="contenido">
+                        <div class="divImgProducto"><a href="producto.jsp"><img class="imgProducto" src="imagenes/kitchen_adventurer_caramel.jpg" /></a></div>
+                        <div class="infoProducto">
+                            Descripcion breve<br>
+                            Precio<br>
+                            Nickname de Usuario<br>
+                            Fecha y hora<br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="contenido">
+                        <div class="divImgProducto"><a href="producto.jsp"><img class="imgProducto" src="imagenes/kitchen_adventurer_caramel.jpg" /></a></div>
+                        <div class="infoProducto">
+                            Descripcion breve<br>
+                            Precio<br>
+                            Nickname de Usuario<br>
+                            Fecha y hora<br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="contenido">
+                        <div class="divImgProducto"><a href="producto.jsp"><img class="imgProducto" src="imagenes/kitchen_adventurer_caramel.jpg" /></a></div>
+                        <div class="infoProducto">
+                            Descripcion breve<br>
+                            Precio<br>
+                            Nickname de Usuario<br>
+                            Fecha y hora<br>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="contenido">
+                        <div class="divImgProducto"><a href="producto.jsp"><img class="imgProducto" src="imagenes/kitchen_adventurer_caramel.jpg" /></a></div>
+                        <div class="infoProducto">
+                            Descripcion breve<br>
+                            Precio<br>
+                            Nickname de Usuario<br>
+                            Fecha y hora<br>
+                            <br>
+                        </div>
+                    </div>
+                </div>    
             </div>         
         </div>
     <%@include file="general.jsp" %>

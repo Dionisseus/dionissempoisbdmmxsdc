@@ -38,7 +38,7 @@
         <nav>
         <div id="divHeader">
            <a href="index.jsp"><img id="imgHome" src="imagenes/home_w.png" /></a>
-           <span class="sBuscar"><input type="text" id="txtBuscar" /><button id="botonBus"></button></span>
+           <div class="dBuscar"><input type="text" id="txtBuscar" /><button id="botonBus"></button></div>
         <div class="menu-wrapF">
             <nav class="menuF">
                 <ul class="clearfixF">

@@ -98,10 +98,10 @@
                     </tr>
                     <tr>
                         <td>Precio</td>
-                        <td>Existencias: <input type="text" readonly/></td>
+                        <td>Existencias: <input class="inp" type="text" readonly/></td>
                     </tr>
                     <tr>
-                        <td colspan="2">Vigencia: <input type="text" readonly/></td>
+                        <td colspan="2">Vigencia: <input class="inp" type="text" readonly/></td>
                     </tr>
                 </table>
             </div>
@@ -113,7 +113,7 @@
                 <label id="labPreguntas">Hacer una pregunta</label><br>
                 <form id="hacerPregunta" method="post">
                     <textarea id="textPregunta" name="pregunta"></textarea><br>
-                    <input type="submit" class="btnRespuesta" value="Preguntar"/>
+                    <input class="inp" type="submit" class="btnRespuesta" value="Preguntar"/>
                 </form>
                 <p class="pregunta">Pregunta</p>
                 <ul class="respuesta">
