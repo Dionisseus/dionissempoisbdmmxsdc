@@ -12,26 +12,12 @@
 <!DOCTYPE>
 <html>
     <head>
-        <!-- Demo CSS -->
-	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
-
-        <!-- Modernizr -->
-        <script src="js/modernizr.js"></script>
         <script defer src="js/jquery.flexslider.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/avisos.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<meta charset="utf-8">
 	<title></title>
 	<script>
-                $(window).load(function() {
-                  $('.flexslider').flexslider({
-                    animation: "slide",
-                    animationLoop: false,
-                    itemWidth: 210,
-                    itemMargin: 5,
-                    minItems: 2,
-                    maxItems: 4
-                  });
-                });
 	</script>
 </head>
 <body>
