@@ -104,6 +104,8 @@ public class EditUser extends HttpServlet {
                         user.setAvatarUsuario(new SerialBlob(getBytes(avatarUsuario.getInputStream())));
                         UsuarioDAO.actualizar(user);
                         session.setAttribute("sessionNombre", user.getNombreUsuario());
+                        session.setAttribute("sessionAvatar",avatarUsuario.getSubmittedFileName());
+                        session.setAttribute("usuario", user);
 
                     } else {
                         session.setAttribute("error", "Favor de registrarse.");

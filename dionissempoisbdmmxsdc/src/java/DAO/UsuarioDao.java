@@ -78,7 +78,7 @@ public class UsuarioDAO {
             if (rs.next()) {
                 Usuario emp = new Usuario(rs.getString("idUsuario"), rs.getString("emailUsuario"), rs.getString("passwordUsuario"),
                         rs.getString("nicknameUsuario"), rs.getString("nombreUsuario"), rs.getString("apellidoUsuario"),
-                        rs.getInt("telefonoUsuario"), null, true, true);
+                        rs.getInt("telefonoUsuario"), rs.getBlob("avatarUsuario"), true, true);
                        
                 
                 return emp;

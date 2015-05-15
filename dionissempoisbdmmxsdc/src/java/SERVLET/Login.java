@@ -66,6 +66,8 @@ public class Login extends HttpServlet{
                                 Usuario user = UsuarioDAO.buscar(emailUsuario, passwordUsuario);
                                session.setAttribute("sessionNombre", user.getNombreUsuario());
                                session.setAttribute("sessionEmail", user.getEmailUsuario());
+                              
+                        session.setAttribute("usuario", user);
                                 url ="index.jsp"; 
                                 
                             } else {
