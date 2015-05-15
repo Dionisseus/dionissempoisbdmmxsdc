@@ -21,6 +21,12 @@ public class Imagen {
         this.idProductoImagen = idProductoImagen;
         this.activoImagen = activoImagen;
     }
+    
+     public Imagen( String pathImagen, int idProductoImagen, boolean activoImagen) {
+        this.pathImagen = pathImagen;
+        this.idProductoImagen = idProductoImagen;
+        this.activoImagen = activoImagen;
+    }
 
     public int getIdImagen() {
         return idImagen;

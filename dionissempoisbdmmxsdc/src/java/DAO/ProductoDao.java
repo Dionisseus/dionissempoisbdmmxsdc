@@ -9,6 +9,7 @@ import POJO.Producto;
 import POJO.Usuario;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -72,8 +73,8 @@ public class ProductoDAO {
         ////////////////////////
         
               try {
-            cs = conn.prepareCall("{ call buscar_producto(?) }");
-            cs.setString(1, idProducto);
+            cs = conn.prepareCall("{ call producto_buscar(?) }");
+            cs.setString(1, nombreProducto);
             rs = cs.executeQuery();
             if (rs.next()) {
                 Producto pro = new Producto(rs.getInt("idProducto"), rs.getString("nombreProducto"), rs.getString("descripcionProducto"),

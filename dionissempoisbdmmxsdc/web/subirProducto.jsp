@@ -25,7 +25,7 @@
     </head>
     <body>
         <div id="divContent" >
-            <form method="post" action="EditUser" enctype="multipart/form-data">
+            <form method="post" action="ProductoServ" enctype="multipart/form-data">
             <fieldset class="setSubir">
                 <legend>Datos del producto</legend>
                 <table>
@@ -50,14 +50,14 @@
                     <tr>
                         <td><p class="pSubir">Fotos:</p> <br>
                         <p class="pSubir"><input class="txtSubir" id="sFoto" name="sFoto" type="file"/></p><br>
-                        <p class="pSubir"><input class="txtSubir" id="sFoto" name="sFoto" type="file"/></p><br>
-                        <p class="pSubir"><input class="txtSubir" id="sFoto" name="sFoto" type="file"/></p>
+                        <p class="pSubir"><input class="txtSubir" id="sFoto1" name="sFoto1" type="file"/></p><br>
+                        <p class="pSubir"><input class="txtSubir" id="sFoto2" name="sFoto2" type="file"/></p>
                         </td>
                     </tr>
                     <tr>
                         <td><p class="pSubir">Videos:</p> <br>
                         <p class="pSubir"><input class="txtSubir" id="sVideo" name="sVideo" type="file"/></p><br>
-                        <p class="pSubir"><input class="txtSubir" id="sVideo" name="sVideo" type="file"/></p><br>
+                        <p class="pSubir"><input class="txtSubir" id="sVideo1" name="sVideo1" type="file"/></p><br>
                         </td>
                     </tr>
                 </table>
