@@ -78,7 +78,7 @@ public class ProductoServ extends HttpServlet {
         Usuario user = (Usuario) respuesta.getAttribute("usuario");
         
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-Calendar cal = Calendar.getInstance();
+        Calendar cal = Calendar.getInstance();
 
         float precio = Float.parseFloat(sPrecio);
         int existencias= Integer.parseInt(sExistencias);
@@ -88,16 +88,20 @@ Calendar cal = Calendar.getInstance();
             pro = new Producto(titulo, sDescripcion, precio, existencias, sVigencia, sCaracteristicas, "2", "1",id, true);
         } catch (Exception e) {
             e.toString();
-        }
-              
+        }             
                 ProductoDAO.insertar(pro);
                 pro = ProductoDAO.buscar("titulo", titulo);
-                Imagen imagen = new Imagen( file, pro.getIdProducto(), true);
-                ImagenDAO.insertar(imagen);
-                imagen = new Imagen(file1, pro.getIdProducto(), true);
-                ImagenDAO.insertar(imagen);
-                imagen = new Imagen(file2, pro.getIdProducto(), true);
-                ImagenDAO.insertar(imagen);
+                  if (!sFoto.getSubmittedFileName().equals("")){
+                   Imagen imagen = new Imagen( file, pro.getIdProducto(), true);
+                ImagenDAO.insertar(imagen);}
+                  if (!sFoto1.getSubmittedFileName().equals("")){
+                   Imagen imagen = new Imagen( file1, pro.getIdProducto(), true);
+                ImagenDAO.insertar(imagen);}
+                  if (!sFoto2.getSubmittedFileName().equals("")){
+                   Imagen imagen = new Imagen( file2, pro.getIdProducto(), true);
+                ImagenDAO.insertar(imagen);}
+               
+              
                 
                 response.sendRedirect("index.jsp");
                 
