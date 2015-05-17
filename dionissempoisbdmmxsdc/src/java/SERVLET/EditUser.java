@@ -55,8 +55,7 @@ public class EditUser extends HttpServlet {
 
     public void init() {
         // Get the file location where it would be stored.
-        filePath
-                = getServletContext().getInitParameter("file-upload");
+        filePath = getServletContext().getInitParameter("file-upload");
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -73,7 +72,11 @@ public class EditUser extends HttpServlet {
         InputStream is = avatarUsuario.getInputStream();
         String file = ("C:\\Users\\Diosio\\Documents\\GitHub\\AvatarsUsuario\\" + avatarUsuario.getSubmittedFileName());
         OutputStream out = new FileOutputStream(file);
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
         IOUtils.copy(is, out);
+        byte[] buffer = new byte[10240];
+        for (int length = 0; (length = is.read(buffer)) > 0;) output.write(buffer, 0, length);
+      
 
         Pattern pattern = Pattern.compile("^([0-9a-zA-Z]([_.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+([a-zA-Z]{2,9}.)+[a-zA-Z]{2,3})$");
         Matcher _matcher = pattern.matcher(mailUsuario);
@@ -101,7 +104,8 @@ public class EditUser extends HttpServlet {
                         user.setTelefonoUsuario(i);
                         user.setEmailUsuario(mailUsuario);
                         user.setNicknameUsuario(nickNameUsuario);
-                        user.setAvatarUsuario(new SerialBlob(getBytes(avatarUsuario.getInputStream())));
+                         user.setAvatarUsuario(new SerialBlob(getBytes(avatarUsuario.getInputStream())));
+                      
                         UsuarioDAO.actualizar(user);
                         session.setAttribute("sessionNombre", user.getNombreUsuario());
                         session.setAttribute("sessionAvatar",avatarUsuario.getSubmittedFileName());

@@ -9,8 +9,8 @@ import DAO.UsuarioDAO;
 import POJO.Usuario;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import static java.lang.System.out;
-import java.sql.Blob;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,9 +39,9 @@ public class AvatarUsuario extends HttpServlet {
         HttpSession session = request.getSession();
         Usuario user = (Usuario) session.getAttribute("usuario");
      try {      
-        Usuario user1 = UsuarioDAO.buscar(user.getEmailUsuario(), null);
-        Blob blob = user1.getAvatarUsuario();
-                InputStream archivo = blob.getBinaryStream(1, blob.length());
+       
+                InputStream archivo = UsuarioDAO.imagenUsuario(Integer.parseInt(user.getIdUsuario()));
+                    OutputStream out = response.getOutputStream();
             byte[] byteArray = new byte[1000000];
             int tamanio = 0;
 

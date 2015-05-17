@@ -47,7 +47,7 @@ public class ImagenDAO {
         CallableStatement cs = null;
         ResultSet rs = null;
         try {
-            cs = conn.prepareCall("{ call todasImagenesProdcuto(?) }");
+            cs = conn.prepareCall("{ call todasImagenesProducto(?) }");
             cs.setInt(1, idProductoImagen);
             rs = cs.executeQuery();
             List<Imagen> userLista = new ArrayList<Imagen>();

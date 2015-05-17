@@ -90,7 +90,7 @@ public class ProductoServ extends HttpServlet {
             e.toString();
         }             
                 ProductoDAO.insertar(pro);
-                pro = ProductoDAO.buscar("titulo", titulo);
+                pro = ProductoDAO.buscar(titulo);
                   if (!sFoto.getSubmittedFileName().equals("")){
                    Imagen imagen = new Imagen( file, pro.getIdProducto(), true);
                 ImagenDAO.insertar(imagen);}

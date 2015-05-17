@@ -3,6 +3,7 @@
     Created on : Apr 4, 2015, 11:33:54 AM
     Author     : Diosio
 --%>
+<%@page import="DAO.UsuarioDAO"%>
 <%@page import="java.util.Base64"%>
 <%@page import="java.awt.Graphics2D"%>
 
@@ -79,34 +80,12 @@
                         <li>
                             <t:if test="${sessionScope['sessionNombre']!=null}">
                                 <div class="menuInicioSesion">
-                                    <%
-                                    //   BufferedImage img;
-                                    //    Usuario user = (Usuario) session.getAttribute("usuario");
-                                    //    Blob blob = user.getAvatarUsuario();
-                                     //    img = ImageIO.read(blob.getBinaryStream());
-                                       // img = ImageIO.read(data);
-//BufferedImage bi = new BufferedImage(50,50,BufferedImage.TYPE_BYTE_BINARY);
-//Graphics2D g2d = bi.createGraphics();
-
-// Draw graphics. 
-
-
-                                    //    ByteArrayOutputStream outss = new ByteArrayOutputStream();
-
-                                   //     ImageIO.write(img, "png", outss);
-                                    //    byte[] bytes = outss.toByteArray();
-                                       
-// String base64bytes = Base64.encode(bytes);
-                                    //    String src = "data:image/png;base64," + base64bytes;
-
-//  <img id="imgUsuario" src=<%=cxzc%>> 
-                                    %>
+ 
+                                 <img id="imgUsuario" src= <%=request.getServletContext().getContextPath()+"/AvatarUsuario"%> >
                                          
-                                    <%
+                                 
 
-                                    %>
-
-                                    <%= session.getAttribute("sessionNombre")%>
+                                  <%= session.getAttribute("sessionNombre")%>
                                     <div class="subMenuInicioSesion">
                                         <a class="buttonEditUser" >Perfil</a> <br>
                                         <a class="cerrarSesion">Salir</a>

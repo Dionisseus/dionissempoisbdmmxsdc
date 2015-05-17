@@ -65,7 +65,7 @@ public class ProductoDAO {
         }
     }
 
-    public static Producto buscar(String idProducto, String nombreProducto) {
+    public static Producto buscar( String nombreProducto) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
@@ -129,7 +129,7 @@ public class ProductoDAO {
     }
 
     public static boolean exists(String idProducto, String nombreProducto) {
-        if (ProductoDAO.buscar(idProducto, nombreProducto)!= null) {
+        if (ProductoDAO.buscar( nombreProducto)!= null) {
          return true;   
         }
         else{

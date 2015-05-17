@@ -4,6 +4,7 @@
     Author     : Asus
 --%>
 
+<%@page import="POJO.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,20 +31,22 @@
             </ul>
           <h2>Datos personales</h2>  
           <table class="tablaDatos">
-            <tr>
-                <td><label class="pUsuario">Nombre:</label></td><td><label class="pUsuario2">"NombreUsuario"</label></td>
+            <tr
+                <%  
+                    Usuario user = (Usuario)session.getAttribute("usuario");
+                    
+                    
+%> 
+                <td><label class="pUsuario">Nombre:</label></td><td><label class="pUsuario2"> <%= user.getNombreUsuario()%> </label></td>
             </tr>
             <tr>
-                <td><label class="pUsuario">Apellido Paterno:</label></td><td><label class="pUsuario2">"ApellidoP"</label></td>
+                <td><label class="pUsuario">Apellido :</label></td><td><label class="pUsuario2"><%= user.getApellidoUsuario()%></label></td>
             </tr>
             <tr>
-                <td><label class="pUsuario">Apellido Materno:</label></td><td><label class="pUsuario2">"ApellidoM"</label></td>
+                <td><label class="pUsuario">Teléfono:</label></td><td><label class="pUsuario2"><%= user.getTelefonoUsuario()%></label></td>
             </tr>
             <tr>
-                <td><label class="pUsuario">Teléfono:</label></td><td><label class="pUsuario2">"Telefono"</label></td>
-            </tr>
-            <tr>
-                <td><label class="pUsuario">Correo electrónico:</label></td><td><label class="pUsuario2">"email"</label></td>
+                <td><label class="pUsuario">Correo electrónico:</label></td><td><label class="pUsuario2"><%= user.getEmailUsuario()%></label></td>
             </tr>
           </table>
         </div>
