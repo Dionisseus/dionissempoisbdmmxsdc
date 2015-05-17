@@ -21,7 +21,7 @@
 	</script>
 </head>
 <body>
-    <div id="divContent" >
+    <div id="divContent">
             <div class="divPrductos">
                 <h3>Lo mas reciente</h3>
                     <div class="masReciente">

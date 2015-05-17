@@ -41,7 +41,7 @@
 
                 });
                 $(".buttonEditUser").click(function () {
-                    window.location.href = '/dionissempoisbdmmxsdc/editarUsuario.jsp';
+                    window.location.href = '/dionissempoisbdmmxsdc/perfilUsuario.jsp';
                 });
             });
         </script>
@@ -108,7 +108,7 @@
 
                                     <%= session.getAttribute("sessionNombre")%>
                                     <div class="subMenuInicioSesion">
-                                        <a class="buttonEditUser" >Editar Usuario</a> <br>
+                                        <a class="buttonEditUser" >Perfil</a> <br>
                                         <a class="cerrarSesion">Salir</a>
                                     </div>
                                 </div>

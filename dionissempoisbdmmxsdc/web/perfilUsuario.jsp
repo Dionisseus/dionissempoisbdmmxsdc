@@ -16,8 +16,16 @@
         <div id="divContent" >
             <ul class="listaPerfil">
                 <li><a href="editarUsuario.jsp">Editar datos</a></li>
-                <li><a href="productoUsuario.jsp">Productos</a></li>
-                <li><a>Ventas</a></li>
+                <li id="productos"> 
+                    <a>Productos</a>
+                    <ul class="subnav">
+                        <li><a href="subirProducto.jsp">Agregar un producto</a></li>
+                        <li><a href="productoUsuario.jsp">Ver mis productos</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a>Ventas</a>
+                </li>
                 <li><a>Avisos</a></li>
             </ul>
           <h2>Datos personales</h2>  

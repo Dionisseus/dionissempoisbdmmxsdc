@@ -35,6 +35,29 @@ h2{
     
 }
 
+.subnav {
+    visibility: hidden;
+    position: absolute;
+    top: 110%;
+    right: 0;
+    width: 200px;
+    height: auto;
+    opacity: 0;
+    transition: all 0.1s;
+    border-radius: 5px;
+    background: #D0D0D0;
+}
+
+.subnav li {
+    float: none;
+}
+
+#productos:hover .subnav {
+    visibility: visible;
+    top: 100%;
+    opacity: 1;
+}
+
 .tablaDatos{
     width: 30%;
     border-collapse: separate;

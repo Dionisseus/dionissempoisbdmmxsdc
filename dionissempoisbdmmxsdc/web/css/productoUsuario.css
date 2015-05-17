@@ -1,0 +1,53 @@
+.divProductoUsuario{
+    width: 70%;
+    height: 120px;
+    background-color: #B3E1FA;
+    border-radius: 4px;
+    margin-left: 5%;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.divProductoUsuario:hover{
+    background-color: #F7FFBF;
+}
+
+.divImgPUsr{
+    width: 40%;
+    height: 80%;
+    padding: 10px;
+}
+
+.imgProductoUsuario{
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+}
+
+.divContenido{
+    width: 55%;
+    height: 100%;
+    top:0;
+    right:0;
+    border-radius: 4px;
+    position: absolute;
+}
+
+.divContenido a{
+    font-family: verdana;
+    font-size: 14px;
+    text-decoration: none;
+    color: black;
+}
+
+table{
+    border-collapse: separate;
+    border-spacing:  50px 5px;
+    padding: 15px;
+    
+}
+
+.nombreProducto{
+    font-family: verdana;
+    font-size: 14px;
+}
