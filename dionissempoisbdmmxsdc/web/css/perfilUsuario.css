@@ -1,0 +1,56 @@
+h2{
+    font-family: tahoma;
+    margin-left: 3%;
+}
+
+
+.listaPerfil{
+    background: #D0D0D0;
+    height: 60px;
+    display: inline-block;
+    border-radius: 5px;
+    margin-left: 27%;
+    margin-top: -2%;
+}
+
+.listaPerfil li a{
+    font-size: 15px;
+    color: white;
+    display: block;
+    line-height: 60px;
+    padding: 0 15px;
+    text-decoration: none;
+    
+}
+
+.listaPerfil li a:hover{
+    background-color: #0A3AFA;
+    border-radius: 5px;
+}
+
+.listaPerfil li{
+    float: left;
+    list-style-type: none;
+    position: relative;
+    
+}
+
+.tablaDatos{
+    width: 30%;
+    border-collapse: separate;
+    border-spacing:  1px 15px;
+    margin-left: 10%;
+    background-color: #C1C5D1;
+    border-radius: 4px;
+}
+
+.pUsuario{
+    font-family: verdana;
+    font-size: 14px;
+    float: right;
+}
+
+.pUsuario2{
+    font-family: verdana;
+    font-size: 14px;
+}
