@@ -104,7 +104,7 @@ public class EditUser extends HttpServlet {
                         user.setTelefonoUsuario(i);
                         user.setEmailUsuario(mailUsuario);
                         user.setNicknameUsuario(nickNameUsuario);
-                         user.setAvatarUsuario(new SerialBlob(getBytes(avatarUsuario.getInputStream())));
+                         user.setAvatarUsuario(avatarUsuario.getInputStream());
                       
                         UsuarioDAO.actualizar(user);
                         session.setAttribute("sessionNombre", user.getNombreUsuario());

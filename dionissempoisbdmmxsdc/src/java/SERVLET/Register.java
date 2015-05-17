@@ -8,6 +8,7 @@ package SERVLET;
 import DAO.UsuarioDAO;
 import POJO.Usuario;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Blob;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -66,8 +67,14 @@ public class Register extends HttpServlet {
                         try {
                            
                             if (!UsuarioDAO.exists(emailUsuario, passwordUsuario)) {
-                              byte[] bytes = {0};
-                               Usuario user = new Usuario(emailUsuario,passwordUsuario,"",nombreUsuario,apellidosUsuario+""+apellidoMaterno,Integer.parseInt(telefonoUsuario),(Blob)new SerialBlob(bytes),true,true);
+                              InputStream bytes = new InputStream() {
+
+                                  @Override
+                                  public int read() throws IOException {
+                                      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                                  }
+                              };
+                               Usuario user = new Usuario(emailUsuario,passwordUsuario,"",nombreUsuario,apellidosUsuario+""+apellidoMaterno,Integer.parseInt(telefonoUsuario),bytes,true,true);
                                 UsuarioDAO.insertar(user);
                                 url ="home.jsp"; 
                                 

@@ -5,6 +5,7 @@
  */
 package POJO;
 
+import java.io.InputStream;
 import java.sql.Blob;
 
 /**
@@ -20,12 +21,12 @@ public class Usuario {
     String nombreUsuario;
     String apellidoUsuario;
     int telefonoUsuario;
-   Blob avatarUsuario;
+    InputStream avatarUsuario;
     boolean confirmadoUsuario;
     boolean activoUsuario;
 
     public Usuario( String emailUsuario, String passwordUsuario, String nicknameUsuario,
-            String nombreUsuario, String apellidoUsuario, int telefonoUsuario, Blob avatarUsuario, boolean confirmadoUsuario, boolean activoUsuario) {
+            String nombreUsuario, String apellidoUsuario, int telefonoUsuario, InputStream avatarUsuario, boolean confirmadoUsuario, boolean activoUsuario) {
       //  this.idUsuario = idUsuario;
         this.emailUsuario = emailUsuario;
         this.passwordUsuario = passwordUsuario;
@@ -38,7 +39,7 @@ public class Usuario {
         this.activoUsuario = activoUsuario;
     }
     public Usuario(String idUsuario, String emailUsuario, String passwordUsuario, String nicknameUsuario,
-            String nombreUsuario, String apellidoUsuario, int telefonoUsuario, Blob avatarUsuario, boolean confirmadoUsuario, boolean activoUsuario) {
+            String nombreUsuario, String apellidoUsuario, int telefonoUsuario, InputStream avatarUsuario, boolean confirmadoUsuario, boolean activoUsuario) {
         this.idUsuario = idUsuario;
         this.emailUsuario = emailUsuario;
         this.passwordUsuario = passwordUsuario;
@@ -109,11 +110,11 @@ public class Usuario {
         this.telefonoUsuario = telefonoUsuario;
     }
 
-    public Blob getAvatarUsuario() {
+    public InputStream getAvatarUsuario() {
         return avatarUsuario;
     }
 
-    public void setAvatarUsuario(Blob avatarUsuario) {
+    public void setAvatarUsuario(InputStream avatarUsuario) {
         this.avatarUsuario = avatarUsuario;
     }
 
