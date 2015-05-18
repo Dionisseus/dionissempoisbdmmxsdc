@@ -81,7 +81,7 @@
                             <t:if test="${sessionScope['sessionNombre']!=null}">
                                 <div class="menuInicioSesion">
  
-                                 <img id="imgUsuario" src= <%=request.getServletContext().getContextPath()+"/AvatarUsuario"%> >
+                                 <img id="imgUsuario" src="AvatarsUsuario/computer-internet-01.jpg" >
                                          
                                  
 

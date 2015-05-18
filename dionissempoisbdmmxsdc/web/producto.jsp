@@ -4,6 +4,9 @@
     Author     : Asus
 --%>
 
+<%@page import="POJO.Imagen"%>
+<%@page import="java.util.List"%>
+<%@page import="DAO.ImagenDAO"%>
 <%@page import="POJO.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -79,13 +82,15 @@
                 <a href="#" class="control_next">></a>
                 <a href="#" class="control_prev"><</a>
                 <ul>
-                    <li>Foto 1</li>
-                    <li>Foto 2</li>
-                    <li>Foto 3</li>
-                    <li>Foto 4</li>
-                    <li>Video 1</li>
-                    <li>Video 2</li>
-                    <li>Video 3</li>
+                    <%
+                   List<Imagen> listaImagen = ImagenDAO.TodasImagenes(pro.getIdProducto());
+                    for(int i=0; i<listaImagen.size(); i++){ 
+                    %>
+                      <li><img src="ProductosImgs/<%=listaImagen.get(i).getPathImagen()%>"/></li>
+                   <%
+                    }
+                    %>
+
                 </ul>  
             </div>
             <div id="datosCompra">

@@ -66,19 +66,19 @@ public class ProductoServ extends HttpServlet {
           String file="",file1="",file2="";
           if (!sFoto.getSubmittedFileName().equals("")){
        is = sFoto.getInputStream();
-         file = (path+ "\\"+sFoto.getSubmittedFileName());
+         file = (sFoto.getSubmittedFileName());
        out = new FileOutputStream(file);
         IOUtils.copy(is, out);}
         Part sFoto1 = request.getPart("sFoto1");
         if (!sFoto1.getSubmittedFileName().equals("")){
           is = sFoto1.getInputStream();
-          file1 = (path +"\\"+ sFoto1.getSubmittedFileName());
+          file1 = (sFoto1.getSubmittedFileName());
          out = new FileOutputStream(file1);
         IOUtils.copy(is, out);}
         Part sFoto2 = request.getPart("sFoto2");
         if (!sFoto2.getSubmittedFileName().equals("")){
           is = sFoto2.getInputStream();
-          file2 = (path +"\\"+ sFoto2.getSubmittedFileName());
+          file2 = (sFoto2.getSubmittedFileName());
          out = new FileOutputStream(file2);
         IOUtils.copy(is, out);}
         Usuario user = (Usuario) respuesta.getAttribute("usuario");
