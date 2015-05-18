@@ -3,10 +3,10 @@
     Created on : Apr 4, 2015, 11:33:54 AM
     Author     : Diosio
 --%>
+<%@page import="sun.misc.BASE64Encoder"%>
 <%@page import="DAO.UsuarioDAO"%>
 <%@page import="java.util.Base64"%>
 <%@page import="java.awt.Graphics2D"%>
-
 <%@page import="org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream"%>
 <%@page import="java.io.OutputStream"%>
 <%@page import="java.awt.Image"%>
@@ -80,8 +80,7 @@
                         <li>
                             <t:if test="${sessionScope['sessionNombre']!=null}">
                                 <div class="menuInicioSesion">
- 
-                                 <img id="imgUsuario" src= <%=request.getServletContext().getContextPath()+"/AvatarUsuario"%> >
+                                 <img src="<%= request.getServletContext().getContextPath() + "/AvatarUsuario"%>" style="height: 50px; width: 50px;">
                                          
                                  
 

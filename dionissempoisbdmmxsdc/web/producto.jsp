@@ -4,6 +4,10 @@
     Author     : Asus
 --%>
 
+<%@page import="POJO.Imagen"%>
+<%@page import="java.util.List"%>
+<%@page import="DAO.ImagenDAO"%>
+<%@page import="POJO.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -69,19 +73,24 @@
         </script>
     </head>
     <body>
+        <%
+            Producto pro = (Producto) session.getAttribute("producto");
+        %>
         <div id="divContent">
-            <h2>Titulo producto</h2>
+            <h2><%= pro.getNombreProducto()%></h2>
             <div id="slider">
                 <a href="#" class="control_next">></a>
                 <a href="#" class="control_prev"><</a>
                 <ul>
-                    <li>Foto 1</li>
-                    <li>Foto 2</li>
-                    <li>Foto 3</li>
-                    <li>Foto 4</li>
-                    <li>Video 1</li>
-                    <li>Video 2</li>
-                    <li>Video 3</li>
+                    <%
+                   List<Imagen> listaImagen = ImagenDAO.TodasImagenes(pro.getIdProducto());
+                    for(int i=0; i<listaImagen.size(); i++){ 
+                    %>
+                      <li><img src="ProductosImgs/<%=listaImagen.get(i).getPathImagen()%>"/></li>
+                   <%
+                    }
+                    %>
+
                 </ul>  
             </div>
             <div id="datosCompra">
@@ -97,16 +106,16 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Precio</td>
-                        <td>Existencias: <input class="inp" type="text" readonly/></td>
+                        <td>Precio:<%= pro.getPrecioProducto()%></td>
+                        <td>Existencias: <input class="inp" placeholder="<%= pro.getExistenciaProducto()%> "type="text" readonly/></td>
                     </tr>
                     <tr>
-                        <td colspan="2">Vigencia: <input class="inp" type="text" readonly/></td>
+                        <td colspan="2">Vigencia: <input class="inp" placeholder="<%= pro.getVigenciaProducto()%>"type="text" readonly/></td>
                     </tr>
                 </table>
             </div>
             <div id="divDescripcion">
-                <p>Descripcion del producto</p>
+                <p><h6>Descripcion del producto</h6> <br><%= pro.getNombreProducto()%></p>
             </div>
             <div id="divPreguntas">
                 <h2>Preguntas</h2><br>

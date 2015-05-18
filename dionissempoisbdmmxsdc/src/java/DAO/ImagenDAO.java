@@ -71,6 +71,35 @@ public class ImagenDAO {
             pool.freeConnection(conn);
         }
     }
+     
+      public static String firstImagen( int idProductoImagen) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection conn = pool.getConnection();
+        CallableStatement cs = null;
+        ResultSet rs = null;
+        ////////////////////////
+        
+              try {
+            cs = conn.prepareCall("{ call imagenBuscarFirst(?) }");
+            cs.setInt(1, idProductoImagen);
+            rs = cs.executeQuery();
+            if (rs.next()) {
+              String emp = rs.getString("pathImagen");
+                       
+                
+                return emp;
+            }
+            return null;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+            
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closeStatement(cs);
+            pool.freeConnection(conn);
+        }
+    }
 /*
     public static void borrar(Imagen user) {
        ConnectionPool pool = ConnectionPool.getInstance();

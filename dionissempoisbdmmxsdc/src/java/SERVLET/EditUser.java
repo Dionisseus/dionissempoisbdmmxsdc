@@ -68,16 +68,21 @@ public class EditUser extends HttpServlet {
         String mailUsuario = request.getParameter("eMail");
         String nickNameUsuario = request.getParameter("eNick");
         Part avatarUsuario = request.getPart("eImagen");
+        String path = getServletContext().getRealPath("/AvatarsUsuario/");
+        File fdir = new File(path);
+        if (!fdir.exists()) {
+            fdir.mkdir();
+        }
+        
+        
         avatarUsuario.toString();
         InputStream is = avatarUsuario.getInputStream();
-        String file = ("C:\\Users\\Diosio\\Documents\\GitHub\\AvatarsUsuario\\" + avatarUsuario.getSubmittedFileName());
+        String file = path +"\\"+ avatarUsuario.getSubmittedFileName();
         OutputStream out = new FileOutputStream(file);
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         IOUtils.copy(is, out);
         byte[] buffer = new byte[10240];
         for (int length = 0; (length = is.read(buffer)) > 0;) output.write(buffer, 0, length);
-      
-
         Pattern pattern = Pattern.compile("^([0-9a-zA-Z]([_.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+([a-zA-Z]{2,9}.)+[a-zA-Z]{2,3})$");
         Matcher _matcher = pattern.matcher(mailUsuario);
         Validador v = new Validador();
