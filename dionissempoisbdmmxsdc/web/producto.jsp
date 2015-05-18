@@ -124,10 +124,10 @@
                     <textarea id="textPregunta" name="pregunta"></textarea><br>
                     <input class="inp" type="submit" class="btnRespuesta" value="Preguntar"/>
                 </form>
-                <p class="pregunta">Pregunta</p>
+                <!--<p class="pregunta">Pregunta</p>
                 <ul class="respuesta">
                     <li>Respuesta</li>
-                </ul>                
+                </ul>-->               
             </div>
         </div>
         <%@include file="general.jsp" %>

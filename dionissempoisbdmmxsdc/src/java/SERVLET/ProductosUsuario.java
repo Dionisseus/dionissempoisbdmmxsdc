@@ -48,7 +48,7 @@ public class ProductosUsuario extends HttpServlet {
 "        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><title>Servlet ProductosUsuario</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println(" <div class=\"divProductoUsuario\">");
+            out.println(" <div id=\"divContent\">");
             Usuario user = (Usuario) session.getAttribute("usuario");
             List<Producto> listaProductos = ProductoDAO.todosProductos(Integer.parseInt(user.getIdUsuario()));        
           String fs = getServletContext().getContextPath();
@@ -59,7 +59,7 @@ public class ProductosUsuario extends HttpServlet {
                 out.println("<div class=\"divProductoUsuario\">\n");
                    out.println("<input type=\"hidden\" name=\"numeroLista\" value="+i+" />"+
 "                <div class=\"divImgPUsr\">\n" +
-"                <img id=\"imgProductos\" src=\"ProductosImgs/"+imagenFirst+"\" >"+               
+"                <img class=\"imgProductoUsuario\" src=\"ProductosImgs/"+imagenFirst+"\" >"+               
 "                </div>\n" +
 "                <div class=\"divContenido\">\n" +
 "                    <table>\n" +
