@@ -15,9 +15,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -58,7 +57,7 @@ public class ProductoServ extends HttpServlet {
         Part sFoto = request.getPart("sFoto");
          InputStream is;
           OutputStream out;
-          String path = getServletContext().getRealPath("/ProductosImgs/");
+          String path ="C:\\Users\\Diosio\\Documents\\GitHub\\dionissempoisbdmmxsdc\\dionissempoisbdmmxsdc\\web\\ProductosImgs\\";
         File fdir = new File(path);
         if (!fdir.exists()) {
             fdir.mkdir();
@@ -67,31 +66,29 @@ public class ProductoServ extends HttpServlet {
           if (!sFoto.getSubmittedFileName().equals("")){
        is = sFoto.getInputStream();
          file = (sFoto.getSubmittedFileName());
-       out = new FileOutputStream(file);
+       out = new FileOutputStream(path+file);
         IOUtils.copy(is, out);}
         Part sFoto1 = request.getPart("sFoto1");
         if (!sFoto1.getSubmittedFileName().equals("")){
           is = sFoto1.getInputStream();
           file1 = (sFoto1.getSubmittedFileName());
-         out = new FileOutputStream(file1);
+         out = new FileOutputStream(path+file1);
         IOUtils.copy(is, out);}
         Part sFoto2 = request.getPart("sFoto2");
         if (!sFoto2.getSubmittedFileName().equals("")){
           is = sFoto2.getInputStream();
           file2 = (sFoto2.getSubmittedFileName());
-         out = new FileOutputStream(file2);
+         out = new FileOutputStream(path+file2);
         IOUtils.copy(is, out);}
         Usuario user = (Usuario) respuesta.getAttribute("usuario");
-        
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Calendar cal = Calendar.getInstance();
+   
 
         float precio = Float.parseFloat(sPrecio);
         int existencias= Integer.parseInt(sExistencias);
         int id = Integer.parseInt(user.getIdUsuario().trim());
          Producto pro =null;
         try {
-            pro = new Producto(titulo, sDescripcion, precio, existencias, sVigencia, sCaracteristicas, "2", "1",id, true);
+            pro = new Producto(titulo, sDescripcion, precio, existencias, sVigencia, sCaracteristicas, getCurrentTimeStamp(), getCurrentTimeStamp(),id, true);
         } catch (Exception e) {
             e.toString();
         }             
@@ -152,5 +149,9 @@ public class ProductoServ extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+public static String getCurrentTimeStamp() {
+    SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    String strDate = sdfDate.format(new Date());
+    return strDate;
+}
 }
