@@ -135,8 +135,7 @@ public class SubcategoriaDAO {
                         rs.getInt("idSubcategoria"), 
                         rs.getString("nombreSubcategoria"), 
                         rs.getInt("idCategoriaSubcategoria"),
-                        rs.getBoolean("activoSubcategoria")
-                );      
+                        rs.getBoolean("activoSubcategoria"));      
                 categoriaLista.add(cat);  
                 }
             }
