@@ -10,6 +10,7 @@ import DAO.ProductoDAO;
 import POJO.Imagen;
 import POJO.Producto;
 import POJO.Usuario;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -57,22 +58,27 @@ public class ProductoServ extends HttpServlet {
         Part sFoto = request.getPart("sFoto");
          InputStream is;
           OutputStream out;
+          String path = getServletContext().getRealPath("/ProductosImgs/");
+        File fdir = new File(path);
+        if (!fdir.exists()) {
+            fdir.mkdir();
+        }
           String file="",file1="",file2="";
           if (!sFoto.getSubmittedFileName().equals("")){
        is = sFoto.getInputStream();
-         file = ("C:\\Users\\Diosio\\Documents\\GitHub\\ProductosImgs\\" + sFoto.getSubmittedFileName());
+         file = (path+ "\\"+sFoto.getSubmittedFileName());
        out = new FileOutputStream(file);
         IOUtils.copy(is, out);}
         Part sFoto1 = request.getPart("sFoto1");
         if (!sFoto1.getSubmittedFileName().equals("")){
           is = sFoto1.getInputStream();
-          file1 = ("C:\\Users\\Diosio\\Documents\\GitHub\\ProductosImgs\\" + sFoto1.getSubmittedFileName());
+          file1 = (path +"\\"+ sFoto1.getSubmittedFileName());
          out = new FileOutputStream(file1);
         IOUtils.copy(is, out);}
         Part sFoto2 = request.getPart("sFoto2");
         if (!sFoto2.getSubmittedFileName().equals("")){
           is = sFoto2.getInputStream();
-          file2 = ("C:\\Users\\Diosio\\Documents\\GitHub\\ProductosImgs\\" + sFoto2.getSubmittedFileName());
+          file2 = (path +"\\"+ sFoto2.getSubmittedFileName());
          out = new FileOutputStream(file2);
         IOUtils.copy(is, out);}
         Usuario user = (Usuario) respuesta.getAttribute("usuario");

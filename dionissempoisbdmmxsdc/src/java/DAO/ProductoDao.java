@@ -137,17 +137,19 @@ public class ProductoDAO {
         }
     }
     
-     public static List<Producto> lista() {
+     public static List<Producto> todosProductos(int idUsuario) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
         ResultSet rs = null;
         try {
-            cs = conn.prepareCall("{ call buscar_empleados() }");
+            cs = conn.prepareCall("{ call todosProductosUsuario(?) }");
+            cs.setInt(1, idUsuario);
             rs = cs.executeQuery();
             List<Producto> prodLista = new ArrayList<Producto>();
             while (rs.next()) {
                 Producto user = new Producto(
+                        rs.getInt("idProducto"),
                         rs.getString("nombreProducto"), 
                         rs.getString("descripcionProducto"), 
                         rs.getFloat("precioProducto"), 

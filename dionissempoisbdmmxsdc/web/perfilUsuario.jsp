@@ -30,13 +30,9 @@
                 <li><a>Avisos</a></li>
             </ul>
           <h2>Datos personales</h2>  
+                        <%  Usuario user = (Usuario)session.getAttribute("usuario");%> 
           <table class="tablaDatos">
-            <tr
-                <%  
-                    Usuario user = (Usuario)session.getAttribute("usuario");
-                    
-                    
-%> 
+              <tr>
                 <td><label class="pUsuario">Nombre:</label></td><td><label class="pUsuario2"> <%= user.getNombreUsuario()%> </label></td>
             </tr>
             <tr>
