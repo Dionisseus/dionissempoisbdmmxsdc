@@ -41,21 +41,12 @@ public class ProductosUsuario extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession(true);
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println(" <link rel=\"stylesheet\" type=\"text/css\" href=\"css/productoUsuario.css\">\n" +
-"        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><title>Servlet ProductosUsuario</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println(" <div id=\"divContent\">");
             Usuario user = (Usuario) session.getAttribute("usuario");
             List<Producto> listaProductos = ProductoDAO.todosProductos(Integer.parseInt(user.getIdUsuario()));        
           String fs = getServletContext().getContextPath();
             for (int i = 0; i < listaProductos.size(); i++) {
                 String imagenFirst = ImagenDAO.firstImagen(listaProductos.get(i).getIdProducto());
                 out.println("<form method=\"post\" action=\"Producto\">");
-             
                 out.println("<div class=\"divProductoUsuario\">\n");
                    out.println("<input type=\"hidden\" name=\"numeroLista\" value="+i+" />"+
 "                <div class=\"divImgPUsr\">\n" +
@@ -75,7 +66,7 @@ public class ProductosUsuario extends HttpServlet {
                         + "</div>");
             }
             
-           out.println("</div>");
+            
             out.println("</body>");
             out.println("</html>");
            

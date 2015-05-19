@@ -27,7 +27,7 @@
                 <li>
                     <a>Ventas</a>
                 </li>
-                <li><a>Avisos</a></li>
+                <li><a href="avisoUsuario.jsp">Avisos</a></li>
             </ul>
           <h2>Datos personales</h2>  
                         <%  Usuario user = (Usuario)session.getAttribute("usuario");%> 

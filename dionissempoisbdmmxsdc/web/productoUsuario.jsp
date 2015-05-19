@@ -8,9 +8,21 @@
 <%@page import="POJO.Producto"%>
 <%@page import="java.util.List"%>
 
+<!DOCTYPE>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/productoUsuario.css">
+    </head>
+    <body>
+        <div id="divContent">
+           <jsp:include page="ProductosUsuario"/>
+        </div>    
+         <jsp:include page ="general.jsp" flush="true" />
+    </body>
+</html>
    
-          <jsp:include page="ProductosUsuario"></jsp:include>
-           <%@include file="general.jsp" %>
+          
           
       
      
