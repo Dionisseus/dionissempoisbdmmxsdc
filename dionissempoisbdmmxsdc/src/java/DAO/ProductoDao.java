@@ -5,16 +5,16 @@
  */
 package DAO;
 
+
 import POJO.Producto;
-import POJO.Usuario;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import xClasses.DBUtil;
+
 
 /**
  *

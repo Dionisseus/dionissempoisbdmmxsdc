@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import POJO.Categoria;
+
 import POJO.Subcategoria;
 import java.sql.CallableStatement;
 import java.sql.Connection;

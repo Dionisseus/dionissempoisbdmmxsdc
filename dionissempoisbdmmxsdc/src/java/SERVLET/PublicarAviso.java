@@ -36,16 +36,19 @@ public class PublicarAviso extends HttpServlet {
     HttpSession session = request.getSession(true);
     session.setAttribute("isAviso", true);
         POJO.Producto pro = (POJO.Producto) session.getAttribute("producto");
-        pro.setPrecioProducto(Float.parseFloat( request.getAttribute("precio").toString()));
-        pro.setExistenciaProducto(Integer.parseInt(request.getAttribute("existencias").toString()));
-        pro.setVigenciaProducto(request.getAttribute("vigencia").toString());
-        String metodoPago = request.getAttribute("opcion").toString();
+        String precio =  request.getParameter("precio");
+        pro.setPrecioProducto(Float.parseFloat(precio.trim()));
+        pro.setExistenciaProducto(Integer.parseInt(request.getParameter("existencias").trim()));
+        pro.setVigenciaProducto(request.getParameter("vigencia").trim());
+        String metodoPago = request.getParameter("opcion");
     ProductoDAO.actualizar(pro);
     pro = ProductoDAO.buscar(pro.getNombreProducto());
     POJO.Aviso aviso = new Aviso(pro.getExistenciaProducto(),pro.getPrecioProducto(),metodoPago,pro.getDescripcionProducto(),pro.getVigenciaProducto(),pro.getFechaProducto(),
-    pro.getHoraProducto(),Integer.parseInt("idSubcategoria"),pro.getIdProducto(),true);
+    pro.getHoraProducto(),Integer.parseInt(request.getParameter("Categoria")),pro.getIdProducto(),true);
+    aviso.getIdSubCategoriaAviso();
     
     
+    request.getRequestDispatcher("index.jsp");
         
     }
 

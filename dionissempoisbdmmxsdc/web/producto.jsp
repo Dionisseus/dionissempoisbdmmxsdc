@@ -4,6 +4,9 @@
     Author     : Asus
 --%>
 
+<%@page import="POJO.Subcategoria"%>
+<%@page import="DAO.SubcategoriaDAO"%>
+<%@page import="DAO.CategoriaDAO"%>
 <%@page import="POJO.Imagen"%>
 <%@page import="java.util.List"%>
 <%@page import="DAO.ImagenDAO"%>
@@ -109,14 +112,36 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Precio:<input name="precio" value="<%= pro.getPrecioProducto()%>"/></td>
+                            <td>Precio:<input name="precio" value="<%= Float.toString(pro.getPrecioProducto())%>"/></td>
                             <td>Existencias: <input name="existencias" class="inp" value="<%= pro.getExistenciaProducto()%> "type="text" readonly/></td>
                         </tr>
                         <tr>
-                            <td colspan="2">Vigencia: <input name="vigencia"   class="inp" value="<%= pro.getVigenciaProducto()%>"type="text" readonly/></td>
-                             <% if (session.getAttribute("isAviso").toString().equals("false")) { %>
+                            <td colspan="2">Vigencia: <input name="vigencia"  value="<%= pro.getVigenciaProducto()%>" type="text" class="datepicker txtSubir" readonly/></td>
+                                <% if (session.getAttribute("isAviso").toString().equals("false")) { %>
                             <td  > <input class="inp" type="Submit" value="Publicar Aviso"/>   </td>
-                            <%}%>
+                                <%}%>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Categoria: 
+                                <% if (session.getAttribute("isAviso").toString().equals("false")) { %>
+                                <select name="Categoria">
+                                    <%   List<POJO.Categoria> listaCategoria = CategoriaDAO.lista();
+                                        for (int i = 0; i < listaCategoria.size(); i++) {
+                                    %>
+                                    <option disabled style="background-color: aqua" value="<%=listaCategoria.get(i).getIdCategoria()%>" selected><%=listaCategoria.get(i).getNombreCategoria().toUpperCase()%></option>
+                                    <%
+                                        List<Subcategoria> listaSubCategoria = SubcategoriaDAO.lista(listaCategoria.get(i).getIdCategoria());
+                                        for (int x = 0; x < listaSubCategoria.size(); x++) {
+                                    %>
+                                    <option value="<%=listaSubCategoria.get(x).getIdSubcategoria()%>" selected><%=listaSubCategoria.get(x).getNombreSubcategoria()%></option>
+                                    <%
+                                            }
+                                        }
+                                    %>
+                                </select>
+                                <%}%>
+
+                            </td>
                         </tr>
 
                     </table>
