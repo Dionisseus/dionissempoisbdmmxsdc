@@ -36,13 +36,38 @@ public class AvisosIndex extends HttpServlet {
          
             out.println("<!DOCTYPE html>");
             out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AvisosIndex</title>");            
-            out.println("</head>");
+            out.println("  <head>\n" +
+"        <script defer src=\"js/jquery.flexslider.js\"></script>\n" +
+"        <link rel=\"stylesheet\" type=\"text/css\" href=\"css/avisos.css\">\n" +
+"	<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js\"></script>\n" +
+"	<meta charset=\"utf-8\">\n" +
+"</head>");
+            
+     
+        
+        
+         out.println("  </div>  ");
             out.println("<body>");
-            out.println("<h1>Servlet AvisosIndex at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            out.println("   <div id=\"divContent\">\n" +
+"            <div class=\"divPrductos\"> <h3>Lo mas reciente</h3>");
+            
+               out.println("  <div class=\"masReciente\">\n");
+               
+        
+        out.println("  <div class=\"contenido\"> <div class=\"divImgProducto\"><a href=\"producto.jsp\"><img class=\"imgProducto\" src=\"imagenes/kitchen_adventurer_lemon.jpg\" /></a></div>\n" +
+"                        <div class=\"infoProducto\">\n" +
+"                            Descripcion breve<br>\n" +
+"                            Precio<br>\n" +
+"                            Nickname de Usuario<br>\n" +
+"                            Fecha y hora<br>\n" +
+"                            <br>\n" +
+"                        </div> </div>");
+            
+            
+        
+            out.println("</div>");
+            
+            out.println("</body></html>");
         }
     }
 

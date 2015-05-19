@@ -13,25 +13,49 @@ public class Aviso {
     int idAviso;
     int cantidadAviso;
     float precioAviso;
-    String descripcionCortaAviso;
+    String metodoPago;
     String descripcionAviso;
     String vigenciaAviso;
     String fechaAviso;
     String horaAviso;
+    int idSubCategoriaAviso;
     int idProductoAviso;
     boolean activoAviso;
 
-    public Aviso(int idAviso, int cantidadAviso, float precioAviso, String descripcionCortaAviso, String descripcionAviso, String vigenciaAviso, String fechaAviso, String horaAviso, int idProductoAviso, boolean activoAviso) {
+    public Aviso(int idAviso, int cantidadAviso, float precioAviso, String metodoPago, String descripcionAviso, String vigenciaAviso, String fechaAviso, String horaAviso, int idSubCategoriaAviso, int idProductoAviso, boolean activoAviso) {
         this.idAviso = idAviso;
         this.cantidadAviso = cantidadAviso;
         this.precioAviso = precioAviso;
-        this.descripcionCortaAviso = descripcionCortaAviso;
+        this.metodoPago = metodoPago;
         this.descripcionAviso = descripcionAviso;
         this.vigenciaAviso = vigenciaAviso;
         this.fechaAviso = fechaAviso;
         this.horaAviso = horaAviso;
+        this.idSubCategoriaAviso = idSubCategoriaAviso;
         this.idProductoAviso = idProductoAviso;
         this.activoAviso = activoAviso;
+    }
+    
+     public Aviso( int cantidadAviso, float precioAviso, String metodoPago, String descripcionAviso, String vigenciaAviso, String fechaAviso, String horaAviso, int idSubCategoriaAviso, int idProductoAviso, boolean activoAviso) {
+ 
+        this.cantidadAviso = cantidadAviso;
+        this.precioAviso = precioAviso;
+        this.metodoPago = metodoPago;
+        this.descripcionAviso = descripcionAviso;
+        this.vigenciaAviso = vigenciaAviso;
+        this.fechaAviso = fechaAviso;
+        this.horaAviso = horaAviso;
+        this.idSubCategoriaAviso = idSubCategoriaAviso;
+        this.idProductoAviso = idProductoAviso;
+        this.activoAviso = activoAviso;
+    }
+
+    public int getIdSubCategoriaAviso() {
+        return idSubCategoriaAviso;
+    }
+
+    public void setIdSubCategoriaAviso(int idSubCategoriaAviso) {
+        this.idSubCategoriaAviso = idSubCategoriaAviso;
     }
 
     public int getIdAviso() {
@@ -58,12 +82,12 @@ public class Aviso {
         this.precioAviso = precioAviso;
     }
 
-    public String getDescripcionCortaAviso() {
-        return descripcionCortaAviso;
+    public String getMetodoPago() {
+        return metodoPago;
     }
 
-    public void setDescripcionCortaAviso(String descripcionCortaAviso) {
-        this.descripcionCortaAviso = descripcionCortaAviso;
+    public void setMetodoPago(String metodoPago) {
+        this.metodoPago = metodoPago;
     }
 
     public String getDescripcionAviso() {

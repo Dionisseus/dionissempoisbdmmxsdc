@@ -19,57 +19,59 @@
         <script>
             $(document).ready(function ($) {
 
-                $('#checkbox').change(function(){
-                  setInterval(function () {
-                      moveRight();
-                  }, 3000);
+                $('#checkbox').change(function () {
+                    setInterval(function () {
+                        moveRight();
+                    }, 3000);
                 });
 
-                      var slideCount = $('#slider ul li').length;
-                      var slideWidth = $('#slider ul li').width();
-                      var slideHeight = $('#slider ul li').height();
-                      var sliderUlWidth = slideCount * slideWidth;
+                var slideCount = $('#slider ul li').length;
+                var slideWidth = $('#slider ul li').width();
+                var slideHeight = $('#slider ul li').height();
+                var sliderUlWidth = slideCount * slideWidth;
 
-                      $('#slider').css({ width: slideWidth, height: slideHeight });
+                $('#slider').css({width: slideWidth, height: slideHeight});
 
-                      $('#slider ul').css({ width: sliderUlWidth, marginLeft: - slideWidth });
+                $('#slider ul').css({width: sliderUlWidth, marginLeft: -slideWidth});
 
-                  $('#slider ul li:last-child').prependTo('#slider ul');
+                $('#slider ul li:last-child').prependTo('#slider ul');
 
-                  function moveLeft() {
-                      $('#slider ul').animate({
-                          left: + slideWidth
-                      }, 200, function () {
-                          $('#slider ul li:last-child').prependTo('#slider ul');
-                          $('#slider ul').css('left', '');
-                      });
-                  };
+                function moveLeft() {
+                    $('#slider ul').animate({
+                        left: +slideWidth
+                    }, 200, function () {
+                        $('#slider ul li:last-child').prependTo('#slider ul');
+                        $('#slider ul').css('left', '');
+                    });
+                }
+                ;
 
-                  function moveRight() {
-                      $('#slider ul').animate({
-                          left: - slideWidth
-                      }, 200, function () {
-                          $('#slider ul li:first-child').appendTo('#slider ul');
-                          $('#slider ul').css('left', '');
-                      });
-                  };
+                function moveRight() {
+                    $('#slider ul').animate({
+                        left: -slideWidth
+                    }, 200, function () {
+                        $('#slider ul li:first-child').appendTo('#slider ul');
+                        $('#slider ul').css('left', '');
+                    });
+                }
+                ;
 
-                  $('a.control_prev').click(function () {
-                      moveLeft();
-                  });
+                $('a.control_prev').click(function () {
+                    moveLeft();
+                });
 
-                  $('a.control_next').click(function () {
-                      moveRight();
-                  });
-                  
-                  //console.log($('#textPregunta').val());
-                  $('#hacerPregunta').submit(function(){
-                      if($('#textPregunta').val() === ""){
-                          alert("Formule una pregunta antes de enviarla");
-                      }
-                  });
-                    
-              }); 
+                $('a.control_next').click(function () {
+                    moveRight();
+                });
+
+                //console.log($('#textPregunta').val());
+                $('#hacerPregunta').submit(function () {
+                    if ($('#textPregunta').val() === "") {
+                        alert("Formule una pregunta antes de enviarla");
+                    }
+                });
+
+            });
         </script>
     </head>
     <body>
@@ -83,36 +85,42 @@
                 <a href="#" class="control_prev"><</a>
                 <ul>
                     <%
-                   List<Imagen> listaImagen = ImagenDAO.TodasImagenes(pro.getIdProducto());
-                    for(int i=0; i<listaImagen.size(); i++){ 
+                        List<Imagen> listaImagen = ImagenDAO.TodasImagenes(pro.getIdProducto());
+                        for (int i = 0; i < listaImagen.size(); i++) {
                     %>
-                      <li><img src="ProductosImgs/<%=listaImagen.get(i).getPathImagen()%>"/></li>
-                   <%
-                    }
-                    %>
+                    <li><img src="ProductosImgs/<%=listaImagen.get(i).getPathImagen()%>"/></li>
+                        <%
+                            }
+                        %>
 
                 </ul>  
             </div>
             <div id="datosCompra">
-                <table class="tablaDC">
-                    <tr>
-                        <td colspan="2">Métodos de pago
-                        <select>
-                            <option value="default" selected>Elegir</option>
-                            <option>Efectivo</option>
-                            <option>Targeta crédito/débito</option>
-                            <option>Paypal</option>
-                        </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Precio:<%= pro.getPrecioProducto()%></td>
-                        <td>Existencias: <input class="inp" placeholder="<%= pro.getExistenciaProducto()%> "type="text" readonly/></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Vigencia: <input class="inp" placeholder="<%= pro.getVigenciaProducto()%>"type="text" readonly/></td>
-                    </tr>
-                </table>
+                <form method="post" action="PublicarAviso">
+                    <table class="tablaDC">
+                        <tr>
+                            <td colspan="2">Métodos de pago
+                                <select name="opcion">
+                                    <option value="todos" selected>Elegir</option>
+                                    <option value="efectivo">Efectivo</option>
+                                    <option value="tarjeta">Tarjeta crédito/débito</option>
+                                    <option value="paypal">Paypal</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Precio:<input name="precio" value="<%= pro.getPrecioProducto()%>"/></td>
+                            <td>Existencias: <input name="existencias" class="inp" value="<%= pro.getExistenciaProducto()%> "type="text" readonly/></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Vigencia: <input name="vigencia"   class="inp" value="<%= pro.getVigenciaProducto()%>"type="text" readonly/></td>
+                             <% if (session.getAttribute("isAviso").toString().equals("false")) { %>
+                            <td  > <input class="inp" type="Submit" value="Publicar Aviso"/>   </td>
+                            <%}%>
+                        </tr>
+
+                    </table>
+                </form>
             </div>
             <div id="divDescripcion">
                 <p><h6>Descripcion del producto</h6> <br><%= pro.getNombreProducto()%></p>

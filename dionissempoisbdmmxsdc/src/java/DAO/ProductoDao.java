@@ -104,7 +104,7 @@ public class ProductoDAO {
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
                 try {
-            cs = conn.prepareCall("{ call producto_actualizar(?, ?, ?, ?, ?, ?,?,?,?,?,?) }");
+            cs = conn.prepareCall("{ call producto_actualizar(?, ?, ?, ?, ?, ?,?) }");
             cs.setInt(1, pro.getIdProducto());
             cs.setString(2, pro.getNombreProducto());
             cs.setString(3, pro.getDescripcionProducto());
@@ -112,10 +112,6 @@ public class ProductoDAO {
             cs.setInt(5, pro.getExistenciaProducto());
             cs.setString(6, pro.getVigenciaProducto());
             cs.setString(7, pro.getCaracteristicaProducto());
-            cs.setString(8, pro.getFechaProducto());
-            cs.setString(9, pro.getHoraProducto());
-            cs.setInt(10, pro.getIdUsuarioProducto());
-            cs.setBoolean(11, pro.isActivoProducto());
             cs.execute();
             
         } catch (Exception ex) {

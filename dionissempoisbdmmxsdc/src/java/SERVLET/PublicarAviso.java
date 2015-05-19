@@ -6,9 +6,8 @@
 package SERVLET;
 
 import DAO.ProductoDAO;
-import POJO.Usuario;
+import POJO.Aviso;
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +19,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Diosio
  */
-@WebServlet(name = "Producto", urlPatterns = {"/Producto"})
-public class Producto extends HttpServlet {
+@WebServlet(name = "PublicarAviso", urlPatterns = {"/PublicarAviso"})
+public class PublicarAviso extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,15 +33,19 @@ public class Producto extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
-        String numeroLista = request.getParameter("numeroLista");
-        int i = Integer.parseInt(numeroLista);
-         Usuario user = (Usuario) session.getAttribute("usuario");
-            List<POJO.Producto> listaProductos = ProductoDAO.todosProductos(Integer.parseInt(user.getIdUsuario()));
-            session.setAttribute("producto", listaProductos.get(i));
-            session.setAttribute("isAviso", false);
-            response.sendRedirect("producto.jsp");
-       
+    HttpSession session = request.getSession(true);
+    session.setAttribute("isAviso", true);
+        POJO.Producto pro = (POJO.Producto) session.getAttribute("producto");
+        pro.setPrecioProducto(Float.parseFloat( request.getAttribute("precio").toString()));
+        pro.setExistenciaProducto(Integer.parseInt(request.getAttribute("existencias").toString()));
+        pro.setVigenciaProducto(request.getAttribute("vigencia").toString());
+        String metodoPago = request.getAttribute("opcion").toString();
+    ProductoDAO.actualizar(pro);
+    pro = ProductoDAO.buscar(pro.getNombreProducto());
+    POJO.Aviso aviso = new Aviso(pro.getExistenciaProducto(),pro.getPrecioProducto(),metodoPago,pro.getDescripcionProducto(),pro.getVigenciaProducto(),pro.getFechaProducto(),
+    pro.getHoraProducto(),Integer.parseInt("idSubcategoria"),pro.getIdProducto(),true);
+    
+    
         
     }
 
