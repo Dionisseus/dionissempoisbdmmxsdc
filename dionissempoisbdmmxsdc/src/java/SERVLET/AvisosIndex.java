@@ -5,8 +5,11 @@
  */
 package SERVLET;
 
+import DAO.AvisoDAO;
+import POJO.Aviso;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,26 +49,47 @@ public class AvisosIndex extends HttpServlet {
      
         
         
-         out.println("  </div>  ");
+       
             out.println("<body>");
             out.println("   <div id=\"divContent\">\n" +
 "            <div class=\"divPrductos\"> <h3>Lo mas reciente</h3>");
             
                out.println("  <div class=\"masReciente\">\n");
-               
-        
-        out.println("  <div class=\"contenido\"> <div class=\"divImgProducto\"><a href=\"producto.jsp\"><img class=\"imgProducto\" src=\"imagenes/kitchen_adventurer_lemon.jpg\" /></a></div>\n" +
+               List<Aviso>listaAviso = AvisoDAO.recientesAvisos();
+            for (int i = 0; i < listaAviso.size(); i++) {
+                   out.println("<form method=\"post\" id=\"form1\" action=\"AvisoProducto\">");
+                      out.println("<input type=\"hidden\" name=\"numeroLista\" value="+i+" />");
+        out.println("  <div class=\"contenido\"> <div class=\"divImgProducto\"> <a href=\"javascript:;\" onclick=\"document.getElementById('form1').submit();\"><img class=\"imgProducto\" src=\"ProductosImgs/"+listaAviso.get(i).getPathImagen()+"\" /></a></div>\n" +
 "                        <div class=\"infoProducto\">\n" +
-"                            Descripcion breve<br>\n" +
-"                            Precio<br>\n" +
-"                            Nickname de Usuario<br>\n" +
-"                            Fecha y hora<br>\n" +
+"                            "+listaAviso.get(i).getNombreProducto()+"<br>\n" +
+"                             "+listaAviso.get(i).getPrecioAviso()+"$"+"<br>\n" +
+"                           "+listaAviso.get(i).getNicknameUsuario()+"<br>\n" +
+"                             "+listaAviso.get(i).getFechaAviso()+"<br>\n" +
 "                            <br>\n" +
-"                        </div> </div>");
-            
+"                        </div> </form> </div>");
+                if (i==3)break;
+                        }
+        out.println("<h3>Lo mas caro</h3>");
+               out.println("  <div class=\"masRCaro\">\n");
+               List<Aviso>listaAvisos = AvisoDAO.preciosAvisos();
+            for (int i = 0; i < listaAvisos.size(); i++) {
+                    out.println("<form method=\"post\" id=\"form1\" action=\"AvisoProducto\">");
+                       out.println("<input type=\"hidden\" name=\"numeroLista\" value="+i+" />");
+        out.println("  <div class=\"contenido\"> <div class=\"divImgProducto\"><a href=\"producto.jsp\"><img class=\"imgProducto\" src=\"ProductosImgs/"+listaAvisos.get(i).getPathImagen()+"\" /></a></div>\n" +
+"                        <div class=\"infoProducto\">\n" +
+"                            "+listaAvisos.get(i).getNombreProducto()+"<br>\n" +
+"                             "+listaAvisos.get(i).getPrecioAviso()+"$"+"<br>\n" +
+"                           "+listaAvisos.get(i).getNicknameUsuario()+"<br>\n" +
+"                             "+listaAvisos.get(i).getFechaAviso()+"<br>\n" +
+"                            <br>\n" +
+"                       </div></form> </div>");
+                if (i==3)break;
+                        }
+
+        
             
         
-            out.println("</div>");
+            out.println("</div></div>");
             
             out.println("</body></html>");
         }

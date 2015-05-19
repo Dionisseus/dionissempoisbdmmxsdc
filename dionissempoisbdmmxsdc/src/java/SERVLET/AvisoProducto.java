@@ -5,10 +5,11 @@
  */
 package SERVLET;
 
-import DAO.AvisoDAO;
 import DAO.ProductoDAO;
-import POJO.Aviso;
+import POJO.Usuario;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +21,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author Diosio
  */
-@WebServlet(name = "PublicarAviso", urlPatterns = {"/PublicarAviso"})
-public class PublicarAviso extends HttpServlet {
+@WebServlet(name = "AvisoProducto", urlPatterns = {"/AvisoProducto"})
+public class AvisoProducto extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,21 +35,17 @@ public class PublicarAviso extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    HttpSession session = request.getSession(true);
-    session.setAttribute("isAviso", true);
-        POJO.Producto pro = (POJO.Producto) session.getAttribute("producto");
-        String precio =  request.getParameter("precio");
-        pro.setPrecioProducto(Float.parseFloat(precio.trim()));
-        pro.setExistenciaProducto(Integer.parseInt(request.getParameter("existencias").trim()));
-        pro.setVigenciaProducto(request.getParameter("vigencia").trim());
-        String metodoPago = request.getParameter("opcion");
-    ProductoDAO.actualizar(pro);
-    pro = ProductoDAO.buscar(pro.getNombreProducto());
-    POJO.Aviso aviso = new Aviso(pro.getExistenciaProducto(),pro.getPrecioProducto(),metodoPago,pro.getDescripcionProducto(),pro.getVigenciaProducto(),pro.getFechaProducto(),
-    pro.getHoraProducto(),Integer.parseInt(request.getParameter("Categoria")),pro.getIdProducto(),true);
-        AvisoDAO.insertar(aviso);
-    
-   response.sendRedirect("index.jsp");
+        HttpSession session = request.getSession(true);
+        String numeroLista = request.getParameter("numeroLista");
+        int i = Integer.parseInt(numeroLista);
+        // Usuario user = (Usuario) session.getAttribute("usuario");
+          // List<POJO.Producto> listaProductos = ProductoDAO.todosProductos(Integer.parseInt(user.getIdUsuario()));
+          //  session.setAttribute("producto", listaProductos.get(i));
+        //TODO
+        //el pedo aqui esque sacando de todos los productos no dariamos al indicado sino mas bien seria buscarlo con el DAO
+            session.setAttribute("isAviso", true);
+            response.sendRedirect("producto.jsp");
+       
         
     }
 
