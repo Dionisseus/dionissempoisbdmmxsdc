@@ -10,6 +10,8 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import xClasses.DBUtil;
 
 /**
@@ -81,7 +83,7 @@ public class AvisoDAO {
             
             String res ="";
             
-              if (rs.next()) {
+              while (rs.next()) {
                     res+=rs.getString("nombreProducto");
               }
               return res;
@@ -95,6 +97,58 @@ public class AvisoDAO {
        return "";
        }
        
-       //misavisos  detalleaviso  precioavisos  recientesavisos  subcategoriaavisos  todasimagenesaviso  todaspreguntasaviso
+           public static List<Aviso> recientesAvisos() {
+       ConnectionPool pool = ConnectionPool.getInstance();
+        Connection conn = pool.getConnection();
+        CallableStatement cs = null;
+               ResultSet rs = null;
+          try {
+            cs = conn.prepareCall("{ call recientesAvisos() }");
+           
+           rs = cs.executeQuery();
+              List <Aviso> Listaaviso = new ArrayList<Aviso>();
+              while (rs.next()) {
+                  Aviso aviso = new Aviso(rs.getString("pathImagen"), rs.getString("nicknameUsuario"), rs.getString("nombreProducto"), rs.getInt("idAviso"), rs.getInt("cantidadAviso"), rs.getInt("precioAviso"),
+                          rs.getString("descripcionCortaAviso"), rs.getString("descripcionAviso"), rs.getString("vigenciaAviso"), rs.getString("fechaAviso"), rs.getString("horaAviso"),
+                         rs.getInt("idSubCategoriaAviso"), rs.getInt("idProductoAviso"), true);
+                  Listaaviso.add(aviso);
+              }
+            return Listaaviso;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            DBUtil.closeStatement(cs);
+            pool.freeConnection(conn);
+        }
+          return null;
+    }
+           
+           public static List<Aviso> preciosAvisos() {
+       ConnectionPool pool = ConnectionPool.getInstance();
+        Connection conn = pool.getConnection();
+        CallableStatement cs = null;
+               ResultSet rs = null;
+          try {
+            cs = conn.prepareCall("{ call preciosAvisos() }");
+           
+           rs = cs.executeQuery();
+              List <Aviso> Listaaviso = new ArrayList<Aviso>();
+              while (rs.next()) {
+                  Aviso aviso = new Aviso(rs.getString("pathImagen"), rs.getString("nicknameUsuario"), rs.getString("nombreProducto"), rs.getInt("idAviso"), rs.getInt("cantidadAviso"), rs.getInt("precioAviso"),
+                          rs.getString("descripcionCortaAviso"), rs.getString("descripcionAviso"), rs.getString("vigenciaAviso"), rs.getString("fechaAviso"), rs.getString("horaAviso"),
+                         rs.getInt("idSubCategoriaAviso"), rs.getInt("idProductoAviso"), true);
+                  Listaaviso.add(aviso);
+              }
+            return Listaaviso;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            DBUtil.closeStatement(cs);
+            pool.freeConnection(conn);
+        }
+          return null;
+    }
+       
+       //misavisos  detalleaviso      subcategoriaavisos  todasimagenesaviso  todaspreguntasaviso
     
 }
