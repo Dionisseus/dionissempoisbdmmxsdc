@@ -53,12 +53,12 @@ public class AvisosIndex extends HttpServlet {
             out.println("  <div class=\"masReciente\">\n");
             List<Aviso> listaAvisos = AvisoDAO.recientesAvisos();
             for (int i = 0; i < listaAvisos.size(); i++) {
-                out.println("<form method=\"post\" id=\"form1\" action=\"AvisoProducto\">");
+                out.println("<form method=\"post\" id=\"form"+i+"\" action=\"AvisoProducto\">");
                 out.println("<input type=\"hidden\" name=\"numeroLista\" value=" + i + " />");
                 out.println("<input type=\"hidden\" name=\"tipo\" value=\"masReciente\" />");
                 out.println("                            <br>\n"
                         + "<div class=\"contenido\"> "
-                        + "<div class=\"divImgProducto\"><a href=\"javascript:;\" onclick=\"document.getElementById('form1').submit();\">"
+                        + "<div class=\"divImgProducto\"><a href=\"javascript:;\" onclick=\"document.getElementById('form"+i+"').submit();\">"
                         + "<img class=\"imgProducto\" src=\"ProductosImgs/" + listaAvisos.get(i).getPathImagen() + "\" /></a></div>\n"
                         + "                        <div class=\"infoProducto\">\n"
                         + "                            " + listaAvisos.get(i).getNombreProducto() + "<br>\n"
@@ -78,12 +78,12 @@ public class AvisosIndex extends HttpServlet {
             out.println("  <div class=\"masCaro\">\n");
             List<Aviso> listaAvisoss = AvisoDAO.preciosAvisos();
             for (int i = 0; i < listaAvisoss.size(); i++) {
-                out.println("<form method=\"post\" id=\"form2\" action=\"AvisoProducto\">");
+                out.println("<form method=\"post\" id=\"formx"+i+"\" action=\"AvisoProducto\">");
                 out.println("<input type=\"hidden\" name=\"numeroLista\" value=" + i + " />");
                 out.println("<input type=\"hidden\" name=\"tipo\" value=\"masCaro\" />");
                 out.println("                            <br>\n"
                         + "<div class=\"contenido\"> "
-                        + "<div class=\"divImgProducto\"><a href=\"javascript:;\" onclick=\"document.getElementById('form2').submit();\">"
+                        + "<div class=\"divImgProducto\"><a href=\"javascript:;\" onclick=\"document.getElementById('formx"+i+"').submit();\">"
                         + "<img class=\"imgProducto\" src=\"ProductosImgs/" + listaAvisoss.get(i).getPathImagen() + "\" /></a></div>\n"
                         + "                        <div class=\"infoProducto\">\n"
                         + "                            " + listaAvisoss.get(i).getNombreProducto() + "<br>\n"
