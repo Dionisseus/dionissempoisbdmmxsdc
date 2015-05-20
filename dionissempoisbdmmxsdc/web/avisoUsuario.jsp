@@ -18,7 +18,7 @@
     </head>
     <body>
         <div id="divContent">
-            <jsp:include page="AvisoUsuario"></jsp:include>
+            <%--<jsp:include page="AvisoUsuario"></jsp:include>--%>
         </div>
         <%@include file="general.jsp" %>
     </body>
