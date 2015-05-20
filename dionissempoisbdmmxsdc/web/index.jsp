@@ -34,7 +34,6 @@
                     <form method="post" id="form<%=i%>" action="AvisoProducto">
                         <input type="hidden" name="numeroLista" value="<%=i%>  " />
                         <input type="hidden" name="tipo" value="masReciente" />
-                        <br>
                         <div class="contenido">
                             <div class="divImgProducto">
                                 <a href="javascript:;" onclick="document.getElementById('form'+<%=i%>+').submit()">
@@ -64,7 +63,6 @@
                     <form method="post" id="form<%=i%>" action="AvisoProducto">
                         <input type="hidden" name="numeroLista" value="<%=i%>  " />
                         <input type="hidden" name="tipo" value="masCaro" />
-                        <br>
                         <div class="contenido">
                             <div class="divImgProducto">
                                 <a href="javascript:;" onclick="document.getElementById('form+<%=i%>+').submit()">
