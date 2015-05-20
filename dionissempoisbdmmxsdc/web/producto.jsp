@@ -11,6 +11,10 @@
 <%@page import="java.util.List"%>
 <%@page import="DAO.ImagenDAO"%>
 <%@page import="POJO.Producto"%>
+<%@page import="POJO.Pregunta" %>
+<%@page import="DAO.PreguntasDAO" %>
+<%@page import="POJO.Usuario" %>
+<%@page import="DAO.UsuarioDAO" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -157,10 +161,24 @@
                     <textarea id="textPregunta" name="pregunta"></textarea><br>
                     <input class="inp" type="submit" class="btnRespuesta" value="Preguntar"/>
                 </form>
-                <!--<p class="pregunta">Pregunta</p>
+                <p class="pregunta">
+                   <% 
+                    Usuario user = (Usuario) session.getAttribute("usuario");
+                    List<POJO.Pregunta> listaPreguntas = PreguntasDAO.preguntasAviso(Integer.parseInt(user.getIdUsuario()));
+                    try{
+                    for(int i=0; i<listaPreguntas.size();i++){ 
+                   %>
+                   <%= listaPreguntas.get(i).getDescripcionPregunta() %>
+                </p>
                 <ul class="respuesta">
-                    <li>Respuesta</li>
-                </ul>-->               
+                    <li><%= listaPreguntas.get(i).getRespuesta() %></li>
+                </ul>
+                 <% 
+                        }
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
+                 %>
             </div>
         </div>
         <%@include file="general.jsp" %>
