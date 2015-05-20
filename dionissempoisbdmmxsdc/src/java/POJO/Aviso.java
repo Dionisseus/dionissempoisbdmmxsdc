@@ -39,6 +39,23 @@ public class Aviso {
         this.idProductoAviso = idProductoAviso;
         this.activoAviso = activoAviso;
     }
+    
+       public Aviso(String pathImagen, String nickNameUsuario, String nombreProductom, int idAviso, int cantidadAviso, float precioAviso, String metodoPago, String descripcionAviso, String vigenciaAviso, String fechaAviso, String horaAviso, int idSubCategoriaAviso, int idProductoAviso, boolean activoAviso) {
+        this.pathImagen = pathImagen;
+        this.nicknameUsuario = nickNameUsuario;
+        this.nombreProducto = nombreProductom;
+        this.idAviso = idAviso;
+        this.cantidadAviso = cantidadAviso;
+        this.precioAviso = precioAviso;
+        this.metodoPago = metodoPago;
+        this.descripcionAviso = descripcionAviso;
+        this.vigenciaAviso = vigenciaAviso;
+        this.fechaAviso = fechaAviso;
+        this.horaAviso = horaAviso;
+        this.idSubCategoriaAviso = idSubCategoriaAviso;
+        this.idProductoAviso = idProductoAviso;
+        this.activoAviso = activoAviso;
+    }
 
     public String getPathImagen() {
         return pathImagen;
@@ -64,22 +81,7 @@ public class Aviso {
         this.nombreProducto = nombreProducto;
     }
 
-    public Aviso(String pathImagen, String nickNameUsuario, String nombreProductom, int idAviso, int cantidadAviso, float precioAviso, String metodoPago, String descripcionAviso, String vigenciaAviso, String fechaAviso, String horaAviso, int idSubCategoriaAviso, int idProductoAviso, boolean activoAviso) {
-        this.pathImagen = pathImagen;
-        this.nicknameUsuario = nickNameUsuario;
-        this.nombreProducto = nombreProductom;
-        this.idAviso = idAviso;
-        this.cantidadAviso = cantidadAviso;
-        this.precioAviso = precioAviso;
-        this.metodoPago = metodoPago;
-        this.descripcionAviso = descripcionAviso;
-        this.vigenciaAviso = vigenciaAviso;
-        this.fechaAviso = fechaAviso;
-        this.horaAviso = horaAviso;
-        this.idSubCategoriaAviso = idSubCategoriaAviso;
-        this.idProductoAviso = idProductoAviso;
-        this.activoAviso = activoAviso;
-    }
+ 
 
     public Aviso(int cantidadAviso, float precioAviso, String metodoPago, String descripcionAviso, String vigenciaAviso, String fechaAviso, String horaAviso, int idSubCategoriaAviso, int idProductoAviso, boolean activoAviso) {
 

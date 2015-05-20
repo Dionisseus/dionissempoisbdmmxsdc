@@ -6,6 +6,7 @@
 package DAO;
 
 import POJO.Aviso;
+import POJO.Producto;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -148,7 +149,45 @@ public class AvisoDAO {
         }
           return null;
     }
-       
-       //misavisos  detalleaviso      subcategoriaavisos  todasimagenesaviso  todaspreguntasaviso
+        public static List<Aviso> misAvisos(int idUsuario) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection conn = pool.getConnection();
+        CallableStatement cs = null;
+        ResultSet rs = null;
+        try {
+            cs = conn.prepareCall("{ call misAvisos(?) }");
+            cs.setInt(1, idUsuario);
+            rs = cs.executeQuery();
+            List<Aviso> prodLista = new ArrayList<Aviso>();
+            while (rs.next()) {
+                Aviso user = new Aviso(
+                        rs.getString("pathImagen"),
+                        rs.getString("nicknameUsuario"),
+                        rs.getString("nombreProducto"),
+                        rs.getInt("idAviso"),
+                        rs.getInt("cantidadAviso"), 
+                        rs.getInt("precioAviso"), 
+                        rs.getString("descripcionCortaAviso"), 
+                        rs.getString("descripcionAviso"),
+                        rs.getString("vigenciaAviso"),
+                        rs.getString("fechaAviso"),
+                        rs.getString("horaAviso"),
+                        rs.getInt("idSubcategoriaAviso"),
+                        rs.getInt("idProductoAviso"),
+                        rs.getBoolean("activoAviso")
+                );      
+                prodLista.add(user);
+            }
+            return prodLista;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closeStatement(cs);
+            pool.freeConnection(conn);
+        }
+    }
+       //  detalleaviso      subcategoriaavisos  todasimagenesaviso  todaspreguntasaviso
     
 }

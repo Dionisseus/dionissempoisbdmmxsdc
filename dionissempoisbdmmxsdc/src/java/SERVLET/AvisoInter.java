@@ -6,7 +6,6 @@
 package SERVLET;
 
 import DAO.AvisoDAO;
-import DAO.ImagenDAO;
 import DAO.ProductoDAO;
 import POJO.Usuario;
 import java.io.IOException;
@@ -21,10 +20,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Asus
+ * @author Diosio
  */
-@WebServlet(name = "AvisoUsuario", urlPatterns = {"/AvisoUsuario"})
-public class AvisoUsuario extends HttpServlet {
+@WebServlet(name = "AvisoInter", urlPatterns = {"/AvisoInter"})
+public class AvisoInter extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,40 +36,19 @@ public class AvisoUsuario extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            HttpSession session = request.getSession(true);
-            Usuario user = (Usuario) session.getAttribute("usuario");
-             session.setAttribute("isAviso", true);
-            List<POJO.Aviso> listaProductos = AvisoDAO.misAvisos(Integer.parseInt(user.getIdUsuario()));        
-          String fs = getServletContext().getContextPath();
-            for (int i = 0; i < listaProductos.size(); i++) {
-                String imagenFirst = listaProductos.get(i).getPathImagen();
-        out.println("<form method=\"post\" action=\"AvisoInter\">");
-                out.println("<div class=\"divProductoUsuario\">\n");
-                   out.println("<input type=\"hidden\" name=\"numeroLista\" value="+i+" />"+
-"                <div class=\"divImgPUsr\">\n" +
-"                <img class=\"imgProductoUsuario\" src=\"ProductosImgs/"+imagenFirst+"\" >"+               
-"                </div>\n" +
-"                <div class=\"divContenido\">\n" +
-"                    <table>\n" +
-"                        <tr>\n" +
-"                            <td colspan=\"2\" class=\"nombreProducto\">"+listaProductos.get(i).getNombreProducto()+"</td>\n" +
-"                        </tr>\n" +
-"                        <tr>\n" +
-"                            <td><a href=\"#\">Editar</a></td><td><input type=\"Submit\" value=\"Eliminar\"></td>\n" +
-"                        </tr>\n" +
-"                    </table>\n" +
-"                </div>\n </form></div>");
-            }
-            
-            
-            out.println("</body>");
-            out.println("</html>");
-           
-            
+          HttpSession session = request.getSession(true);
+        String numeroLista = request.getParameter("numeroLista");
+        int i = Integer.parseInt(numeroLista);
+         Usuario user = (Usuario) session.getAttribute("usuario");
+            List<POJO.Aviso> listaProductos = AvisoDAO.misAvisos(Integer.parseInt(user.getIdUsuario()));
+            List<POJO.Producto> list = ProductoDAO.todosProductos(Integer.parseInt(user.getIdUsuario()));
+            for (int j = 0;j < list.size(); j++) {
+                if (list.get(j).getIdProducto() ==   listaProductos.get(i).getIdProductoAviso()) {
+                    session.setAttribute("producto", list.get(j) );  
+                }
         }
+            session.setAttribute("isAviso", true);
+            response.sendRedirect("producto.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

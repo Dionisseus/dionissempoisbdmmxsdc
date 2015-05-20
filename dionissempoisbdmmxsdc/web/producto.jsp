@@ -126,8 +126,9 @@
                                 <%}%>
                         </tr>
                         <tr>
-                            <td colspan="2">Categoria: 
+                          
                                 <% if (session.getAttribute("isAviso").toString().equals("false")) { %>
+                                  <td colspan="2">Categoria: 
                                 <select name="Categoria">
                                     <%   List<POJO.Categoria> listaCategoria = CategoriaDAO.lista();
                                         for (int i = 0; i < listaCategoria.size(); i++) {
