@@ -5,10 +5,10 @@
  */
 package SERVLET;
 
+import DAO.AvisoDAO;
 import DAO.ProductoDAO;
-import POJO.Usuario;
+import POJO.Aviso;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,14 +35,23 @@ public class AvisoProducto extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession(true);
+        HttpSession session = request.getSession(true);//no hay session
         String numeroLista = request.getParameter("numeroLista");
         int i = Integer.parseInt(numeroLista);
-        // Usuario user = (Usuario) session.getAttribute("usuario");
-          // List<POJO.Producto> listaProductos = ProductoDAO.todosProductos(Integer.parseInt(user.getIdUsuario()));
-          //  session.setAttribute("producto", listaProductos.get(i));
-        //TODO
-        //el pedo aqui esque sacando de todos los productos no dariamos al indicado sino mas bien seria buscarlo con el DAO
+        String tipo = request.getParameter("tipo");
+         List<Aviso> listaAviso = null;
+         POJO.Producto pro = null;
+        
+        if (tipo.equals("masReciente")) {
+         listaAviso = AvisoDAO.recientesAvisos();
+         pro = ProductoDAO.buscarId(listaAviso.get(i).getIdProductoAviso());  
+        }
+         if (tipo.equals("masCaro")) {
+        listaAviso = AvisoDAO.preciosAvisos();
+         pro = ProductoDAO.buscarId(listaAviso.get(i).getIdProductoAviso());    
+        }
+            session.setAttribute("producto", pro);
+
             session.setAttribute("isAviso", true);
             response.sendRedirect("producto.jsp");
        

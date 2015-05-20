@@ -164,6 +164,7 @@
                 </form>
                 <p class="pregunta">
                    <% 
+                   if (session.getAttribute("usuario")!= null){
                     Usuario user = (Usuario) session.getAttribute("usuario");
                     List<POJO.Pregunta> listaPreguntas = PreguntasDAO.preguntasAviso(Integer.parseInt(user.getIdUsuario()));
                     try{
@@ -178,7 +179,7 @@
                         }
                     }catch(Exception e){
                         e.printStackTrace();
-                    }
+                    }}
                  %>
             </div>
         </div>

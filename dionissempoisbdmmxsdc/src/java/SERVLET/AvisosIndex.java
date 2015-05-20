@@ -36,61 +36,71 @@ public class AvisosIndex extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-         
+
             out.println("<!DOCTYPE html>");
             out.println("<html>");
-            out.println("  <head>\n" +
-"        <script defer src=\"js/jquery.flexslider.js\"></script>\n" +
-"        <link rel=\"stylesheet\" type=\"text/css\" href=\"css/avisos.css\">\n" +
-"	<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js\"></script>\n" +
-"	<meta charset=\"utf-8\">\n" +
-"</head>");
-            
-     
-        
-        
-       
-            out.println("<body>");
-            out.println("   <div id=\"divContent\">\n" +
-"            <div class=\"divPrductos\"> <h3>Lo mas reciente</h3>");
-            
-               out.println("  <div class=\"masReciente\">\n");
-               List<Aviso>listaAviso = AvisoDAO.recientesAvisos();
-            for (int i = 0; i < listaAviso.size(); i++) {
-                   out.println("<form method=\"post\" id=\"form1\" action=\"AvisoProducto\">");
-                      out.println("<input type=\"hidden\" name=\"numeroLista\" value="+i+" />");
-        out.println("  <div class=\"contenido\"> <div class=\"divImgProducto\"> <a href=\"javascript:;\" onclick=\"document.getElementById('form1').submit();\"><img class=\"imgProducto\" src=\"ProductosImgs/"+listaAviso.get(i).getPathImagen()+"\" /></a></div>\n" +
-"                        <div class=\"infoProducto\">\n" +
-"                            "+listaAviso.get(i).getNombreProducto()+"<br>\n" +
-"                             "+listaAviso.get(i).getPrecioAviso()+"$"+"<br>\n" +
-"                           "+listaAviso.get(i).getNicknameUsuario()+"<br>\n" +
-"                             "+listaAviso.get(i).getFechaAviso()+"<br>\n" +
-"                            <br>\n" +
-"                        </div> </form> </div>");
-                if (i==3)break;
-                        }
-        out.println("<h3>Lo mas caro</h3>");
-               out.println("  <div class=\"masRCaro\">\n");
-               List<Aviso>listaAvisos = AvisoDAO.preciosAvisos();
-            for (int i = 0; i < listaAvisos.size(); i++) {
-                    out.println("<form method=\"post\" id=\"form1\" action=\"AvisoProducto\">");
-                       out.println("<input type=\"hidden\" name=\"numeroLista\" value="+i+" />");
-        out.println("  <div class=\"contenido\"> <div class=\"divImgProducto\"><a href=\"producto.jsp\"><img class=\"imgProducto\" src=\"ProductosImgs/"+listaAvisos.get(i).getPathImagen()+"\" /></a></div>\n" +
-"                        <div class=\"infoProducto\">\n" +
-"                            "+listaAvisos.get(i).getNombreProducto()+"<br>\n" +
-"                             "+listaAvisos.get(i).getPrecioAviso()+"$"+"<br>\n" +
-"                           "+listaAvisos.get(i).getNicknameUsuario()+"<br>\n" +
-"                             "+listaAvisos.get(i).getFechaAviso()+"<br>\n" +
-"                            <br>\n" +
-"                       </div></form> </div>");
-                if (i==3)break;
-                        }
+            out.println("  <head>\n"
+                    + "        <script defer src=\"js/jquery.flexslider.js\"></script>\n"
+                    + "        <link rel=\"stylesheet\" type=\"text/css\" href=\"css/avisos.css\">\n"
+                    + "	<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js\"></script>\n"
+                    + "	<meta charset=\"utf-8\">\n"
+                    + "</head>");
 
-        
-            
-        
+            out.println("<body>");
+            out.println("   <div id=\"divContent\">\n");
+
+            out.println("<h3>Lo mas Reciente</h3>");
+            out.println("  <div class=\"masReciente\">\n");
+            List<Aviso> listaAvisos = AvisoDAO.recientesAvisos();
+            for (int i = 0; i < listaAvisos.size(); i++) {
+                out.println("<form method=\"post\" id=\"form1\" action=\"AvisoProducto\">");
+                out.println("<input type=\"hidden\" name=\"numeroLista\" value=" + i + " />");
+                out.println("<input type=\"hidden\" name=\"tipo\" value=\"masReciente\" />");
+                out.println("                            <br>\n"
+                        + "<div class=\"contenido\"> "
+                        + "<div class=\"divImgProducto\"><a href=\"javascript:;\" onclick=\"document.getElementById('form1').submit();\">"
+                        + "<img class=\"imgProducto\" src=\"ProductosImgs/" + listaAvisos.get(i).getPathImagen() + "\" /></a></div>\n"
+                        + "                        <div class=\"infoProducto\">\n"
+                        + "                            " + listaAvisos.get(i).getNombreProducto() + "<br>\n"
+                        + "                             " + listaAvisos.get(i).getPrecioAviso() + "$" + "<br>\n"
+                        + "                           " + listaAvisos.get(i).getNicknameUsuario() + "<br>\n"
+                        + "                             " + listaAvisos.get(i).getFechaAviso() + "<br>\n"
+                        + "                        </div>"
+                        + "</form> "
+                        + "</div>");
+                if (i == 3) {
+                    break;
+                }
+            }
+            out.println("</div>");
+            /////
+            out.println("<h3>Lo mas caro</h3>");
+            out.println("  <div class=\"masCaro\">\n");
+            List<Aviso> listaAvisoss = AvisoDAO.preciosAvisos();
+            for (int i = 0; i < listaAvisoss.size(); i++) {
+                out.println("<form method=\"post\" id=\"form2\" action=\"AvisoProducto\">");
+                out.println("<input type=\"hidden\" name=\"numeroLista\" value=" + i + " />");
+                out.println("<input type=\"hidden\" name=\"tipo\" value=\"masCaro\" />");
+                out.println("                            <br>\n"
+                        + "<div class=\"contenido\"> "
+                        + "<div class=\"divImgProducto\"><a href=\"javascript:;\" onclick=\"document.getElementById('form2').submit();\">"
+                        + "<img class=\"imgProducto\" src=\"ProductosImgs/" + listaAvisoss.get(i).getPathImagen() + "\" /></a></div>\n"
+                        + "                        <div class=\"infoProducto\">\n"
+                        + "                            " + listaAvisoss.get(i).getNombreProducto() + "<br>\n"
+                        + "                             " + listaAvisoss.get(i).getPrecioAviso() + "$" + "<br>\n"
+                        + "                           " + listaAvisoss.get(i).getNicknameUsuario() + "<br>\n"
+                        + "                             " + listaAvisoss.get(i).getFechaAviso() + "<br>\n"
+                        + "                        </div>"
+                        + "</form> "
+                        + "</div>");
+                if (i == 3) {
+                    break;
+                }
+            }
+            out.println("</div>");
+
             out.println("</div></div>");
-            
+
             out.println("</body></html>");
         }
     }

@@ -98,6 +98,40 @@ public class ProductoDAO {
      
 
     }
+    
+      public static Producto buscarId( int nombreProducto) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection conn = pool.getConnection();
+        CallableStatement cs = null;
+        ResultSet rs = null;
+        ////////////////////////
+        
+              try {
+            cs = conn.prepareCall("{ call producto_buscarid(?) }");
+            cs.setInt(1, nombreProducto);
+            rs = cs.executeQuery();
+            if (rs.next()) {
+                Producto pro = new Producto(rs.getInt("idProducto"), rs.getString("nombreProducto"), rs.getString("descripcionProducto"),
+                        rs.getFloat("precioProducto"), rs.getInt("existenciaProducto"), rs.getString("vigenciaProducto"),
+                        rs.getString("caracteristicaProducto"), rs.getString("fechaProducto"), rs.getString("horaProducto"),rs.getInt("idUsuarioProducto"), true);
+                       
+                
+                return pro;
+            }
+            return null;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+            
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closeStatement(cs);
+            pool.freeConnection(conn);
+        }
+        
+     
+
+    }
 
     public static void actualizar(Producto pro) {
        ConnectionPool pool = ConnectionPool.getInstance();

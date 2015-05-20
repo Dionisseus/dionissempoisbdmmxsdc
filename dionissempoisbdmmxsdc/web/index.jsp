@@ -10,7 +10,7 @@
 </t:if>--%>
 
 <%-- 
-          <jsp:include page="AvisosIndex"></jsp:include>       
+            
 --%>
-          
+           <jsp:include page="AvisosIndex"></jsp:include>    
     <%@include file="general.jsp" %>
