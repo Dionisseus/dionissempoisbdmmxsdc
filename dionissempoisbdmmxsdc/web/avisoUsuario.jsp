@@ -4,6 +4,10 @@
     Author     : Asus
 --%>
 
+<%@page import="DAO.AvisoDAO"%>
+<%@page import="POJO.Aviso"%>
+<%@page import="java.util.List"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +18,7 @@
     </head>
     <body>
         <div id="divContent">
-            <jsp:include page="ProductosUsuario"></jsp:include>
+            <jsp:include page="AvisoUsuario"></jsp:include>
         </div>
         <%@include file="general.jsp" %>
     </body>
