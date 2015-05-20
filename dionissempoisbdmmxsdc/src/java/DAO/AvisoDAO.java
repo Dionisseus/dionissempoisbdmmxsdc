@@ -49,13 +49,13 @@ public class AvisoDAO {
         }
     }
      
-      public static void borrar(Aviso user) {
+      public static void borrar(int id) {
        ConnectionPool pool = ConnectionPool.getInstance();
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
           try {
             cs = conn.prepareCall("{ call producto_baja(?) }");
-            cs.setInt(1, user.getIdAviso());
+            cs.setInt(1,id);
             cs.execute();
             
         } catch (Exception ex) {

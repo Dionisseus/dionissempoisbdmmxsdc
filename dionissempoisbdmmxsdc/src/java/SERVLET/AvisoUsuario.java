@@ -46,7 +46,7 @@ public class AvisoUsuario extends HttpServlet {
             List<POJO.Aviso> listaProductos = AvisoDAO.misAvisos(Integer.parseInt(user.getIdUsuario()));        
           String fs = getServletContext().getContextPath();
             for (int i = 0; i < listaProductos.size(); i++) {
-                String imagenFirst = listaProductos.get(i).getPathImagen();
+                String imagenFirst = listaProductos.get(i).getPathImagen();//<a href=\"javascript:;\" onclick=\"document.getElementById('form"+i+"').submit();\">
         out.println("<form method=\"post\" action=\"AvisoInter\">");
                 out.println("<div class=\"divProductoUsuario\">\n");
                    out.println("<input type=\"hidden\" name=\"numeroLista\" value="+i+" />"+
