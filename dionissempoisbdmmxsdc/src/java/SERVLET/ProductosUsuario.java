@@ -43,7 +43,7 @@ public class ProductosUsuario extends HttpServlet {
             HttpSession session = request.getSession(true);
             Usuario user = (Usuario) session.getAttribute("usuario");
             List<Producto> listaProductos = ProductoDAO.todosProductos(Integer.parseInt(user.getIdUsuario()));        
-          String fs = getServletContext().getContextPath();
+            String fs = getServletContext().getContextPath();
             for (int i = 0; i < listaProductos.size(); i++) {
                 String imagenFirst = ImagenDAO.firstImagen(listaProductos.get(i).getIdProducto());
                 out.println("<form method=\"post\" action=\"Producto\">");
