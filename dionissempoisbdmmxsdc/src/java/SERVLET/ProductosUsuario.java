@@ -42,6 +42,7 @@ public class ProductosUsuario extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession(true);
             Usuario user = (Usuario) session.getAttribute("usuario");
+             session.setAttribute("isAviso", false);
             List<Producto> listaProductos = ProductoDAO.todosProductos(Integer.parseInt(user.getIdUsuario()));        
             String fs = getServletContext().getContextPath();
             for (int i = 0; i < listaProductos.size(); i++) {
@@ -62,8 +63,7 @@ public class ProductosUsuario extends HttpServlet {
 "                        </tr>\n" +
 "                    </table>\n" +
 "                </div>\n" +
-"            </form>"
-                        + "</div>");
+"            </form>");
             }
             
             
