@@ -17,8 +17,34 @@
             $(function(){
                     $(".datepicker").each(function(){
                       $(this).datepicker();
-                      
                     });
+                    
+                    var imagen1 = $("#sFoto").val();
+                    var imagen2 = $("#sFoto1").val();
+                    var imagen3 = $("#sFoto2").val();
+                    var video1 = $('#sVideo').val();
+                    var video2 = $('#sVideo1').val();
+                    
+                    function validarFotos(){
+                        if(imagen1 == '' || imagen2== '' || imagen3 == ''){
+                            alert("Necesita agregar 3 fotografias");
+                        }    
+                       
+                    };
+                    
+                    function validarVideos(){
+                        if(video1 == '' || video2 == '' ){
+                            alert("Necesita agregar 2 videos");
+                        }
+                        
+                    };
+                                        
+                    $('#btnGuardar').click(function (){
+                        validarVideos();
+                        validarFotos();
+                        return false;
+                    });                  
+                    
                 });
         </script>
         <title>JSP Page</title>
@@ -30,7 +56,7 @@
                 <legend>Datos del producto</legend>
                 <table>
                     <tr>
-                        <td><p class="pSubir">Titulo: <input class="txtSubir" id="sTitulo" name="sTitulo"type="text"/></p></td>
+                        <td><p class="pSubir">Titulo: <input class="txtSubir" id="sTitulo" name="sTitulo"type="text" /></p></td>
                     </tr>
                     <tr>
                         <td><p class="pSubir">Precio: <input class="txtSubir" id="sPrecio" name="sPrecio" type="text"/></p></td>

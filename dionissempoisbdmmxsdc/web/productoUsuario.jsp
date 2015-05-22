@@ -20,6 +20,7 @@
         <div id="divContent">
             <%
             Usuario user = (Usuario) session.getAttribute("usuario");
+            session.setAttribute("isAviso", false);
             List<Producto> listaProductos = ProductoDAO.todosProductos(Integer.parseInt(user.getIdUsuario()));        
             String fs = getServletContext().getContextPath();
             for (int i = 0; i < listaProductos.size(); i++) {
@@ -27,7 +28,7 @@
             %>
             <form method="post" action="Producto">
                 <div class="divProductoUsuario">
-                   
+                    <input type="hidden" name="numero" value="<%=i%>"/>
                     <div class="divImgPUsr">
                         <img class="imgProductoUsuario" src="ProductosImgs/<%=imagenFirst %>" >
                     </div>
@@ -37,13 +38,17 @@
                                 <td colspan="2" class="nombreProducto"><%=listaProductos.get(i).getNombreProducto()%></td>
                             </tr>
                             <tr>
+<<<<<<< HEAD
                                 <td>  <input type="hidden" name="numero" value="<%=i%>" />     </td><td><input type="Submit" value="Detalles"></td>
+=======
+                                <td><a>Editar</a></td><td><input type="Submit" value="Detalles"></td>
+>>>>>>> origin/master
                             </tr>
                         </table>
                     </div>
                 </div>
             </form>
-                             <%
+                <%
                     }
                 %>
         </div>    
