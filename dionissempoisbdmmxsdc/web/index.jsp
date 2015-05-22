@@ -11,11 +11,9 @@
 <%--<t:if test="${sessionScope['sessionEmail']!=null}">
     <% response.sendRedirect("home.jsp");%>
 </t:if>--%>
-
 <%-- 
           <%@include file="general.jsp" %>  <jsp:include page="AvisosIndex"/>    
 --%>
-
 <!DOCTYPE html>
     <html>
         <head>
@@ -32,11 +30,12 @@
                     for (int i = 0; i < listaAvisos.size(); i++) {
                     %>
                     <form method="post" id="form<%=i%>" action="AvisoProducto">
-                        <input type="hidden" name="numeroLista" value="<%=i%>  " />
+                        <input type="hidden" name="numeroLista" value="<%=i%>"/>
                         <input type="hidden" name="tipo" value="masReciente" />
                         <div class="contenido">
                             <div class="divImgProducto">
-                                <a href="javascript:;" onclick="document.getElementById('form'+<%=i%>+').submit()">
+                                 
+                                <a href="javascript:" onclick="document.getElementById('form'+<%=i%>).submit();">
                                     <img class="imgProducto" src="ProductosImgs/<%=listaAvisos.get(i).getPathImagen()%>"  />
                                 </a>
                             </div>
@@ -54,18 +53,17 @@
                     }
                 %>
                 </div>
-
                 <h3>Lo mas caro</h3>
                 <div class="masCaro">
                     <% List<Aviso> listaAvisoss = AvisoDAO.recientesAvisos();
                     for (int i = 0; i < listaAvisoss.size(); i++) {
                     %>
                     <form method="post" id="form<%=i%>" action="AvisoProducto">
-                        <input type="hidden" name="numeroLista" value="<%=i%>  " />
+                        <input type="hidden" name="numeroLista" value="<%=i%>" />
                         <input type="hidden" name="tipo" value="masCaro" />
                         <div class="contenido">
                             <div class="divImgProducto">
-                                <a href="javascript:;" onclick="document.getElementById('form+<%=i%>+').submit()">
+                                  <a href="javascript:" onclick="document.getElementById('form'+<%=i%>).submit();">
                                     <img class="imgProducto" src="ProductosImgs/<%=listaAvisoss.get(i).getPathImagen()%>"  />
                                 </a>
                             </div>

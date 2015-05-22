@@ -36,7 +36,7 @@ public class AvisoProducto extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(true);//no hay session
-        String numeroLista = request.getParameter("numeroLista");
+        String numeroLista = request.getParameter("numeroLista").trim();
         int i = Integer.parseInt(numeroLista);
         String tipo = request.getParameter("tipo");
          List<Aviso> listaAviso = null;
