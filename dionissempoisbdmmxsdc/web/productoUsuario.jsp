@@ -38,11 +38,8 @@
                                 <td colspan="2" class="nombreProducto"><%=listaProductos.get(i).getNombreProducto()%></td>
                             </tr>
                             <tr>
-<<<<<<< HEAD
                                 <td>  <input type="hidden" name="numero" value="<%=i%>" />     </td><td><input type="Submit" value="Detalles"></td>
-=======
-                                <td><a>Editar</a></td><td><input type="Submit" value="Detalles"></td>
->>>>>>> origin/master
+             
                             </tr>
                         </table>
                     </div>
