@@ -37,7 +37,7 @@
                                 <td colspan="2" class="nombreProducto"><%=listaProductos.get(i).getNombreProducto()%></td>
                             </tr>
                             <tr>
-                                <td>  <input type="text" name="numero" value="<%=i%>" />     </td><td><input type="Submit" value="Detalles"></td>
+                                <td>  <input type="hidden" name="numero" value="<%=i%>" />     </td><td><input type="Submit" value="Detalles"></td>
                             </tr>
                         </table>
                     </div>
