@@ -35,7 +35,7 @@ public class Producto extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        String numeroLista = request.getParameter("numeroLista");
+        String numeroLista = request.getParameter("numero");
         int i = Integer.parseInt(numeroLista);
          Usuario user = (Usuario) session.getAttribute("usuario");
             List<POJO.Producto> listaProductos = ProductoDAO.todosProductos(Integer.parseInt(user.getIdUsuario()));

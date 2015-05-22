@@ -27,7 +27,7 @@
             %>
             <form method="post" action="Producto">
                 <div class="divProductoUsuario">
-                    <input type="hidden" name="numeroLista" value="<%=1%>" />
+                   
                     <div class="divImgPUsr">
                         <img class="imgProductoUsuario" src="ProductosImgs/<%=imagenFirst %>" >
                     </div>
@@ -37,15 +37,15 @@
                                 <td colspan="2" class="nombreProducto"><%=listaProductos.get(i).getNombreProducto()%></td>
                             </tr>
                             <tr>
-                                <td>      </td><td><input type="Submit" value="Detalles"></td>
+                                <td>  <input type="text" name="numero" value="<%=i%>" />     </td><td><input type="Submit" value="Detalles"></td>
                             </tr>
                         </table>
                     </div>
                 </div>
-                <%
+            </form>
+                             <%
                     }
                 %>
-            </form>
         </div>    
          <jsp:include page ="general.jsp" flush="true" />
     </body>
