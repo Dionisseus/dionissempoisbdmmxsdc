@@ -27,17 +27,17 @@
             %>
             <form method="post" action="Producto">
                 <div class="divProductoUsuario">
-                    <input type="hidden" name="numeroLista" value="<%=i %>" />
+                    <input type="hidden" name="numeroLista" value="<%=1%>" />
                     <div class="divImgPUsr">
                         <img class="imgProductoUsuario" src="ProductosImgs/<%=imagenFirst %>" >
                     </div>
                     <div class="divContenido">
                         <table>
                             <tr>
-                                <td colspan="2" class="nombreProducto"><%=listaProductos.get(i).getNombreProducto()%>"</td>
+                                <td colspan="2" class="nombreProducto"><%=listaProductos.get(i).getNombreProducto()%></td>
                             </tr>
                             <tr>
-                                <td><a href="#">Editar</a></td><td><input type="Submit" value="Detalles"></td>
+                                <td>      </td><td><input type="Submit" value="Detalles"></td>
                             </tr>
                         </table>
                     </div>

@@ -48,21 +48,22 @@ public class ProductosUsuario extends HttpServlet {
             for (int i = 0; i < listaProductos.size(); i++) {
                 String imagenFirst = ImagenDAO.firstImagen(listaProductos.get(i).getIdProducto());
                 out.println("<form method=\"post\" action=\"Producto\">");
-                out.println("<div class=\"divProductoUsuario\">\n");
-                   out.println("<input type=\"hidden\" name=\"numeroLista\" value="+i+" />"+
+                  out.println("<input type=\"hidden\" name=\"numeroLista\" value="+i+" />");
+                out.println("<div class=\"divProductoUsuario\">\n"+
 "                <div class=\"divImgPUsr\">\n" +
 "                <img class=\"imgProductoUsuario\" src=\"ProductosImgs/"+imagenFirst+"\" >"+               
 "                </div>\n" +
 "                <div class=\"divContenido\">\n" +
 "                    <table>\n" +
 "                        <tr>\n" +
-"                            <td colspan=\"2\" class=\"nombreProducto\">"+listaProductos.get(i).getNombreProducto()+"</td>\n" +
+"                            <td colspan=\"2\" class=\"nombreProducto\">"+listaProductos.get(i).getNombreProducto()+"</td>" +
 "                        </tr>\n" +
 "                        <tr>\n" +
 "                            <td><a href=\"#\">Editar</a></td><td><input type=\"Submit\" value=\"Detalles\"></td>\n" +
 "                        </tr>\n" +
 "                    </table>\n" +
-"                </div>\n" +
+"                </div>"
+                           + "</div>\n" +
 "            </form>");
             }
             
