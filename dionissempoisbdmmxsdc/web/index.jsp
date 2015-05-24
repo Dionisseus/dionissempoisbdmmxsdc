@@ -56,7 +56,7 @@
                 </div>
                 <h3>Lo mas caro</h3>
                 <div class="masCaro">
-                    <% List<Aviso> listaAvisoss = AvisoDAO.recientesAvisos();
+                    <% List<Aviso> listaAvisoss = AvisoDAO.preciosAvisos();
                     for (int i = 0; i < listaAvisoss.size(); i++) {
                     %>
                     <form method="post" id="form<%=i%>" action="AvisoProducto">

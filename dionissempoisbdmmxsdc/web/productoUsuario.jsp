@@ -25,14 +25,16 @@
             String fs = getServletContext().getContextPath();
             for (int i = 0; i < listaProductos.size(); i++) {
                 String imagenFirst = ImagenDAO.firstImagen(listaProductos.get(i).getIdProducto());
+                if(listaProductos.get(i).isActivoProducto()==true){
             %>
-            <form method="post" action="Producto">
+           
                 <div class="divProductoUsuario">
-                    <input type="hidden" name="numero" value="<%=i%>"/>
                     <div class="divImgPUsr">
                         <img class="imgProductoUsuario" src="ProductosImgs/<%=imagenFirst %>" >
                     </div>
                     <div class="divContenido">
+                         <form method="post" action="Producto">
+                    <input type="hidden" name="numero" value="<%=i%>"/>
                         <table>
                             <tr>
                                 <td colspan="2" class="nombreProducto"><%=listaProductos.get(i).getNombreProducto()%></td>
@@ -42,11 +44,12 @@
              
                             </tr>
                         </table>
+                                 </form> <form method="post" action="EliminarAvisoProducto">   <input type="hidden" name="numeroLista" value="<%=listaProductos.get(i).getIdProducto()%>" /> <input type="Submit" value="Eliminar"></form> 
                     </div>
                 </div>
-            </form>
+           
                 <%
-                    }
+                    }}
                 %>
         </div>    
          <jsp:include page ="general.jsp" flush="true" />

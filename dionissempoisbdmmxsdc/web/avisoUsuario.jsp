@@ -41,28 +41,31 @@
                
                 for (int i = 0; i < listaProductos.size(); i++) {
                     String imagenFirst = listaProductos.get(i).getPathImagen();
-                   
+                   if(listaProductos.get(i).isActivoAviso()==true){
             %>
-            <form method="post" action="AvisoInter">
+           
                 <div class="divProductoUsuario">
-                    <input type="hidden" name="numeroLista" value="<%=i%>" />
+                    
                     <div class="divImgPUsr">
                         <img class="imgProductoUsuario" src="ProductosImgs/<%=imagenFirst%>" >
                         <div class="divContenido">
+                    <form method="post" action="AvisoInter">
+                    <input type="hidden" name="numeroLista" value="<%=i%>" />
                             <table>
                                 <tr>
                                     <td colspan="2" class="nombreProducto"><%=listaProductos.get(i).getNombreProducto()%></td>
                                 </tr>
                                 <tr>
-                                    <td><a href="#">Editar</a></td><td><input type="Submit" value="Eliminar"></td>
+                                    <td><input type="Submit" value="Ver"></td>
                                 </tr>
                             </table>
+                                 </form> <form method="post" action="EliminarAvisoProducto">   <input type="hidden" name="numeroLista" value="<%=listaProductos.get(i).getIdAviso()%>" /> <input type="Submit" value="Eliminar"></form> 
                         </div>
                     </div>
                 </div>
-            </form>
+           
             <% 
-                }
+                }}
             %>
         </div>
         <%@include file="general.jsp" %>

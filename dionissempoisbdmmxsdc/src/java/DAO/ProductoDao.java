@@ -79,7 +79,7 @@ public class ProductoDAO {
             if (rs.next()) {
                 Producto pro = new Producto(rs.getInt("idProducto"), rs.getString("nombreProducto"), rs.getString("descripcionProducto"),
                         rs.getFloat("precioProducto"), rs.getInt("existenciaProducto"), rs.getString("vigenciaProducto"),
-                        rs.getString("caracteristicaProducto"), rs.getString("fechaProducto"), rs.getString("horaProducto"),rs.getInt("idUsuarioProducto"), true);
+                        rs.getString("caracteristicaProducto"), rs.getString("fechaProducto"), rs.getString("horaProducto"),rs.getInt("idUsuarioProducto"), rs.getBoolean("activoProducto"));
                        
                 
                 return pro;
@@ -113,7 +113,7 @@ public class ProductoDAO {
             if (rs.next()) {
                 Producto pro = new Producto(rs.getInt("idProducto"), rs.getString("nombreProducto"), rs.getString("descripcionProducto"),
                         rs.getFloat("precioProducto"), rs.getInt("existenciaProducto"), rs.getString("vigenciaProducto"),
-                        rs.getString("caracteristicaProducto"), rs.getString("fechaProducto"), rs.getString("horaProducto"),rs.getInt("idUsuarioProducto"), true);
+                        rs.getString("caracteristicaProducto"), rs.getString("fechaProducto"), rs.getString("horaProducto"),rs.getInt("idUsuarioProducto"), rs.getBoolean("activoProducto"));
                        
                 
                 return pro;

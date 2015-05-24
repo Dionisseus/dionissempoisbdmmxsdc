@@ -68,6 +68,9 @@ public class Login extends HttpServlet{
                                session.setAttribute("sessionEmail", user.getEmailUsuario());
                               
                         session.setAttribute("usuario", user);
+                                if (user.isActivoUsuario()== false) {
+                                    session.invalidate();
+                                }
                                 url ="index.jsp"; 
                                 
                             } else {

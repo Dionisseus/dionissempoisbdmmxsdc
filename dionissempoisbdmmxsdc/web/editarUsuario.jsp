@@ -10,7 +10,20 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/editarUsuario.css" type="text/css" media="screen" />
+           <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <title>Edición de usuario</title>
+            <script>
+           
+            $(function () {
+                  $(".borrarUsuario").click(function () {       
+                    window.location.href = '/dionissempoisbdmmxsdc/BorrarUsuario';
+                });
+                  
+            });
+        </script>
     </head>
     <body>
         <div id="divContent">
@@ -50,6 +63,7 @@
             </fieldset><br>
             <input id="btnGuardar" type="submit" value="Guardar cambios"/>
             </form>
+            <input class="borrarUsuario" id="btnGuardar" type="button" value="Borrar Usuario"/>
         </div>
         <%@include file="general.jsp" %>
     </body>

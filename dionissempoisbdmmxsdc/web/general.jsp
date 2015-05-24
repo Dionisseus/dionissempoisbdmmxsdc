@@ -32,6 +32,7 @@
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script>
+           
             $(function () {
                 $(".shadow").toggle();
                 $(".toggle").click(function () {
@@ -44,6 +45,10 @@
                 $(".buttonEditUser").click(function () {
                     window.location.href = '/dionissempoisbdmmxsdc/perfilUsuario.jsp';
                 });
+                  $(".cerrarSesion").click(function () {       
+                    window.location.href = '/dionissempoisbdmmxsdc/DestroySession';
+                });
+                  
             });
         </script>
     </head>

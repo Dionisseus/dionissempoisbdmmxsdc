@@ -54,7 +54,7 @@ public class AvisoDAO {
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
           try {
-            cs = conn.prepareCall("{ call producto_baja(?) }");
+            cs = conn.prepareCall("{ call aviso_baja(?) }");
             cs.setInt(1,id);
             cs.execute();
             
@@ -84,7 +84,7 @@ public class AvisoDAO {
               while (rs.next()) {
                     Aviso aviso = new Aviso(rs.getString("pathImagen"), rs.getString("nicknameUsuario"), rs.getString("nombreProducto"), rs.getInt("idAviso"), rs.getInt("cantidadAviso"), rs.getInt("precioAviso"),
                           rs.getString("descripcionCortaAviso"), rs.getString("descripcionAviso"), rs.getString("vigenciaAviso"), rs.getString("fechaAviso"), rs.getString("horaAviso"),
-                         rs.getInt("idSubCategoriaAviso"), rs.getInt("idProductoAviso"), true);
+                         rs.getInt("idSubCategoriaAviso"), rs.getInt("idProductoAviso"), rs.getBoolean("activoAviso"));
                   Listaaviso.add(aviso);
               }
               return Listaaviso;
@@ -111,7 +111,7 @@ public class AvisoDAO {
               while (rs.next()) {
                   Aviso aviso = new Aviso(rs.getString("pathImagen"), rs.getString("nicknameUsuario"), rs.getString("nombreProducto"), rs.getInt("idAviso"), rs.getInt("cantidadAviso"), rs.getInt("precioAviso"),
                           rs.getString("descripcionCortaAviso"), rs.getString("descripcionAviso"), rs.getString("vigenciaAviso"), rs.getString("fechaAviso"), rs.getString("horaAviso"),
-                         rs.getInt("idSubCategoriaAviso"), rs.getInt("idProductoAviso"), true);
+                         rs.getInt("idSubCategoriaAviso"), rs.getInt("idProductoAviso"), rs.getBoolean("activoAviso"));
                   Listaaviso.add(aviso);
               }
             return Listaaviso;
@@ -137,7 +137,7 @@ public class AvisoDAO {
               while (rs.next()) {
                   Aviso aviso = new Aviso(rs.getString("pathImagen"), rs.getString("nicknameUsuario"), rs.getString("nombreProducto"), rs.getInt("idAviso"), rs.getInt("cantidadAviso"), rs.getInt("precioAviso"),
                           rs.getString("descripcionCortaAviso"), rs.getString("descripcionAviso"), rs.getString("vigenciaAviso"), rs.getString("fechaAviso"), rs.getString("horaAviso"),
-                         rs.getInt("idSubCategoriaAviso"), rs.getInt("idProductoAviso"), true);
+                         rs.getInt("idSubCategoriaAviso"), rs.getInt("idProductoAviso"), rs.getBoolean("activoAviso"));
                   Listaaviso.add(aviso);
               }
             return Listaaviso;
