@@ -7,9 +7,11 @@ package SERVLET;
 
 import DAO.ImagenDAO;
 import DAO.ProductoDAO;
+import DAO.VideoDAO;
 import POJO.Imagen;
 import POJO.Producto;
 import POJO.Usuario;
+import POJO.Video;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -62,7 +64,7 @@ public class ProductoServ extends HttpServlet {
         if (!fdir.exists()) {
             fdir.mkdir();
         }
-          String file="",file1="",file2="";
+          String file="",file1="",file2="",file3="",file4="";
           if (!sFoto.getSubmittedFileName().equals("")){
        is = sFoto.getInputStream();
          file = (sFoto.getSubmittedFileName());
@@ -80,6 +82,22 @@ public class ProductoServ extends HttpServlet {
           file2 = (sFoto2.getSubmittedFileName());
          out = new FileOutputStream(path+file2);
         IOUtils.copy(is, out);}
+        
+        //Video
+        Part sVideo = request.getPart("sVideo");
+        if (!sVideo.getSubmittedFileName().equals("")){
+          is = sVideo.getInputStream();
+          file3 = (sVideo.getSubmittedFileName());
+         out = new FileOutputStream(path+file3);
+        IOUtils.copy(is, out);}
+        
+         Part sVideo1 = request.getPart("sVideo1");
+        if (!sVideo1.getSubmittedFileName().equals("")){
+          is = sVideo1.getInputStream();
+          file4 = (sVideo1.getSubmittedFileName());
+         out = new FileOutputStream(path+file4);
+        IOUtils.copy(is, out);}
+        ///
         Usuario user = (Usuario) respuesta.getAttribute("usuario");
    
 
@@ -103,7 +121,14 @@ public class ProductoServ extends HttpServlet {
                   if (!sFoto2.getSubmittedFileName().equals("")){
                    Imagen imagen = new Imagen( file2, pro.getIdProducto(), true);
                 ImagenDAO.insertar(imagen);}
-               
+                  //Video
+                  if (!sVideo.getSubmittedFileName().equals("")){
+                   Video vid = new Video( file3, pro.getIdProducto(), true);
+                VideoDAO.insertar(vid);}
+                  if (!sVideo1.getSubmittedFileName().equals("")){
+                   Video vid = new Video( file4, pro.getIdProducto(), true);
+                VideoDAO.insertar(vid);}
+               //VIdeo
               
                 
                 response.sendRedirect("index.jsp");

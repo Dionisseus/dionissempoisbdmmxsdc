@@ -19,30 +19,36 @@
                       $(this).datepicker();
                     });
                     
-                    var imagen1 = $("#sFoto").val();
-                    var imagen2 = $("#sFoto1").val();
-                    var imagen3 = $("#sFoto2").val();
-                    var video1 = $('#sVideo').val();
-                    var video2 = $('#sVideo1').val();
+                
+                  
                     
                     function validarFotos(){
-                        if(imagen1 == '' || imagen2== '' || imagen3 == ''){
+                            var imagen1 = $("#sFoto").val();
+                    var imagen2 = $("#sFoto1").val();
+                    var imagen3 = $("#sFoto2").val();
+                        if(imagen1 == "" || imagen2== "" || imagen3 == ""){
                             alert("Necesita agregar 3 fotografias");
+                            return false;
                         }    
+                        return true;
                        
                     };
                     
                     function validarVideos(){
-                        if(video1 == '' || video2 == '' ){
+                          var video1 = $('#sVideo').val();
+                    var video2 = $('#sVideo1').val();
+                        if(video1 == "" || video2 == "" ){
                             alert("Necesita agregar 2 videos");
+                            return false;
                         }
+                        return true;
                         
                     };
                                         
                     $('#btnGuardar').click(function (){
-                        validarVideos();
-                        validarFotos();
-                        return false;
+                       if(validarVideos()== false ||  validarFotos()==false    ) 
+                       {return false;}else{
+                        return true;}
                     });                  
                     
                 });

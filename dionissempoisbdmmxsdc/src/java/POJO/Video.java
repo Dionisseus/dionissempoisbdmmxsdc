@@ -21,6 +21,13 @@ public class Video {
         this.idProductoVideo = idProductoVideo;
         this.activoVideo = activoVideo;
     }
+    
+     public Video( String pathVideo, int idProductoVideo, boolean activoVideo) {
+       
+        this.pathVideo = pathVideo;
+        this.idProductoVideo = idProductoVideo;
+        this.activoVideo = activoVideo;
+    }
 
     public int getIdVideo() {
         return idVideo;

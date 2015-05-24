@@ -30,6 +30,7 @@
                     for (int i = 0; i < listaAvisos.size(); i++) {
                     %>
                     <form method="post" id="form<%=i%>" action="AvisoProducto">
+                       
                         <input type="hidden" name="numeroLista" value="<%=i%>"/>
                         <input type="hidden" name="tipo" value="masReciente" />
                         <div class="contenido">

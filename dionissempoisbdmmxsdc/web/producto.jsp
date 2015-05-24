@@ -4,6 +4,8 @@
     Author     : Asus
 --%>
 
+<%@page import="POJO.Video"%>
+<%@page import="DAO.VideoDAO"%>
 <%@page import="POJO.Subcategoria"%>
 <%@page import="DAO.SubcategoriaDAO"%>
 <%@page import="DAO.CategoriaDAO"%>
@@ -98,6 +100,13 @@
                     <li><img src="ProductosImgs/<%=listaImagen.get(i).getPathImagen()%>"/></li>
                         <%
                             }
+                        List<Video> listaVideo = VideoDAO.TodosVideos(pro.getIdProducto());
+                        for (int j =0; j<listaVideo.size(); j++){
+                        %>
+                  
+                    <li><EMBED loop="1" width="100%" height="100%" autostart="true" src="ProductosImgs/<%=listaVideo.get(j).getPathVideo()%>"></EMBED></li>
+                    <%
+                        }
                         %>
 
                 </ul>  
