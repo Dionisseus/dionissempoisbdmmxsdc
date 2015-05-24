@@ -4,6 +4,7 @@
     Author     : Asus
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="DAO.AvisoDAO"%>
 <%@page import="POJO.Aviso"%>
 <%@page import="java.util.List"%>
@@ -22,10 +23,25 @@
             <%
                 Usuario user = (Usuario) session.getAttribute("usuario");
                 session.setAttribute("isAviso", true);
-                List<POJO.Aviso> listaProductos = AvisoDAO.misAvisos(Integer.parseInt(user.getIdUsuario())); 
-                String fs = getServletContext().getContextPath();
+                List<POJO.Aviso> listaProductos = new  ArrayList<POJO.Aviso>();
+                if(user != null){
+                listaProductos = AvisoDAO.misAvisos(Integer.parseInt(user.getIdUsuario())); }
+                String busqueda;
+                try{
+                 busqueda = session.getAttribute("esBusquedaCat").toString();
+                   if(busqueda.equals("cat")){
+                 listaProductos = AvisoDAO.avisosSubCategoria(Integer.parseInt(session.getAttribute("idSubcategoria").toString().trim()));
+             
+                }
+                     if(busqueda.equals("busqueda")){
+                listaProductos = (List<POJO.Aviso>)session.getAttribute("busquedaLista");
+                }
+                }catch(Exception ex){ ex.toString();}
+                  session.removeAttribute("esBusquedaCat");
+               
                 for (int i = 0; i < listaProductos.size(); i++) {
                     String imagenFirst = listaProductos.get(i).getPathImagen();
+                   
             %>
             <form method="post" action="AvisoInter">
                 <div class="divProductoUsuario">

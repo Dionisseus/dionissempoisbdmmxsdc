@@ -66,28 +66,28 @@ public class AvisoDAO {
         }
     }
       
-       public static String busqueda(String texto, String fechaUnica, String nick,String fechaOrigen,String fechaFinal, String precioOrigen,String precioFinal) {
+       public static List<Aviso> busqueda(String texto, String nick,String fechaOrigen,String fechaFinal) {
        ConnectionPool pool = ConnectionPool.getInstance();
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
         ResultSet rs = null;
+        
           try {
-            cs = conn.prepareCall("{ call avido_busqueda(?,?,?,?,?,?,?) }");
+            cs = conn.prepareCall("{ call aviso_busqueda(?,?,?,?) }");
             cs.setString(1, texto);
-            cs.setString(2, fechaUnica);
-            cs.setString(3, nick);
-            cs.setString(4, fechaOrigen);
-            cs.setString(5, fechaFinal);
-            cs.setString(6, precioOrigen);
-            cs.setString(7, precioFinal);
+            cs.setString(2, nick);
+            cs.setString(3, fechaOrigen);
+            cs.setString(4, fechaFinal);
             rs = cs.executeQuery();
             
-            String res ="";
-            
+              List <Aviso> Listaaviso = new ArrayList<Aviso>();
               while (rs.next()) {
-                    res+=rs.getString("nombreProducto");
+                    Aviso aviso = new Aviso(rs.getString("pathImagen"), rs.getString("nicknameUsuario"), rs.getString("nombreProducto"), rs.getInt("idAviso"), rs.getInt("cantidadAviso"), rs.getInt("precioAviso"),
+                          rs.getString("descripcionCortaAviso"), rs.getString("descripcionAviso"), rs.getString("vigenciaAviso"), rs.getString("fechaAviso"), rs.getString("horaAviso"),
+                         rs.getInt("idSubCategoriaAviso"), rs.getInt("idProductoAviso"), true);
+                  Listaaviso.add(aviso);
               }
-              return res;
+              return Listaaviso;
             
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -95,7 +95,7 @@ public class AvisoDAO {
             DBUtil.closeStatement(cs);
             pool.freeConnection(conn);
         }
-       return "";
+       return null;
        }
        
            public static List<Aviso> recientesAvisos() {
@@ -149,6 +149,7 @@ public class AvisoDAO {
         }
           return null;
     }
+           
         public static List<Aviso> misAvisos(int idUsuario) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection conn = pool.getConnection();
@@ -188,6 +189,49 @@ public class AvisoDAO {
             pool.freeConnection(conn);
         }
     }
+     
+         public static List<Aviso> avisosSubCategoria(int idSubcategoria) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection conn = pool.getConnection();
+        CallableStatement cs = null;
+        ResultSet rs = null;
+        try {
+            cs = conn.prepareCall("{ call avisosSubCategoria(?) }");
+            cs.setInt(1, idSubcategoria);
+            rs = cs.executeQuery();
+            List<Aviso> prodLista = new ArrayList<Aviso>();
+            while (rs.next()) {
+                Aviso user = new Aviso(
+                        rs.getString("pathImagen"),
+                        rs.getString("nicknameUsuario"),
+                        rs.getString("nombreProducto"),
+                        rs.getInt("idAviso"),
+                        rs.getInt("cantidadAviso"), 
+                        rs.getInt("precioAviso"), 
+                        rs.getString("descripcionCortaAviso"), 
+                        rs.getString("descripcionAviso"),
+                        rs.getString("vigenciaAviso"),
+                        rs.getString("fechaAviso"),
+                        rs.getString("horaAviso"),
+                        rs.getInt("idSubcategoriaAviso"),
+                        rs.getInt("idProductoAviso"),
+                        rs.getBoolean("activoAviso")
+                );      
+                prodLista.add(user);
+            }
+            return prodLista;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closeStatement(cs);
+            pool.freeConnection(conn);
+        }
+    }
+        
+        
+        
        //  detalleaviso      subcategoriaavisos  todasimagenesaviso  todaspreguntasaviso
     
 }

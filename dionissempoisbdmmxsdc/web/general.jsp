@@ -52,30 +52,26 @@
             <nav>
                 <div id="divHeader">
                     <a href="index.jsp"><img id="imgHome" src="imagenes/home_w.png" /></a>
-                    <div class="dBuscar"><input type="text" id="txtBuscar" /><button id="botonBus"></button></div>
+                     <form method="post" action="AvisosIndex" >
+                         <div class="dBuscar"><input type="text" name="texto" id="txtBuscar" /><input id="botonBus" type="Submit" value=""></div>
                     <div class="menu-wrapF">
                         <nav class="menuF">
                             <ul class="clearfixF">
                                 <li>
                                     <a href="#" class="filtrar">Filtrar búsqueda<span class="arrow">&#9660;</span></a>
                                     <ul class="sub-menuF">
-                                        <li><input type="checkbox" class="busqueda"/>Fecha: Entre <input type="text" class="datepicker" readonly/> y <input type="text" class="datepicker" readonly/></li>
+                                        <li>Fecha: Entre <input type="text" name="fechaOrigen" class="datepicker" readonly/> y <input name="fechaFin" type="text" class="datepicker" readonly/></li>
                                         <li>
-                                            <input type="checkbox" class="busqueda"/>Usuario 
-                                            <select>
-                                                <option></option>
-                                                <option>Usuario1</option>
-                                                <option>Usuario2</option>
-                                                <option>Usuario3</option>
-                                            </select>
+                                           Usuario <input type="text" name="usuarioFiltro" class="busqueda"/> 
+                                           
                                         </li>
-                                        <li><input type="checkbox" class="busqueda"/>Subcategoria 3</li>
-                                        <li><input type="checkbox" class="busqueda"/>Subcategoria 4</li>
+                                       
                                     </ul>
                                 </li>
                             </ul>
                         </nav>
                     </div>
+                </form>
                     <ul class="nav">
                         <li>
                             <t:if test="${sessionScope['sessionNombre']!=null}">

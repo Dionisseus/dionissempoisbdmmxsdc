@@ -51,11 +51,11 @@ public class Categoria extends HttpServlet {
                         + "                            <ul class=\"sub-menu\">\n");
                 List<POJO.Subcategoria> listaSubcategoria = SubcategoriaDAO.lista(listaCategoria.get(i).getIdCategoria());
                 for (int j = 0; j < listaSubcategoria.size(); j++) {
-                         out.println("<form method=\"post\" id=\"Form"+i+"\" action=\"categoriaAvisos.jsp\">");
-                         out.println("<input type=\"hidden\" name=\"subCategoria\" value="+listaSubcategoria.get(j).getNombreSubcategoria()+" readonly/>");
-                    out.println("                                <li <a href=\"javascript:;\" onclick=\"document.getElementById('Form"+i+"').submit();\">"+listaSubcategoria.get(j).getNombreSubcategoria()+"</li>\n");
+                         out.println("<form method=\"post\" id=\"Form"+j+"\" action=\"AvisosIndex\">");
+                         out.println("<input type=\"hidden\" name=\"subCategoria\" value="+listaSubcategoria.get(j).getIdSubcategoria()+" readonly/>");
+                    out.println("                                <li <a href=\"javascript:;\" onclick=\"document.getElementById('Form"+j+"').submit();\">"+listaSubcategoria.get(j).getNombreSubcategoria()+"</li>\n </form>   ");
                 }
-                out.println("           </form>                 </ul>\n"
+                out.println("                        </ul>\n"
                         + "                        </li>\n");
             }
             out.println("                    </ul>\n"
