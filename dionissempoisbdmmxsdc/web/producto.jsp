@@ -148,7 +148,13 @@
 
                             </td>
                         </tr>
-
+                        <% if (session.getAttribute("isAviso").toString().equals("true")) { %>
+                        <tr>
+                            <td><input type="button" id="btnComprar" value="Comprar"></td>
+                        </tr>
+                        <%
+                            }
+                        %>
                     </table>
                 </form>
             </div>

@@ -33,6 +33,15 @@ p{
     width: 50px;
 }
 
+#btnComprar{
+    width: 80px;
+    height: 30px;
+    background-color: #0350C3;
+    font-size: 14px;
+    color: whitesmoke;
+    border-color: #0350C3;
+}
+
 #slider {
   position: absolute;
   overflow: hidden;
