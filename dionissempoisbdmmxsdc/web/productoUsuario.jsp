@@ -33,7 +33,7 @@
                         <img class="imgProductoUsuario" src="ProductosImgs/<%=imagenFirst %>" >
                     </div>
                     <div class="divContenido">
-                         <form method="post" action="Producto">
+                        <form method="post" action="Producto">
                     <input type="hidden" name="numero" value="<%=i%>"/>
                         <table>
                             <tr>
@@ -44,7 +44,10 @@
              
                             </tr>
                         </table>
-                                 </form> <form method="post" action="EliminarAvisoProducto">   <input type="hidden" name="numeroLista" value="<%=listaProductos.get(i).getIdProducto()%>" /> <input type="Submit" value="Eliminar"></form> 
+                        </form> 
+                        <form method="post" action="EliminarAvisoProducto">   
+                            <input type="hidden" name="numeroLista" value="<%=listaProductos.get(i).getIdProducto()%>" /> <input type="Submit" value="Eliminar">
+                        </form> 
                     </div>
                 </div>
            
