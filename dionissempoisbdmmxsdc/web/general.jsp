@@ -65,10 +65,9 @@
                                 <li>
                                     <a href="#" class="filtrar">Filtrar búsqueda<span class="arrow">&#9660;</span></a>
                                     <ul class="sub-menuF">
-                                        <li>Fecha: Entre <input type="text" name="fechaOrigen" class="datepicker" readonly/> y <input name="fechaFin" type="text" class="datepicker" readonly/></li>
+                                        <li>Fecha: Entre <input type="text" name="fechaOrigen" class="datepicker" id="fechaOrigen" readonly/> y <input name="fechaFin" id="fechaDestino" type="text" class="datepicker" readonly/></li>
                                         <li>
                                            Usuario <input type="text" name="usuarioFiltro" class="busqueda"/> 
-                                           
                                         </li>
                                        
                                     </ul>
