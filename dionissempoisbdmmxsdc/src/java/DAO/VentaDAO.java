@@ -35,5 +35,5 @@ public class VentaDAO {
             DBUtil.closeStatement(cs);
             pool.freeConnection(conn);
         }
-    }
+}
 }
