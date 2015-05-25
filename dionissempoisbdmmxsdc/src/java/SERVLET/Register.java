@@ -96,6 +96,7 @@ public class Register extends HttpServlet {
             }
         }
           respuesta.setAttribute("correo", emailUsuario);
+           respuesta.setAttribute("pass", passwordUsuario);
           String resp =respuesta.getAttribute("error").toString();
           if (resp.equals("")) {
             ServletContext sc = getServletContext();
