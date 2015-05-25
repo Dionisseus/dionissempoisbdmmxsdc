@@ -7,12 +7,14 @@ package DAO;
 
 import POJO.Usuario;
 import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.sql.rowset.serial.SerialBlob;
 import xClasses.DBUtil;
 
 /**
@@ -33,7 +35,8 @@ public class UsuarioDAO {
             cs.setString(4, user.getNombreUsuario());
             cs.setString(5, user.getApellidoUsuario());
             cs.setInt(6, user.getTelefonoUsuario());
-            cs.setBlob(7, user.getAvatarUsuario());
+             byte[] imgData = new byte [100];
+            cs.setBlob(7,((Blob)new SerialBlob(imgData)));
             cs.setBoolean(8, user.isConfirmadoUsuario());
             cs.setBoolean(9, user.isActivoUsuario());
             cs.execute();

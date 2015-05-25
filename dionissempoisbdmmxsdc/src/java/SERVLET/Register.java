@@ -70,7 +70,7 @@ public class Register extends HttpServlet {
                         try {
                            
                             if (!UsuarioDAO.exists(emailUsuario, passwordUsuario)) {
-                              InputStream bytes = new InputStream() {
+                             InputStream bytes = new InputStream() {
 
                                   @Override
                                   public int read() throws IOException {

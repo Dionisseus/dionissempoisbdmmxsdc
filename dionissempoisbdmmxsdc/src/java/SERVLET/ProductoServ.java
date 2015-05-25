@@ -175,7 +175,7 @@ public class ProductoServ extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 public static String getCurrentTimeStamp() {
-    SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    SimpleDateFormat sdfDate = new SimpleDateFormat("MM-dd-YYYY HH:mm:ss");
     String strDate = sdfDate.format(new Date());
     return strDate;
 }
