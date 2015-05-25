@@ -133,7 +133,7 @@
                                     <%   List<POJO.MetodoPago> listaMetodo = MetodoPagoDAO.lista();
                                         for (int i = 0; i < listaMetodo.size(); i++) {
                                     %>
-                                    <option value="<%=listaMetodo.get(i).getIdMetodoPago()%>"><%=listaMetodo.get(i).getNombreMetodoPago().toUpperCase()%></option>
+                                    <option value="<%=listaMetodo.get(i).getIdMetodoPago()%>" ><%=listaMetodo.get(i).getNombreMetodoPago().toUpperCase()%></option>
                                     <%
                                         }
                                     %>

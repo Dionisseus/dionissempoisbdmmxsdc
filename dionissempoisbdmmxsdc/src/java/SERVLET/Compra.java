@@ -38,13 +38,13 @@ public class Compra extends HttpServlet {
             throws ServletException, IOException {
                 HttpSession respuesta = request.getSession(true);
         String url = "index.jsp";
-        String metodo = request.getParameter("opcion");
+        String metodo = request.getParameter("metodo");
         String idUsuario = request.getParameter("idUsuario");
         String idAviso = request.getParameter("idAviso");
         int cantidad = 1;
        
         try{
-            Venta venta = new Venta(true,cantidad,Integer.parseInt(idAviso), Integer.parseInt(idUsuario), 1); 
+            Venta venta = new Venta(true,cantidad,Integer.parseInt(idAviso), Integer.parseInt(idUsuario),Integer.parseInt(metodo)); 
             VentaDAO.altaVenta(venta);
         response.sendRedirect(url); 
         }catch (Exception e) {
