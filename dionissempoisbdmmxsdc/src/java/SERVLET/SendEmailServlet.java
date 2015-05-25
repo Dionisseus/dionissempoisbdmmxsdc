@@ -53,6 +53,7 @@ public class SendEmailServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String email = request.getParameter("email");
+        String passs = request.getParameter("pass");
         String result = "Email enviado correctamente.";
         try {
             String verificationCode = UUID.randomUUID().toString();
@@ -61,7 +62,8 @@ public class SendEmailServlet extends HttpServlet {
             // en la propia maquina. Si se instalara la aplicacion en un servidor web
             // se debe de cambiar por el dominio o la ip del servidor.
             String message = "<html><body>";
-            message += "Bienvenido al Mercado thedamnedsobs. Esperamos que tengas una experiencia grata.<br/>";
+            message += "Bienvenido al Mercado thedamnedsobs. Esperamos que tengas una experiencia grata.<br/> Te recordamos que tu contraseña es ";
+             message += passs;
             message += "</body></html>";
             EmailUtility.sendEmail(host, port, user, pass, email, 
                     "Bienvenido!!!", message);

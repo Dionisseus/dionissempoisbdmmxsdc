@@ -3,6 +3,7 @@
     Created on : Apr 4, 2015, 11:33:54 AM
     Author     : Diosio
 --%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="DAO.AvisoDAO"%>
 <%@page import="POJO.Aviso"%>
 <%@page import="java.util.List"%>
@@ -30,7 +31,6 @@
                     for (int i = 0; i < listaAvisos.size(); i++) {
                     %>
                     <form method="post" id="form<%=i%>" action="AvisoProducto">
-                       
                         <input type="hidden" name="numeroLista" value="<%=i%>"/>
                         <input type="hidden" name="tipo" value="masReciente" />
                         <div class="contenido">
@@ -54,17 +54,19 @@
                     }
                 %>
                 </div>
-                <h3>Lo mas caro</h3>
+                
+               
+                 <h3>Lo mas caro</h3>
                 <div class="masCaro">
                     <% List<Aviso> listaAvisoss = AvisoDAO.preciosAvisos();
                     for (int i = 0; i < listaAvisoss.size(); i++) {
                     %>
-                    <form method="post" id="form<%=i%>" action="AvisoProducto">
+                    <form method="post" id="formx<%=i%>" action="AvisoProducto">
                         <input type="hidden" name="numeroLista" value="<%=i%>" />
                         <input type="hidden" name="tipo" value="masCaro" />
                         <div class="contenido">
                             <div class="divImgProducto">
-                                  <a href="javascript:" onclick="document.getElementById('form'+<%=i%>).submit();">
+                                  <a href="javascript:" onclick="document.getElementById('formx'+<%=i%>).submit();">
                                     <img class="imgProducto" src="ProductosImgs/<%=listaAvisoss.get(i).getPathImagen()%>"  />
                                 </a>
                             </div>
@@ -82,7 +84,38 @@
                     }
                 %>
                 </div>
-            </div>
+                
+                  <h3>Lo mas vendido</h3>
+                <div class="masVendidos">
+                    <% List<Aviso> listaAvisosss =  AvisoDAO.vendidosAvisos();
+                    for (int i = 0; i < listaAvisosss.size(); i++) {
+                    %>
+                    <form method="post" id="formxx<%=i%>" action="AvisoProducto">
+                        <input type="hidden" name="numeroLista" value="<%=i%>" />
+                        <input type="hidden" name="tipo" value="masCaro" />
+                        <div class="contenido">
+                            <div class="divImgProducto">
+                                  <a href="javascript:" onclick="document.getElementById('formxx'+<%=i%>).submit();">
+                                    <img class="imgProducto" src="ProductosImgs/<%=listaAvisosss.get(i).getPathImagen()%>"  />
+                                </a>
+                            </div>
+                            <div class="infoProducto">
+                                <%=listaAvisosss.get(i).getNombreProducto() %> <br>
+                                <%= "$"+listaAvisosss.get(i).getPrecioAviso()%> <br>
+                                <%=listaAvisosss.get(i).getNicknameUsuario() %> <br>
+                                <%=listaAvisosss.get(i).getFechaAviso()%> <br>
+                            </div>
+                        </div>
+                    </form>
+                <% if(i== 3){
+                    break;
+                        }
+                    }
+                %>
+                </div>
+                
+                
+               </div>
             <%@include file="general.jsp" %>
         </body>
     </html>

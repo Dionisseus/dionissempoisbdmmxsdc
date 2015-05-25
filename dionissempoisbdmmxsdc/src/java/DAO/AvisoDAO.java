@@ -124,6 +124,32 @@ public class AvisoDAO {
           return null;
     }
            
+                     public static List<Aviso> vendidosAvisos() {
+       ConnectionPool pool = ConnectionPool.getInstance();
+        Connection conn = pool.getConnection();
+        CallableStatement cs = null;
+               ResultSet rs = null;
+          try {
+            cs = conn.prepareCall("{ call vendidosAvisos() }");
+           
+           rs = cs.executeQuery();
+              List <Aviso> Listaaviso = new ArrayList<Aviso>();
+              while (rs.next()) {
+                  Aviso aviso = new Aviso(rs.getString("pathImagen"), rs.getString("nicknameUsuario"), rs.getString("nombreProducto"), rs.getInt("idAviso"), rs.getInt("cantidadAviso"), rs.getInt("precioAviso"),
+                          rs.getString("descripcionCortaAviso"), rs.getString("descripcionAviso"), rs.getString("vigenciaAviso"), rs.getString("fechaAviso"), rs.getString("horaAviso"),
+                         rs.getInt("idSubCategoriaAviso"), rs.getInt("idProductoAviso"), rs.getBoolean("activoAviso"));
+                  Listaaviso.add(aviso);
+              }
+            return Listaaviso;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            DBUtil.closeStatement(cs);
+            pool.freeConnection(conn);
+        }
+          return null;
+    }
+           
            public static List<Aviso> preciosAvisos() {
        ConnectionPool pool = ConnectionPool.getInstance();
         Connection conn = pool.getConnection();
