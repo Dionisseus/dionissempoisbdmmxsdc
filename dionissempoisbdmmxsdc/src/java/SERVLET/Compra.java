@@ -6,11 +6,11 @@
 package SERVLET;
 
 
+import DAO.AvisoDAO;
 import DAO.VentaDAO;
+import POJO.Aviso;
 import POJO.Venta;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,14 +41,18 @@ public class Compra extends HttpServlet {
         String metodo = request.getParameter("opcion");
         String idUsuario = request.getParameter("idUsuario");
         String idAviso = request.getParameter("idAviso");
-        int cantidad = 1;
+        Aviso aviso = AvisoDAO.miAviso(Integer.parseInt(idAviso.trim()));
        
+        int cantidad = 1;
+        aviso.setCantidadAviso(aviso.getCantidadAviso()-cantidad);
+       AvisoDAO.actualizar(aviso);
         try{
             Venta venta = new Venta(true,cantidad,Integer.parseInt(idAviso), Integer.parseInt(idUsuario), 1); 
             VentaDAO.altaVenta(venta);
         response.sendRedirect(url); 
         }catch (Exception e) {
             e.toString();
+            response.sendRedirect(url); 
         }             
     }
 
