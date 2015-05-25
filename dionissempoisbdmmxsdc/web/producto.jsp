@@ -157,28 +157,29 @@
                         <tr>
                             <td colspan="2">Vigencia: <input name="vigencia" id="txtVigencia" value="<%= pro.getVigenciaProducto()%>" type="text" class="datepicker txtSubir" readonly/></td>
                                 <% if (session.getAttribute("isAviso").toString().equals("false")) { %>
-                            <td><input id="publicar" type="Submit" value="Publicar Aviso"/>   </td>
+                            <td><input class="inp" type="Submit" value="Publicar Aviso"/>   </td>
                                 <%}%>
                         </tr>
                         <tr>                         
-                            <% if (session.getAttribute("isAviso").toString().equals("false")) { %>
-                            <td colspan="2">Categoria: 
-                            <select name="Categoria">
-                                <%   List<POJO.Categoria> listaCategoria = CategoriaDAO.lista();
-                                    for (int i = 0; i < listaCategoria.size(); i++) {
-                                %>
-                                <option disabled style="background-color: aqua" value="<%=listaCategoria.get(i).getIdCategoria()%>" selected><%=listaCategoria.get(i).getNombreCategoria().toUpperCase()%></option>
-                                <%
-                                    List<Subcategoria> listaSubCategoria = SubcategoriaDAO.lista(listaCategoria.get(i).getIdCategoria());
-                                    for (int x = 0; x < listaSubCategoria.size(); x++) {
-                                %>
-                                <option value="<%=listaSubCategoria.get(x).getIdSubcategoria()%>" selected><%=listaSubCategoria.get(x).getNombreSubcategoria()%></option>
-                                <%
+                                <% if (session.getAttribute("isAviso").toString().equals("false")) { %>
+                                  <td colspan="2">Categoria: 
+                                <select name="Categoria">
+                                    <%   List<POJO.Categoria> listaCategoria = CategoriaDAO.lista();
+                                        for (int i = 0; i < listaCategoria.size(); i++) {
+                                    %>
+                                    <option disabled style="background-color: aqua" value="<%=listaCategoria.get(i).getIdCategoria()%>" selected><%=listaCategoria.get(i).getNombreCategoria().toUpperCase()%></option>
+                                    <%
+                                        List<Subcategoria> listaSubCategoria = SubcategoriaDAO.lista(listaCategoria.get(i).getIdCategoria());
+                                        for (int x = 0; x < listaSubCategoria.size(); x++) {
+                                    %>
+                                    <option value="<%=listaSubCategoria.get(x).getIdSubcategoria()%>" selected><%=listaSubCategoria.get(x).getNombreSubcategoria()%></option>
+                                    <%
+                                            }
                                         }
-                                    }
-                                %>
-                            </select>
-                            <%}%>
+                                    %>
+                                </select>
+                                <%}%>
+
                             </td>
                         </tr>
                         <% if (session.getAttribute("isAviso").toString().equals("true")) { %>
@@ -221,12 +222,14 @@
                     <%
                         }
                     %>
-                <% try{
-                   if (session.getAttribute("isAviso").toString().equals("true")){                    
-                    List<POJO.Pregunta> listaPreguntas = PreguntasDAO.preguntasAviso(listaId.get(0).getIdAviso());                    
+                <p class="pregunta">
+                   <% try{
+                   if (session.getAttribute("isAviso").toString().equals("true")){
+                    
+                    List<POJO.Pregunta> listaPreguntas = PreguntasDAO.preguntasAviso(Integer.parseInt(user.getIdUsuario()));
+                    
                     for(int i=0; i<listaPreguntas.size();i++){ 
                    %>
-                <p class="pregunta">                   
                    <%= listaPreguntas.get(i).getDescripcionPregunta() %>
                 </p>
                 <ul class="respuesta">
