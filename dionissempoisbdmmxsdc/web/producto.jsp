@@ -4,6 +4,7 @@
     Author     : Asus
 --%>
 
+<%@page import="DAO.MetodoPagoDAO"%>
 <%@page import="DAO.AvisoDAO"%>
 <%@page import="POJO.Aviso"%>
 <%@page import="POJO.Video"%>
@@ -127,12 +128,15 @@
                 <form method="post" id="formP">
                     <table class="tablaDC">
                         <tr>
-                            <td colspan="2">Métodos de pago
-                                <select name="opcion">
-                                    <option value="todos" selected>Elegir</option>
-                                    <option value="efectivo">Efectivo</option>
-                                    <option value="tarjeta">Tarjeta crédito/débito</option>
-                                    <option value="paypal">Paypal</option>
+                            <td colspan="2">Métodos de pago                                
+                                <select name="metodo">
+                                    <%   List<POJO.MetodoPago> listaMetodo = MetodoPagoDAO.lista();
+                                        for (int i = 0; i < listaMetodo.size(); i++) {
+                                    %>
+                                    <option value="<%=listaMetodo.get(i).getIdMetodoPago()%>"><%=listaMetodo.get(i).getNombreMetodoPago().toUpperCase()%></option>
+                                    <%
+                                        }
+                                    %>
                                 </select>
                             </td>
                         </tr>
