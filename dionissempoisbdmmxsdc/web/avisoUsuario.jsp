@@ -50,7 +50,7 @@
                         <img class="imgProductoUsuario" src="ProductosImgs/<%=imagenFirst%>" >
                         <div class="divContenido">
                     <form method="post" action="AvisoInter">
-                    <input type="hidden" name="numeroLista" value="<%=i%>" />
+                    <input type="hidden" name="numeroLista" value="<%=listaProductos.get(i).getIdAviso()%>" />
                             <table>
                                 <tr>
                                     <td colspan="2" class="nombreProducto"><%=listaProductos.get(i).getNombreProducto()%></td>

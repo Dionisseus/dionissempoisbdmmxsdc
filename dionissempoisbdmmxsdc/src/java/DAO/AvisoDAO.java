@@ -375,6 +375,33 @@ public class AvisoDAO {
         }
     }
         
+             public static Aviso AvisoIdPro(int idAviso) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection conn = pool.getConnection();
+        CallableStatement cs = null;
+        ResultSet rs = null;
+        try {
+            cs = conn.prepareCall("{ call busquedaAvisoProductoR(?) }");
+            cs.setInt(1, idAviso);
+            rs = cs.executeQuery();
+     
+            while (rs.next()) {
+                Aviso user = new Aviso(rs.getInt("idAviso"),rs.getInt("idProducto"));      
+                 return user;
+            }
+           
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+           
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closeStatement(cs);
+            pool.freeConnection(conn);
+        } return null;
+    }
+        
+        
+        
         
         
        //  detalleaviso      subcategoriaavisos  todasimagenesaviso  todaspreguntasaviso

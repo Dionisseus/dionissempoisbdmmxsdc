@@ -92,7 +92,7 @@
                     %>
                     <form method="post" id="formxx<%=i%>" action="AvisoProducto">
                         <input type="hidden" name="numeroLista" value="<%=i%>" />
-                        <input type="hidden" name="tipo" value="masCaro" />
+                        <input type="hidden" name="tipo" value="masVendido" />
                         <div class="contenido">
                             <div class="divImgProducto">
                                   <a href="javascript:" onclick="document.getElementById('formxx'+<%=i%>).submit();">
@@ -117,26 +117,26 @@
                    <h3>Lo mas Comentado</h3>
                 <div class="masComentado">
                     <% List<Aviso> listaAvisossss =  AvisoDAO.comentadosAvisos();//Nomas aqui le pones AvisoDAO.comentadosAvisos() No se porque si no hay ni un elemento se chinga toda la vista. si notas que es arreglalo porfa
-                    for (int i = 0; i < listaAvisossss.size(); i++) {
+                    for (int ii = 0; ii < listaAvisossss.size(); ii++) {
                     %>
-                    <form method="post" id="formxxx<%=i%>" action="AvisoProducto">
-                        <input type="hidden" name="numeroLista" value="<%=i%>" />
-                        <input type="hidden" name="tipo" value="masCaro" />
+                    <form method="post" id="formxxx<%=ii%>" action="AvisoProducto">
+                        <input type="hidden" name="numeroLista" value="<%=ii%>" />
+                        <input type="hidden" name="tipo" value="masComentado" />
                         <div class="contenido">
                             <div class="divImgProducto">
-                                  <a href="javascript:" onclick="document.getElementById('formxxx'+<%=i%>).submit();">
-                                    <img class="imgProducto" src="ProductosImgs/<%=listaAvisossss.get(i).getPathImagen()%>"  />
+                                  <a href="javascript:" onclick="document.getElementById('formxxx'+<%=ii%>).submit();">
+                                    <img class="imgProducto" src="ProductosImgs/<%=listaAvisossss.get(ii).getPathImagen()%>"  />
                                 </a>
                             </div>
                             <div class="infoProducto">
-                                <%=listaAvisossss.get(i).getNombreProducto() %> <br>
-                                <%= "$"+listaAvisossss.get(i).getPrecioAviso()%> <br>
-                                <%=listaAvisossss.get(i).getNicknameUsuario() %> <br>
-                                <%=listaAvisossss.get(i).getFechaAviso()%> <br>
+                                <%=listaAvisossss.get(ii).getNombreProducto() %> <br>
+                                <%= "$"+listaAvisossss.get(ii).getPrecioAviso()%> <br>
+                                <%=listaAvisossss.get(ii).getNicknameUsuario() %> <br>
+                                <%=listaAvisossss.get(ii).getFechaAviso()%> <br>
                             </div>
                         </div>
                     </form>
-                <% if(i== 3){
+                <% if(ii== 3){
                     break;
                         }
                     }

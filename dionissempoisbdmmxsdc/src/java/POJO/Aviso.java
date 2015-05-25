@@ -83,8 +83,14 @@ public class Aviso {
         this.idProductoAviso = idProductoAviso;
         this.activoAviso = activoAviso;
     }
-       public Aviso(int idAviso){
+       public Aviso(int idAviso,int idProductoAviso){
            this.idAviso =  idAviso;
+           this.idProductoAviso = idProductoAviso;
+       }
+       
+        public Aviso(int idAviso){
+           this.idAviso =  idAviso;
+  
        }
 
     public String getPathImagen() {

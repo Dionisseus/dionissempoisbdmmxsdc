@@ -39,14 +39,21 @@ public class AvisoInter extends HttpServlet {
           HttpSession session = request.getSession(true);
         String numeroLista = request.getParameter("numeroLista");
         int i = Integer.parseInt(numeroLista);
-         Usuario user = (Usuario) session.getAttribute("usuario");
-            List<POJO.Aviso> listaProductos = AvisoDAO.misAvisos(Integer.parseInt(user.getIdUsuario()));
-            List<POJO.Producto> list = ProductoDAO.todosProductos(Integer.parseInt(user.getIdUsuario()));
-            for (int j = 0;j < list.size(); j++) {
-                if (list.get(j).getIdProducto() ==   listaProductos.get(i).getIdProductoAviso()) {
-                    session.setAttribute("producto", list.get(j) );  
-                }
+       //  Usuario user = (Usuario) session.getAttribute("usuario");
+           POJO.Aviso listaProductos = AvisoDAO.AvisoIdPro(i);
+           // List<POJO.Producto> list = ProductoDAO.todosProductos(Integer.parseInt(user.getIdUsuario()));
+         //   for (int j = 0;j < list.size(); j++) {
+              //  if (list.get(j).getIdProducto() ==   listaProductos.get(i).getIdProductoAviso()) {
+           POJO.Producto pro = null;
+           try {
+          pro = ProductoDAO.buscarId(listaProductos.getIdProductoAviso());
+        } catch (Exception e) {
+            e.toString();
         }
+          
+                    session.setAttribute("producto",pro );  
+            //    }
+     //   }
             session.setAttribute("isAviso", true);
             response.sendRedirect("producto.jsp");
     }

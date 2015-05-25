@@ -37,7 +37,6 @@ public class AvisosIndex extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        
         String subCategoria = request.getParameter("subCategoria");
         String texto = request.getParameter("texto");
         String fechaOrigen = request.getParameter("fechaOrigen");

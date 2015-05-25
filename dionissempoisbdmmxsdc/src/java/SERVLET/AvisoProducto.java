@@ -50,6 +50,14 @@ public class AvisoProducto extends HttpServlet {
         listaAviso = AvisoDAO.preciosAvisos();
          pro = ProductoDAO.buscarId(listaAviso.get(i).getIdProductoAviso());    
         }
+          if (tipo.equals("masComentado")) {
+         listaAviso = AvisoDAO.comentadosAvisos();
+         pro = ProductoDAO.buscarId(listaAviso.get(i).getIdProductoAviso());  
+        }
+         if (tipo.equals("masVendido")) {
+        listaAviso = AvisoDAO.vendidosAvisos();
+         pro = ProductoDAO.buscarId(listaAviso.get(i).getIdProductoAviso());    
+        }
             session.setAttribute("producto", pro);
 
             session.setAttribute("isAviso", true);
