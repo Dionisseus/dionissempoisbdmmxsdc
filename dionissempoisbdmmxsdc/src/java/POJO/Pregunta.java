@@ -21,14 +21,13 @@ public class Pregunta {
     String respuesta;
     
 
-    public Pregunta(int idPregunta, String descripcionPregunta,String fechaPregunta,String horaPregunta,int idUsuarioPregunta, int idAvisoPregunta,String respuesta) {
+    public Pregunta(int idPregunta, String descripcionPregunta, String fechaPregunta, String horaPregunta, int idUsuarioPregunta, int idAvisoPregunta) {
         this.idPregunta = idPregunta;
         this.descripcionPregunta = descripcionPregunta;
         this.fechaPregunta = fechaPregunta;
         this.horaPregunta = horaPregunta;
         this.idUsuarioPregunta = idUsuarioPregunta;
         this.idAvisoPregunta = idAvisoPregunta;
-        this.respuesta = respuesta;
     }
     
     public Pregunta(int idPregunta, String descripcionPregunta,String fechaPregunta,String horaPregunta,int idUsuarioPregunta, int idAvisoPregunta,String respuesta) {
