@@ -189,6 +189,72 @@ public class AvisoDAO {
             pool.freeConnection(conn);
         }
     }
+          public static Aviso miAviso(int idAviso) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection conn = pool.getConnection();
+        CallableStatement cs = null;
+        ResultSet rs = null;
+        try {
+            cs = conn.prepareCall("{ call miAviso(?) }");
+            cs.setInt(1, idAviso);
+            rs = cs.executeQuery();
+        
+            while (rs.next()) {
+                Aviso user = new Aviso(
+                      
+                        rs.getInt("idAviso"),
+                        rs.getInt("cantidadAviso"), 
+                        rs.getInt("precioAviso"), 
+                        rs.getString("descripcionCortaAviso"), 
+                        rs.getString("descripcionAviso"),
+                        rs.getString("vigenciaAviso"),
+                        rs.getString("fechaAviso"),
+                        rs.getString("horaAviso"),
+                        rs.getInt("idSubcategoriaAviso"),
+                        rs.getInt("idProductoAviso"),
+                        rs.getBoolean("activoAviso")
+                );      
+               return user;
+            }
+           
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+           
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closeStatement(cs);
+            pool.freeConnection(conn);
+        } return null;
+    }
+          
+          public static void actualizar(Aviso a) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection conn = pool.getConnection();
+        CallableStatement cs = null;
+        try {
+            cs = conn.prepareCall("{ call actualizarAviso(?,?,?,?,?,?,?,?,?,?,?) }");
+            cs.setInt(1, a.getIdAviso());
+                        cs.setInt(2,a.getCantidadAviso());
+                        cs.setFloat(3,a.getPrecioAviso());
+                        cs.setString(4,a.getMetodoPago()); 
+                        cs.setString(5,a.getDescripcionAviso());
+                        cs.setString(6,a.getVigenciaAviso());
+                        cs.setString(7,a.getFechaAviso());
+                        cs.setString(8,a.getHoraAviso());
+                        cs.setInt(9,a.getIdSubCategoriaAviso());
+                        cs.setInt(10,a.getIdProductoAviso());
+                        cs.setBoolean(11,a.isActivoAviso());
+         cs.execute();
+
+           
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+         
+        } finally {
+            DBUtil.closeStatement(cs);
+            pool.freeConnection(conn);
+        }
+    }
      
          public static List<Aviso> avisosSubCategoria(int idSubcategoria) {
         ConnectionPool pool = ConnectionPool.getInstance();
