@@ -56,6 +56,9 @@ public class Aviso {
         this.idProductoAviso = idProductoAviso;
         this.activoAviso = activoAviso;
     }
+       public Aviso(int idAviso){
+           this.idAviso =  idAviso;
+       }
 
     public String getPathImagen() {
         return pathImagen;

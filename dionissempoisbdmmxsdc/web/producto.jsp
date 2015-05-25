@@ -4,6 +4,8 @@
     Author     : Asus
 --%>
 
+<%@page import="DAO.AvisoDAO"%>
+<%@page import="POJO.Aviso"%>
 <%@page import="POJO.Video"%>
 <%@page import="DAO.VideoDAO"%>
 <%@page import="POJO.Subcategoria"%>
@@ -79,6 +81,16 @@
                         alert("Formule una pregunta antes de enviarla");
                     }
                 });
+                
+                var forma = document.getElementById('formP');
+                forma.onsubmit = function() {
+                    forma.action = "PublicarAviso";
+                };
+
+                document.getElementById('btnComprar').onclick = function() {
+                    forma.action = "Compra";
+                    forma.submit();
+                };
 
             });
         </script>
@@ -112,7 +124,7 @@
                 </ul>  
             </div>
             <div id="datosCompra">
-                <form method="post" action="PublicarAviso">
+                <form method="post" id="formP">
                     <table class="tablaDC">
                         <tr>
                             <td colspan="2">Métodos de pago
@@ -129,13 +141,12 @@
                             <td>Existencias: <input name="existencias" class="inp" value="<%= pro.getExistenciaProducto()%> "type="text" readonly/></td>
                         </tr>
                         <tr>
-                            <td colspan="2">Vigencia: <input name="vigencia"  value="<%= pro.getVigenciaProducto()%>" type="text" class="datepicker txtSubir" readonly/></td>
+                            <td colspan="2">Vigencia: <input name="vigencia" id="txtVigencia" value="<%= pro.getVigenciaProducto()%>" type="text" class="datepicker txtSubir" readonly/></td>
                                 <% if (session.getAttribute("isAviso").toString().equals("false")) { %>
-                            <td  > <input class="inp" type="Submit" value="Publicar Aviso"/>   </td>
+                            <td><input class="inp" type="Submit" value="Publicar Aviso"/>   </td>
                                 <%}%>
                         </tr>
-                        <tr>
-                          
+                        <tr>                         
                                 <% if (session.getAttribute("isAviso").toString().equals("false")) { %>
                                   <td colspan="2">Categoria: 
                                 <select name="Categoria">
@@ -162,7 +173,19 @@
                             <td><input type="button" id="btnComprar" value="Comprar"></td>
                         </tr>
                         <%
-                            }
+                                }
+                            Usuario user = (Usuario) session.getAttribute("usuario");
+                            List<Aviso> listaId = AvisoDAO.AvisoId(pro.getIdProducto());
+                            for(int i = 0; i < listaId.size(); i++){
+                        %>
+                        <input type="hidden" value="<%=listaId.get(i).getIdAviso()%>" name="idAviso">                      
+                         <%
+                        }
+                        %>
+                        <% if(user!= null){
+                        %>
+                            <input type="hidden" value="<%=user.getIdUsuario()%>" name="idUsuario">
+                       <%}
                         %>
                     </table>
                 </form>
@@ -180,7 +203,7 @@
                 <p class="pregunta">
                    <% 
                    if (session.getAttribute("usuario")!= null){
-                    Usuario user = (Usuario) session.getAttribute("usuario");
+                    
                     List<POJO.Pregunta> listaPreguntas = PreguntasDAO.preguntasAviso(Integer.parseInt(user.getIdUsuario()));
                     try{
                     for(int i=0; i<listaPreguntas.size();i++){ 

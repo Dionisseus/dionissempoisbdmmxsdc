@@ -229,6 +229,30 @@ public class AvisoDAO {
             pool.freeConnection(conn);
         }
     }
+        public static List<Aviso> AvisoId(int idAviso) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection conn = pool.getConnection();
+        CallableStatement cs = null;
+        ResultSet rs = null;
+        try {
+            cs = conn.prepareCall("{ call busquedaAvisoProducto(?) }");
+            cs.setInt(1, idAviso);
+            rs = cs.executeQuery();
+            List<Aviso> idLista = new ArrayList<Aviso>();
+            while (rs.next()) {
+                Aviso user = new Aviso(rs.getInt("idAviso"));      
+                idLista.add(user);
+            }
+            return idLista;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closeStatement(cs);
+            pool.freeConnection(conn);
+        }
+    }
         
         
         

@@ -17,8 +17,7 @@ public class Venta {
     int idUsuarioVenta;
     int idMetodoPagoElegidoVenta;
 
-    public Venta(int idVenta, boolean confirmadaVenta, int cantidadCompradaVenta, int idAvisoVenta, int idUsuarioVenta, int idMetodoPagoElegidoVenta) {
-        this.idVenta = idVenta;
+    public Venta(boolean confirmadaVenta, int cantidadCompradaVenta, int idAvisoVenta, int idUsuarioVenta, int idMetodoPagoElegidoVenta) {
         this.confirmadaVenta = confirmadaVenta;
         this.cantidadCompradaVenta = cantidadCompradaVenta;
         this.idAvisoVenta = idAvisoVenta;
