@@ -5,12 +5,14 @@
  */
 package SERVLET;
 
-
 import DAO.AvisoDAO;
+import DAO.ProductoDAO;
 import DAO.VentaDAO;
 import POJO.Aviso;
 import POJO.Venta;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,24 +38,30 @@ public class Compra extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                HttpSession respuesta = request.getSession(true);
+        HttpSession respuesta = request.getSession(true);
         String url = "index.jsp";
         String metodo = request.getParameter("metodo");
         String idUsuario = request.getParameter("idUsuario");
         String idAviso = request.getParameter("idAviso");
         Aviso aviso = AvisoDAO.miAviso(Integer.parseInt(idAviso.trim()));
-       
+
         int cantidad = 1;
-        aviso.setCantidadAviso(aviso.getCantidadAviso()-cantidad);
-       AvisoDAO.actualizar(aviso);
-        try{
-            Venta venta = new Venta(true,cantidad,Integer.parseInt(idAviso), Integer.parseInt(idUsuario),Integer.parseInt(metodo)); 
+        aviso.setCantidadAviso(aviso.getCantidadAviso() - cantidad);
+        AvisoDAO.actualizar(aviso);
+        try {
+            Venta venta = new Venta(true, cantidad, Integer.parseInt(idAviso), Integer.parseInt(idUsuario), Integer.parseInt(metodo));
             VentaDAO.altaVenta(venta);
-        response.sendRedirect(url); 
-        }catch (Exception e) {
+            POJO.Producto pro = ProductoDAO.buscarId(aviso.getIdProductoAviso());
+            respuesta.setAttribute("ventaPro", pro);
+           
+      
+            
+        } catch (Exception e) {
             e.toString();
-            response.sendRedirect(url); 
-        }             
+            response.sendRedirect(url);
+        }   
+          RequestDispatcher rd= request.getServletContext (). getNamedDispatcher("SendMailVenta");
+        rd.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

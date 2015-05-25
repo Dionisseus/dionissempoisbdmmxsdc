@@ -86,7 +86,7 @@
                 </div>
                 
                   <h3>Lo mas vendido</h3>
-                <div class="masVendidos">
+                <div class="masVendido">
                     <% List<Aviso> listaAvisosss =  AvisoDAO.vendidosAvisos();
                     for (int i = 0; i < listaAvisosss.size(); i++) {
                     %>
@@ -104,6 +104,35 @@
                                 <%= "$"+listaAvisosss.get(i).getPrecioAviso()%> <br>
                                 <%=listaAvisosss.get(i).getNicknameUsuario() %> <br>
                                 <%=listaAvisosss.get(i).getFechaAviso()%> <br>
+                            </div>
+                        </div>
+                    </form>
+                <% if(i== 3){
+                    break;
+                        }
+                    }
+                %>
+                </div>
+              
+                   <h3>Lo mas Comentado</h3>
+                <div class="masComentado">
+                    <% List<Aviso> listaAvisossss =  AvisoDAO.vendidosAvisos();
+                    for (int i = 0; i < listaAvisossss.size(); i++) {
+                    %>
+                    <form method="post" id="formxxx<%=i%>" action="AvisoProducto">
+                        <input type="hidden" name="numeroLista" value="<%=i%>" />
+                        <input type="hidden" name="tipo" value="masCaro" />
+                        <div class="contenido">
+                            <div class="divImgProducto">
+                                  <a href="javascript:" onclick="document.getElementById('formxxx'+<%=i%>).submit();">
+                                    <img class="imgProducto" src="ProductosImgs/<%=listaAvisossss.get(i).getPathImagen()%>"  />
+                                </a>
+                            </div>
+                            <div class="infoProducto">
+                                <%=listaAvisossss.get(i).getNombreProducto() %> <br>
+                                <%= "$"+listaAvisossss.get(i).getPrecioAviso()%> <br>
+                                <%=listaAvisossss.get(i).getNicknameUsuario() %> <br>
+                                <%=listaAvisossss.get(i).getFechaAviso()%> <br>
                             </div>
                         </div>
                     </form>
