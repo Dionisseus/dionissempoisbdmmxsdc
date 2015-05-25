@@ -42,30 +42,28 @@ public class PreguntasDAO {
         }
     }
     
-        public static List<Pregunta> preguntasAviso(int idUsuario){
+        public static List<Pregunta> preguntasAviso(int idAviso){
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
         ResultSet rs = null;
         try{
             cs = conn.prepareCall("{call todasPreguntasAviso((?))}");
-            cs.setInt(1, idUsuario);
+            cs.setInt(1, idAviso);
             rs = cs.executeQuery();
             List<Pregunta> preguntaLista = new ArrayList<Pregunta>();
             while (rs.next()) {
-               if (rs.getInt("idUsuarioPregunta") == idUsuario) {
                     Pregunta pu = new Pregunta(rs.getInt("idPregunta"),
                         rs.getString("descripcionPregunta"),
+                        rs.getString("fechaPregunta"),
                         rs.getString("horaPregunta"),
                         rs.getInt("idUsuarioPregunta"), 
                         rs.getInt("idAvisoPregunta"),
-                        rs.getString("descripcionRespuesta"),
-                        rs.getString("PREGUNTA"),
-                        rs.getString("AVISO"));
-                        preguntaLista.add(pu);
-                }  
-                return preguntaLista;
-            }            
+                        rs.getString("descripcionRespuesta"));
+                        preguntaLista.add(pu); 
+                
+            }     
+            return preguntaLista;
         }
         catch (SQLException ex) {
             ex.printStackTrace();
@@ -146,7 +144,7 @@ public class PreguntasDAO {
         return null;
     }
         
-    public static List<Pregunta> misPreguntas_3(int idUsuario){
+    /*public static List<Pregunta> misPreguntas_3(int idUsuario){
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
@@ -179,7 +177,7 @@ public class PreguntasDAO {
             pool.freeConnection(conn);
         }
         return null;
-    }
+    }*/
     
     
 }
