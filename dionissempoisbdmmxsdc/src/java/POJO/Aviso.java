@@ -25,6 +25,8 @@ public class Aviso {
     String pathImagen;
     String nicknameUsuario;
     String nombreProducto;
+    int contador;
+  
 
     public Aviso(int idAviso, int cantidadAviso, float precioAviso, String metodoPago, String descripcionAviso, String vigenciaAviso, String fechaAviso, String horaAviso, int idSubCategoriaAviso, int idProductoAviso, boolean activoAviso) {
         this.idAviso = idAviso;
@@ -38,6 +40,31 @@ public class Aviso {
         this.idSubCategoriaAviso = idSubCategoriaAviso;
         this.idProductoAviso = idProductoAviso;
         this.activoAviso = activoAviso;
+    }
+
+    public int getContador() {
+        return contador;
+    }
+
+    public void setContador(int contador) {
+        this.contador = contador;
+    }
+     public Aviso(String nickNameUsuario, String nombreProducto,int idAviso, int cantidadAviso, float precioAviso, String metodoPago, String descripcionAviso, String vigenciaAviso, String fechaAviso, String horaAviso, int idProductoAviso, boolean activoAviso,int contador,String thumbnail) {
+        
+         this.nicknameUsuario = nickNameUsuario;
+        this.nombreProducto = nombreProducto;
+         this.idAviso = idAviso;
+        this.cantidadAviso = cantidadAviso;
+        this.precioAviso = precioAviso;
+        this.metodoPago = metodoPago;
+        this.descripcionAviso = descripcionAviso;
+        this.vigenciaAviso = vigenciaAviso;
+        this.fechaAviso = fechaAviso;
+        this.horaAviso = horaAviso;
+        this.contador = contador;
+        this.idProductoAviso = idProductoAviso;
+        this.activoAviso = activoAviso;
+         this.pathImagen = thumbnail;
     }
     
        public Aviso(String pathImagen, String nickNameUsuario, String nombreProductom, int idAviso, int cantidadAviso, float precioAviso, String metodoPago, String descripcionAviso, String vigenciaAviso, String fechaAviso, String horaAviso, int idSubCategoriaAviso, int idProductoAviso, boolean activoAviso) {
