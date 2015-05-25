@@ -9,6 +9,8 @@ import DAO.PreguntasDAO;
 import POJO.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,21 +37,22 @@ public class Pregunta extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        HttpSession session = request.getSession();
-        Usuario user = (Usuario) session.getAttribute("usuario");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            List<POJO.Pregunta> listaPregunta = PreguntasDAO.preguntasAviso(Integer.parseInt(user.getIdUsuario()));
-            for(int i = 0; i<listaPregunta.size(); i++){
-                out.println("<p class=\"pregunta\">"+listaPregunta.get(i).getDescripcionPregunta()+"</p>\n"
-                    +"<ul class=\"respuesta\">\n"
-                        +"<li>"+listaPregunta.get(i).getRespuesta()+"</li>"
-                        +"</ul> "
-                    );
-            }
+        String url = "index.jsp";
+        String descripcionPregunta = request.getParameter("pregunta");
+        String idUsuario = request.getParameter("idUsuarioP");
+        String idAviso = request.getParameter("idAvisoP");
+        HttpSession session = request.getSession();           
+      
+   
+        try{
             
-        }
+            POJO.Pregunta preg = new POJO.Pregunta(descripcionPregunta,Integer.parseInt(idUsuario), Integer.parseInt(idAviso));
+            PreguntasDAO.agregarPregunta(preg);
+            response.sendRedirect(url); 
+        }catch (Exception e) {
+            e.toString();
+            response.sendRedirect(url); 
+        }      
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

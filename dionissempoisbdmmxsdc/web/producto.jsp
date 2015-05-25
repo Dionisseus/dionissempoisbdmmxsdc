@@ -77,9 +77,19 @@
                 });
 
                 //console.log($('#textPregunta').val());
+                function validarPregunta(){
+                    var pregunta = $("#textPregunta").val();
+                    if(pregunta == ""){
+                        alert("Por favor, formule una pregunta");
+                    return false;
+                   }    
+                        return true;
+                }
                 $('#hacerPregunta').submit(function () {
-                    if ($('#textPregunta').val() === "") {
-                        alert("Formule una pregunta antes de enviarla");
+                    if (validarPregunta() === false) {
+                        return false;
+                    }else {
+                        return true;
                     }
                 });
                 
@@ -199,17 +209,25 @@
             </div>
             <div id="divPreguntas">
                 <h2>Preguntas</h2><br>
+                <%
+                    if(user!= null){
+                %>
                 <label id="labPreguntas">Hacer una pregunta</label><br>
-                <form id="hacerPregunta" method="post">
-                    <textarea id="textPregunta" name="pregunta"></textarea><br>
-                    <input class="inp" type="submit" class="btnRespuesta" value="Preguntar"/>
+                <form id="hacerPregunta" method="post" action="Pregunta">
+                    <textarea id="textPregunta" name="pregunta" ></textarea><br>
+                    <input type="hidden" value="<%=user.getIdUsuario()%>" name="idUsuarioP">
+                    <input type="hidden" value="<%=listaId.get(0).getIdAviso()%>" name="idAvisoP">
+                    <input type="submit" class="btnRespuesta" value="Preguntar"/>
                 </form>
+                    <%
+                        }
+                    %>
                 <p class="pregunta">
-                   <% 
-                   if (session.getAttribute("usuario")!= null){
+                   <% try{
+                   if (session.getAttribute("isAviso").toString().equals("true")){
                     
                     List<POJO.Pregunta> listaPreguntas = PreguntasDAO.preguntasAviso(Integer.parseInt(user.getIdUsuario()));
-                    try{
+                    
                     for(int i=0; i<listaPreguntas.size();i++){ 
                    %>
                    <%= listaPreguntas.get(i).getDescripcionPregunta() %>
@@ -219,9 +237,10 @@
                 </ul>
                  <% 
                         }
-                    }catch(Exception e){
+                    }
+                   }catch(Exception e){
                         e.printStackTrace();
-                    }}
+                    }
                  %>
             </div>
         </div>

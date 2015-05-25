@@ -27,12 +27,11 @@ public class PreguntasDAO {
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
         try{
-            cs = conn.prepareCall("{ call pregunta_insertar(?,?,?,?,?) }");
+            cs = conn.prepareCall("{ call altaPregunta(?,?,?) }");
             cs.setString(1, pregunta.getDescripcionPregunta());
-            cs.setString(2, pregunta.getFechaPregunta());
-            cs.setString(3, pregunta.getHoraPregunta());
-            cs.setInt(4, pregunta.getIdUsuarioPregunta());
-            cs.setInt(5, pregunta.getIdAvisoPregunta());
+            cs.setInt(2, pregunta.getIdUsuarioPregunta());
+            cs.setInt(3, pregunta.getIdAvisoPregunta());
+            cs.execute();
         }
         catch (SQLException ex) {
             ex.printStackTrace();
@@ -65,7 +64,7 @@ public class PreguntasDAO {
                         rs.getString("AVISO"));
                         preguntaLista.add(pu);
                 }  
-                
+                return preguntaLista;
             }            
         }
         catch (SQLException ex) {
@@ -99,7 +98,7 @@ public class PreguntasDAO {
                         rs.getString("Usuario aviso"));
                          preguntaLista.add(pu);
                 }  
-                
+                return preguntaLista;
             }            
         }
         catch (SQLException ex) {
@@ -134,7 +133,7 @@ public class PreguntasDAO {
                         rs.getString("Usuario aviso"));
                          preguntaLista.add(pu);
                 }  
-                
+                return  preguntaLista;
             }            
         }
         catch (SQLException ex) {
@@ -169,7 +168,7 @@ public class PreguntasDAO {
                         rs.getString("AVISO"));
                         preguntaLista.add(pu);
                 }  
-                
+                return preguntaLista;
             }            
         }
         catch (SQLException ex) {

@@ -50,6 +50,12 @@ public class Pregunta {
         this.nickUsuarioPregunta = nickUsuarioP;
         this.nickUsuarioAviso = nickUsuarioP;
     }
+        
+        public Pregunta(String descripcionPregunta, int idUsuarioPregunta, int idAvisoPregunta) {
+        this.descripcionPregunta = descripcionPregunta;
+        this.idUsuarioPregunta = idUsuarioPregunta;
+        this.idAvisoPregunta = idAvisoPregunta;
+    }
 
     public int getIdPregunta() {
         return idPregunta;
