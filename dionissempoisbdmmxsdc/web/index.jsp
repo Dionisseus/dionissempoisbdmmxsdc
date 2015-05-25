@@ -116,7 +116,7 @@
               
                    <h3>Lo mas Comentado</h3>
                 <div class="masComentado">
-                    <% List<Aviso> listaAvisossss =  AvisoDAO.vendidosAvisos();//Nomas aqui le pones AvisoDAO.comentadosAvisos() No se porque si no hay ni un elemento se chinga toda la vista. si notas que es arreglalo porfa
+                    <% List<Aviso> listaAvisossss =  AvisoDAO.comentadosAvisos();//Nomas aqui le pones AvisoDAO.comentadosAvisos() No se porque si no hay ni un elemento se chinga toda la vista. si notas que es arreglalo porfa
                     for (int i = 0; i < listaAvisossss.size(); i++) {
                     %>
                     <form method="post" id="formxxx<%=i%>" action="AvisoProducto">

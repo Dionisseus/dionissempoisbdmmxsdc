@@ -335,7 +335,7 @@ public class AvisoDAO {
               while (rs.next()) {
                   Aviso aviso = new Aviso(rs.getString("nicknameUsuario"), rs.getString("nombreProducto"), rs.getInt("idAviso"), rs.getInt("cantidadAviso"), rs.getInt("precioAviso"),
                           rs.getString("descripcionCortaAviso"), rs.getString("descripcionAviso"), rs.getString("vigenciaAviso"), rs.getString("fechaAviso"), rs.getString("horaAviso"),
-                         rs.getInt("idProductoAviso"), rs.getBoolean("activoAviso"), rs.getInt("Contador"), rs.getString("thumbnail"));
+                         rs.getInt("idProductoAviso"), rs.getBoolean("activoAviso"), rs.getInt("Contador"), rs.getString("Thumbail"));
                   Listaaviso.add(aviso);
               }
             return Listaaviso;
