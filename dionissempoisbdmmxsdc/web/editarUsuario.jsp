@@ -16,10 +16,34 @@
         <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <title>Edición de usuario</title>
             <script>
-           
+            $("#dialog").dialog({
+        modal: true,
+        bgiframe: true,
+        width: 500,
+        height: 200,
+        autoOpen: false
+    });
             $(function () {
                   $(".borrarUsuario").click(function () {       
-                    window.location.href = '/dionissempoisbdmmxsdc/BorrarUsuario';
+                 
+                    
+                   
+
+        $("#dialog").dialog('option', 'buttons', {
+            "Confirm" : function() {
+                  window.location.href = '/dionissempoisbdmmxsdc/BorrarUsuario';
+            },
+            "Cancel" : function() {
+                $(this).dialog("close");
+            }
+        });
+
+        $("#dialog").dialog("open");
+
+    });
+                    
+                    
+                    
                 });
                   
             });
