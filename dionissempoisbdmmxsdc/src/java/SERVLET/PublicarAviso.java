@@ -41,7 +41,7 @@ public class PublicarAviso extends HttpServlet {
         pro.setPrecioProducto(Float.parseFloat(precio.trim()));
         pro.setExistenciaProducto(Integer.parseInt(request.getParameter("existencias").trim()));
         pro.setVigenciaProducto(request.getParameter("vigencia").trim());
-        String metodoPago = request.getParameter("opcion");
+        String metodoPago = "todos";//request.getParameter("opcion");
     ProductoDAO.actualizar(pro);
     pro = ProductoDAO.buscar(pro.getNombreProducto());
     POJO.Aviso aviso = new Aviso(pro.getExistenciaProducto(),pro.getPrecioProducto(),metodoPago,pro.getDescripcionProducto(),pro.getVigenciaProducto(),pro.getFechaProducto(),

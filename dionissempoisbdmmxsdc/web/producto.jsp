@@ -17,7 +17,6 @@
 <%@page import="DAO.ImagenDAO"%>
 <%@page import="POJO.Producto"%>
 <%@page import="POJO.Pregunta" %>
-<%@page import="DAO.PreguntasDAO" %>
 <%@page import="POJO.Usuario" %>
 <%@page import="DAO.UsuarioDAO" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -96,6 +95,7 @@
                 var forma = document.getElementById('formP');
                 forma.onsubmit = function() {
                     forma.action = "PublicarAviso";
+                    
                 };
 
                 document.getElementById('btnComprar').onclick = function() {
@@ -212,36 +212,17 @@
                 <%
                     if(user!= null){
                 %>
-                <label id="labPreguntas">Hacer una pregunta</label><br>
-                <form id="hacerPregunta" method="post" action="Pregunta">
-                    <textarea id="textPregunta" name="pregunta" ></textarea><br>
-                    <input type="hidden" value="<%=user.getIdUsuario()%>" name="idUsuarioP">
-                    <input type="hidden" value="<%=listaId.get(0).getIdAviso()%>" name="idAvisoP">
-                    <input type="submit" class="btnRespuesta" value="Preguntar"/>
-                </form>
+              
                     <%
                         }
                     %>
                 <p class="pregunta">
-                   <% try{
-                   if (session.getAttribute("isAviso").toString().equals("true")){
-                    
-                    List<POJO.Pregunta> listaPreguntas = PreguntasDAO.preguntasAviso(Integer.parseInt(user.getIdUsuario()));
-                    
-                    for(int i=0; i<listaPreguntas.size();i++){ 
-                   %>
-                   <%= listaPreguntas.get(i).getDescripcionPregunta() %>
+             
                 </p>
                 <ul class="respuesta">
-                    <li><%= listaPreguntas.get(i).getRespuesta() %></li>
+                    <li></li>
                 </ul>
-                 <% 
-                        }
-                    }
-                   }catch(Exception e){
-                        e.printStackTrace();
-                    }
-                 %>
+                
             </div>
         </div>
         <%@include file="general.jsp" %>
