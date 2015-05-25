@@ -70,7 +70,7 @@ public class SendEmailServlet extends HttpServlet {
             result = "Ocurrio un error.";
         } finally {
             request.setAttribute("result", result);
-            getServletContext().getRequestDispatcher("/emailResult.jsp").forward(
+            getServletContext().getRequestDispatcher("/index.jsp").forward(
                     request, response);
         }
     }
