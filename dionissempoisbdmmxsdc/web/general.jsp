@@ -43,10 +43,13 @@
 
                 });
                 $(".buttonEditUser").click(function () {
+                    
                     window.location.href = '/dionissempoisbdmmxsdc/perfilUsuario.jsp';
+                   
                 });
                   $(".cerrarSesion").click(function () {       
-                    window.location.href = '/dionissempoisbdmmxsdc/DestroySession';
+                      if(confirm("Seguro que deseas salir de tu sesion?")){
+                    window.location.href = '/dionissempoisbdmmxsdc/DestroySession'; }
                 });
                   
             });
