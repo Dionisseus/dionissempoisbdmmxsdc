@@ -20,12 +20,14 @@ p{
     background-color: blue;
 }
 
+
+
 #txtVigencia{
     width: 70px;
 }
 
-#publicar{
-    width: 100px;
+#publicarAviso{
+    width: 60px;
 }
 
 .tablaDC{

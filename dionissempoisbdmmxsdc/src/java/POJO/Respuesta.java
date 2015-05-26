@@ -1,5 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Project 
+Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -16,11 +17,17 @@ public class Respuesta {
     String horaRespuesta;
     int idPreguntaRespuesta;
 
-    public Respuesta(int idRespuesta, String descripcionRespuesta, String fechaRespuesta, String horaRespuesta, int idPreguntaRespuesta) {
+    public Respuesta(int idRespuesta, String descripcionRespuesta, String fechaRespuesta, String horaRespuesta, int idPreguntaRespuesta) 
+{
         this.idRespuesta = idRespuesta;
         this.descripcionRespuesta = descripcionRespuesta;
         this.fechaRespuesta = fechaRespuesta;
         this.horaRespuesta = horaRespuesta;
+        this.idPreguntaRespuesta = idPreguntaRespuesta;
+    }
+    
+    public Respuesta(String descripcionRespuesta,int idPreguntaRespuesta) {
+        this.descripcionRespuesta = descripcionRespuesta;
         this.idPreguntaRespuesta = idPreguntaRespuesta;
     }
 

@@ -17,6 +17,7 @@
 <%@page import="DAO.ImagenDAO"%>
 <%@page import="POJO.Producto"%>
 <%@page import="POJO.Pregunta" %>
+<%@page import="DAO.PreguntaDAO" %>
 <%@page import="POJO.Usuario" %>
 <%@page import="DAO.UsuarioDAO" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -91,17 +92,6 @@
                         return true;
                     }
                 });
-                
-                var forma = document.getElementById('formP');
-                forma.onsubmit = function() {
-                    forma.action = "PublicarAviso";
-                    
-                };
-
-                document.getElementById('btnComprar').onclick = function() {
-                    forma.action = "Compra";
-                    forma.submit();
-                };
 
             });
         </script>
@@ -135,7 +125,7 @@
                 </ul>  
             </div>
             <div id="datosCompra">
-                <form method="post" id="formP">
+                <form method="post" id="formP" action="">
                     <table class="tablaDC">
                         <tr>
                             <td colspan="2">Métodos de pago                                
@@ -157,7 +147,7 @@
                         <tr>
                             <td colspan="2">Vigencia: <input name="vigencia" id="txtVigencia" value="<%= pro.getVigenciaProducto()%>" type="text" class="datepicker txtSubir" readonly/></td>
                                 <% if (session.getAttribute("isAviso").toString().equals("false")) { %>
-                            <td><input class="inp" type="Submit" value="Publicar Aviso"/>   </td>
+                            <td><input id="publicarAviso" type="Submit" onclick="this.form.action = 'PublicarAviso'"  value="Publicar Aviso"/>   </td>
                                 <%}%>
                         </tr>
                         <tr>                         
@@ -184,7 +174,7 @@
                         </tr>
                         <% if (session.getAttribute("isAviso").toString().equals("true")) { %>
                         <tr>
-                            <td><input type="button" id="btnComprar" value="Comprar"></td>
+                            <td><input type="submit" id="btnComprar" onclick="this.form.action = 'Compra'" value="Comprar"></td>
                         </tr>
                         <%
                                 }
@@ -199,8 +189,9 @@
                         <% if(user!= null){
                         %>
                             <input type="hidden" value="<%=user.getIdUsuario()%>" name="idUsuario">
-                       <%}
-                        %>
+                       <%
+                            }
+                       %>
                     </table>
                 </form>
             </div>
@@ -210,18 +201,39 @@
             <div id="divPreguntas">
                 <h2>Preguntas</h2><br>
                 <%
-                    if(user!= null){
+                    if(user!= null && session.getAttribute("isAviso").toString().equals("true")){
                 %>
-              
+                <label id="labPreguntas">Hacer una pregunta</label><br>
+                <form id="hacerPregunta" method="post" action="">
+                    <textarea id="textPregunta" name="pregunta" ></textarea><br>
+                    <input type="hidden" value="<%=user.getIdUsuario()%>" name="idUsuarioP">
+                    <input type="hidden" value="<%=listaId.get(0).getIdAviso()%>" name="idAvisoP">
+                    <input type="submit" class="btnRespuesta" onclick="this.form.action = 'Pregunta'" value="Preguntar"/>
+                </form>
                     <%
                         }
                     %>
-                <p class="pregunta">
-             
+                <% try{
+                if (session.getAttribute("isAviso").toString().equals("true")){                    
+                    List<POJO.Pregunta> listaPreguntas = PreguntaDAO.preguntasAviso(listaId.get(0).getIdAviso());                    
+                for(int i=0; i<listaPreguntas.size();i++){                         
+                if(listaPreguntas.get(i).getRespuesta() != ""){
+                                    
+                %>
+                <p class="pregunta">                   
+                   <%= listaPreguntas.get(i).getDescripcionPregunta() %>
                 </p>
                 <ul class="respuesta">
-                    <li></li>
+                    <li><%= listaPreguntas.get(i).getRespuesta() %></li>
                 </ul>
+                    <%
+                                } 
+                            }                    
+                        }
+                    }catch(Exception e){
+                      e.printStackTrace();
+                    }
+                    %>
                 
             </div>
         </div>

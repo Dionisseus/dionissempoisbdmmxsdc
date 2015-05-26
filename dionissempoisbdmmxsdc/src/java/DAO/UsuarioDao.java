@@ -1,5 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
+ * To change this license header, choose License Headers in Project 
+Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -7,14 +8,12 @@ package DAO;
 
 import POJO.Usuario;
 import java.io.InputStream;
-import java.sql.Blob;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.sql.rowset.serial.SerialBlob;
 import xClasses.DBUtil;
 
 /**
@@ -35,8 +34,7 @@ public class UsuarioDAO {
             cs.setString(4, user.getNombreUsuario());
             cs.setString(5, user.getApellidoUsuario());
             cs.setInt(6, user.getTelefonoUsuario());
-             byte[] imgData = new byte [100];
-            cs.setBlob(7,((Blob)new SerialBlob(imgData)));
+            cs.setBlob(7, user.getAvatarUsuario());
             cs.setBoolean(8, user.isConfirmadoUsuario());
             cs.setBoolean(9, user.isActivoUsuario());
             cs.execute();
@@ -79,13 +77,52 @@ public class UsuarioDAO {
             cs.setString(1, emailUsuario);
             rs = cs.executeQuery();
             if (rs.next()) {
-                Usuario emp = new Usuario(rs.getString("idUsuario"), rs.getString("emailUsuario"), rs.getString("passwordUsuario"),
-                        rs.getString("nicknameUsuario"), rs.getString("nombreUsuario"), rs.getString("apellidoUsuario"),
-                        rs.getInt("telefonoUsuario"), rs.getBinaryStream("avatarUsuario"), true, rs.getBoolean("activoUsuario"));
-                       
+                Usuario emp = new Usuario(rs.getString("idUsuario"), 
+                rs.getString("emailUsuario"), rs.getString("passwordUsuario"),
+                        rs.getString("nicknameUsuario"), 
+                        rs.getString("nombreUsuario"), 
+                        rs.getString("apellidoUsuario"),
+                        rs.getInt("telefonoUsuario"), 
+                        rs.getBinaryStream("avatarUsuario"), true, rs.getBoolean("activoUsuario"));                  
                 
                 return emp;
             }
+            return null;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+            
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closeStatement(cs);
+            pool.freeConnection(conn);
+        }
+    }
+    
+        public static Usuario buscar2(int idU) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection conn = pool.getConnection();
+        CallableStatement cs = null;
+        ResultSet rs = null;
+        ////////////////////////
+        
+              try {
+            cs = conn.prepareCall("{ call usuario_buscar(?) }");
+            cs.setInt(1, idU);
+            rs = cs.executeQuery();
+            if (rs.next()) {
+                Usuario emp = new Usuario(rs.getString("idUsuario"), 
+                    rs.getString("emailUsuario"), 
+                    rs.getString("passwordUsuario"),
+                    rs.getString("nicknameUsuario"), 
+                    rs.getString("nombreUsuario"), 
+                    rs.getString("apellidoUsuario"),
+                    rs.getInt("telefonoUsuario"), 
+                    rs.getBinaryStream("avatarUsuario"),
+                    true, 
+                    rs.getBoolean("activoUsuario"));
+                return emp;
+            }       
             return null;
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -103,7 +140,7 @@ public class UsuarioDAO {
         Connection conn = pool.getConnection();
         CallableStatement cs = null;
                 try {
-            cs = conn.prepareCall("{ call usuario_actualizar(?, ?, ?, ?, ?, ?,?,?) }");
+            cs = conn.prepareCall("{ call usuario_actualizar(?, ?, ?,?, ?, ?,?,?) }");
             cs.setString(1, user.getIdUsuario());
             cs.setString(2, user.getEmailUsuario());
             cs.setString(3, user.getPasswordUsuario());
@@ -124,7 +161,8 @@ public class UsuarioDAO {
 
     }
 
-    public static boolean exists(String emailUsuario, String passwordUsuario) {
+    public static boolean exists(String emailUsuario, String 
+passwordUsuario) {
         if (UsuarioDAO.buscar(emailUsuario, passwordUsuario)!= null) {
          return true;   
         }

@@ -53,7 +53,7 @@ public class Categoria extends HttpServlet {
                 for (int j = 0; j < listaSubcategoria.size(); j++) {
                          out.println("<form method=\"post\" id=\"Form"+listaSubcategoria.get(j).getIdSubcategoria()+"\" action=\"AvisosIndex\">");
                          out.println("<input type=\"hidden\" name=\"subCategoria\" value="+listaSubcategoria.get(j).getIdSubcategoria()+" readonly/>");
-                    out.println(" <li <a href=\"javascript:;\" onclick=\"document.getElementById('Form"+listaSubcategoria.get(j).getIdSubcategoria()+"').submit();\">"+listaSubcategoria.get(j).getNombreSubcategoria()+"</li>\n </form>   ");
+                    out.println(" <li> <a href=\"javascript:;\" onclick=\"document.getElementById('Form"+listaSubcategoria.get(j).getIdSubcategoria()+"').submit();\">"+listaSubcategoria.get(j).getNombreSubcategoria()+"</li>\n </form>   ");
                 }
                 out.println("                        </ul>\n"
                         + "                        </li>\n");
