@@ -253,6 +253,36 @@ public class AvisoDAO {
         } return null;
     }
           
+          
+            public static boolean isMyAviso(int idusuario,int idAviso) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection conn = pool.getConnection();
+        CallableStatement cs = null;
+        ResultSet rs = null;
+        try {
+            cs = conn.prepareCall("{ call isMyAviso(?,?) }");
+            cs.setInt(1, idusuario);
+             cs.setInt(2, idAviso);
+            rs = cs.executeQuery();
+        
+            while (rs.next()) {
+               
+                   boolean resp =     rs.getBoolean("resp");
+                  
+               return resp;
+            }
+           
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+           
+        } finally {
+            DBUtil.closeResultSet(rs);
+            DBUtil.closeStatement(cs);
+            pool.freeConnection(conn);
+        } return false;
+    }
+          
+          
           public static void actualizar(Aviso a) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection conn = pool.getConnection();

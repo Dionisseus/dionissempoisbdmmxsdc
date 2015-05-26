@@ -4,6 +4,7 @@
     Author     : Asus
 --%>
 
+<%@page import="DAO.RespuestaDAO"%>
 <%@page import="DAO.MetodoPagoDAO"%>
 <%@page import="DAO.AvisoDAO"%>
 <%@page import="POJO.Aviso"%>
@@ -223,9 +224,21 @@
                 <p class="pregunta">                   
                    <%= listaPreguntas.get(i).getDescripcionPregunta() %>
                 </p>
+                <%listaPreguntas.get(i).setRespuesta(RespuestaDAO.respuestaPregunta(listaPreguntas.get(i).getIdPregunta()));
+                if(listaPreguntas.get(i).getRespuesta()!=null)   {     %>
                 <ul class="respuesta">
                     <li><%= listaPreguntas.get(i).getRespuesta() %></li>
                 </ul>
+                <%  }else{             
+                if(AvisoDAO.isMyAviso(Integer.parseInt(user.getIdUsuario().trim()), listaId.get(0).getIdAviso())){ %>
+                <form method="post" action="Respuesta">
+                    <input type="text" name="respuesta" placeholder="Ingresa respuesta aqui.">
+                    <input type="hidden" name= "idPregunta" value="<%=listaPreguntas.get(i).getIdPregunta()%>">
+                <input type="Submit" value="Contestar">
+                </form>
+                <% }
+                    
+                    }%>
                     <%
                                 } 
                             }                    

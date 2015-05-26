@@ -5,13 +5,10 @@
  */
 package SERVLET;
 
-import DAO.PreguntaDAO;
+import DAO.RespuestaDAO;
+import DAO.UsuarioDAO;
 import POJO.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,10 +19,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Asus
+ * @author Diosio
  */
-@WebServlet(name = "Pregunta", urlPatterns = {"/Pregunta"})
-public class Pregunta extends HttpServlet {
+@WebServlet(name = "Respuesta", urlPatterns = {"/Respuesta"})
+public class Respuesta extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,39 +35,41 @@ public class Pregunta extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession respuesta = request.getSession(true);
-        String url = "producto.jsp";
-        String descripcionPregunta = request.getParameter("pregunta");
-        String idUsuario = request.getParameter("idUsuarioP");
-        String idAviso = request.getParameter("idAvisoP");
-        List<POJO.Pregunta> listaPreguntas = PreguntaDAO.preguntasAviso(Integer.parseInt(idAviso));                    
-
-        HttpSession session = request.getSession();           
+            HttpSession session = request.getSession(true);
+            int idAviso = Integer.parseInt(request.getParameter("idPregunta"));
+            String respuesta = request.getParameter("respuesta");
+            try {
+                POJO.Respuesta res = new POJO.Respuesta(respuesta, idAviso);
+            RespuestaDAO.insertar(res);
+        } catch (Exception e) {
+        }
+          response.sendRedirect("producto.jsp");
         
-   
-        try{            
-            POJO.Pregunta preg = new POJO.Pregunta(descripcionPregunta,Integer.parseInt(idUsuario), Integer.parseInt(idAviso));
-            PreguntaDAO.agregarPregunta(preg);
-            //pongo la descripcion de la pregunta en sesión para mandarla através del mail para contestarla
-            respuesta.setAttribute("preguntaR", listaPreguntas.get(0).getDescripcionPregunta());
-            RequestDispatcher rd= request.getServletContext (). getNamedDispatcher("SendMailComentario");
-            rd.forward(request, response);
-            
-        }catch (Exception e) {
-            e.toString();
-            response.sendRedirect("index.jsp"); 
-        }      
-          
     }
 
-
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
