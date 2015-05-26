@@ -1,0 +1,122 @@
+h3{
+   font-family: tahoma;
+   margin-left: 35%;
+}
+
+.divVentas{
+    width: 60%;
+    height: 350px;
+    background-color: #F9DE42;
+    margin-left: 10%;
+    margin-bottom: 40px;
+    border-radius: 4px;
+    position: relative;
+}
+
+.divInfo{
+    width: 40%;
+    height: 100%;
+    border-radius: 4px;
+    position: absolute;
+}
+
+.divImgReporte{
+    width: 55%;
+    height: 100%;
+    top:0;
+    right:0;
+    border-radius: 4px;
+    position: absolute;    
+}
+
+.imagenReporte{
+    width: 80%;
+    height: 80%;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+table{
+    margin-left: 5%;
+}
+
+.nombreProducto{
+    font-family: verdana;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.fecha{
+    font-family: verdana;
+    font-size: 14px;
+}
+
+.nickComprador{
+    font-family: verdana;
+    font-size: 12px;
+}
+
+.nickVendedor{
+    font-family: verdana;
+    font-size: 12px;
+}
+
+.metodoPago{
+    font-family: verdana;
+    font-size: 12px;
+}
+
+.cantidad{
+    font-family: verdana;
+    font-size: 12px;
+    float: right;
+}
+
+.cantidadC{
+    font-family: verdana;
+    font-size: 12px;
+    float: left;
+}
+
+.precio{
+    font-family: verdana;
+    font-size: 12px;
+    float: right;
+}
+
+.descripcion{
+    font-family: verdana;
+    font-size: 12px;
+}
+
+.subtotal{
+    font-family: verdana;
+    font-size: 12px;
+    float: right;
+}
+
+.subtotalC{
+    font-family: verdana;
+    font-size: 12px;
+    float: left;
+}
+
+.precioC{
+    font-family: verdana;
+    font-size: 12px;
+    float: left;
+}
+
+#labelTotal{
+    font-family: tahoma;
+    font-size: 16px;
+    font-weight: bold;
+    color: green;
+}
+
+#toatlVentas{
+    font-family: tahoma;
+    font-size: 16px;
+    font-weight: bold;
+    color: blue;
+}

@@ -25,7 +25,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a>Ventas</a>
+                    <a href="ventas.jsp">Ventas</a>
                 </li>
                 <li><a href="avisoUsuario.jsp">Avisos</a></li>
             </ul>
