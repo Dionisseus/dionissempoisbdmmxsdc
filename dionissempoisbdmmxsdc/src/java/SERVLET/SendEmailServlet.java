@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import xClasses.EmailUtility;
 
 /**
@@ -52,8 +53,9 @@ public class SendEmailServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession(true);
         String email = request.getParameter("email");
-        String passs = request.getParameter("pass");
+        String passs = session.getAttribute("pass").toString();
         String result = "Email enviado correctamente.";
         try {
             String verificationCode = UUID.randomUUID().toString();
