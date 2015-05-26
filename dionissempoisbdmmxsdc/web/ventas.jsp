@@ -28,7 +28,8 @@
     </head>
     <body>
         <div id="divContent">
-            <h3>Reportes de ventas</h3>
+            <h3 id="h">Reportes de ventas</h3>
+            <label id="labFecha" class="labels">Ventas entre hoy y la ultima semana</label><br>
             <%
                 Usuario user = (Usuario) session.getAttribute("usuario");
                 List<Venta> listaVentas = VentaDAO.misVentas(Integer.parseInt(user.getIdUsuario()));
@@ -70,7 +71,7 @@
             <%
                 }
             %>
-            <lablel id="labelTotal">TOTAL VENTAS: $</lablel><label id="toatlVentas"></label>
+            <lablel id="labelTotal" class="labels">TOTAL VENTAS: $</lablel><label id="toatlVentas"></label>
         </div>
         <%@include file="general.jsp" %>
     </body>

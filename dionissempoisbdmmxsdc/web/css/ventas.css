@@ -1,4 +1,4 @@
-h3{
+#h{
    font-family: tahoma;
    margin-left: 35%;
 }
@@ -112,6 +112,7 @@ table{
     font-size: 16px;
     font-weight: bold;
     color: green;
+    margin-left: 5%;
 }
 
 #toatlVentas{
@@ -119,4 +120,12 @@ table{
     font-size: 16px;
     font-weight: bold;
     color: blue;
+    
+}
+
+#labFecha{
+    font-family: tahoma;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 10%;
 }
