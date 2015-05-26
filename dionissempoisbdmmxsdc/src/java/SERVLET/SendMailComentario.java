@@ -6,7 +6,9 @@
 package SERVLET;
 
 
+import DAO.UsuarioDAO;
 import POJO.Producto;
+import POJO.Usuario;
 import java.io.IOException;
 import java.util.UUID;
 import javax.servlet.ServletContext;
@@ -55,10 +57,9 @@ public class SendMailComentario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          HttpSession session = request.getSession(true);
-        String email = session.getAttribute("sessionEmail").toString();
         String result = "Email enviado correctamente.";
-       
-        POJO.Producto pro = (Producto) session.getAttribute("ventaPro");
+        POJO.Producto pro = (POJO.Producto) session.getAttribute("producto"); 
+              Usuario users = (Usuario)UsuarioDAO.buscar2(pro.getIdUsuarioProducto());
         try {
             String verificationCode = UUID.randomUUID().toString();
             
@@ -66,18 +67,18 @@ public class SendMailComentario extends HttpServlet {
             // en la propia maquina. Si se instalara la aplicacion en un servidor web
             // se debe de cambiar por el dominio o la ip del servidor.
             String message = "<html><body>";
-            message += "Muchisimas gracias por la compra de su articulo ";
+            message += "Alguien hizo una pregunta en su producto ";
              message += pro.getNombreProducto();
-             message += "<br>Esperamos que lo disfrute infinitamente.";
+             message += "<br>Chequela de inmediato. SALUDOS.";
             message += "</body></html>";
-            EmailUtility.sendEmail(host, port, user, pass, email, 
+            EmailUtility.sendEmail(host, port, user, pass, users.getEmailUsuario().trim(), 
                     "COMPRAAA!!!", message);
         } catch (Exception ex) {
             ex.printStackTrace();
             result = "Ocurrio un error.";
         } finally {
             request.setAttribute("result", result);
-            getServletContext().getRequestDispatcher("/index.jsp").forward(
+            getServletContext().getRequestDispatcher("/producto.jsp").forward(
                     request, response);
         }
     }

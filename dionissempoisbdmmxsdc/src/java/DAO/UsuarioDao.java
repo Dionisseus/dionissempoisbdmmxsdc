@@ -110,7 +110,7 @@ public class UsuarioDAO {
         ////////////////////////
         
               try {
-            cs = conn.prepareCall("{ call usuario_buscar(?) }");
+            cs = conn.prepareCall("{ call usuario_buscarid(?) }");
             cs.setInt(1, idU);
             rs = cs.executeQuery();
             if (rs.next()) {
@@ -126,7 +126,7 @@ public class UsuarioDAO {
                     rs.getBoolean("activoUsuario"));
                 return emp;
             }       
-            return null;
+           
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
@@ -135,7 +135,7 @@ public class UsuarioDAO {
             DBUtil.closeResultSet(rs);
             DBUtil.closeStatement(cs);
             pool.freeConnection(conn);
-        }
+        } return null;
     }
 
     public static void actualizar(Usuario user) {

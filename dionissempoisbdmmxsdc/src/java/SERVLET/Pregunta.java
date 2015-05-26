@@ -12,6 +12,7 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -52,12 +53,14 @@ public class Pregunta extends HttpServlet {
             PreguntaDAO.agregarPregunta(preg);
             //pongo la descripcion de la pregunta en sesión para mandarla através del mail para contestarla
             respuesta.setAttribute("preguntaR", listaPreguntas.get(0).getDescripcionPregunta());
-            response.sendRedirect(url); 
+            RequestDispatcher rd= request.getServletContext (). getNamedDispatcher("SendMailComentario");
+            rd.forward(request, response);
             
         }catch (Exception e) {
             e.toString();
-            response.sendRedirect(url); 
+            response.sendRedirect("index.jsp"); 
         }      
+          
     }
 
 

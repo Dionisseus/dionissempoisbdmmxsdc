@@ -31,7 +31,8 @@
 
         $("#dialog").dialog('option', 'buttons', {
             "Confirm" : function() {
-                  window.location.href = '/dionissempoisbdmmxsdc/BorrarUsuario';
+                 if(confirm("Seguro que deseas borrar tu cuenta?")){
+                  window.location.href = '/dionissempoisbdmmxsdc/BorrarUsuario';}
             },
             "Cancel" : function() {
                 $(this).dialog("close");

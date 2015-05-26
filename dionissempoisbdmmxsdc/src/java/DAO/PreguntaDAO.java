@@ -54,7 +54,7 @@ public class PreguntaDAO {
             while (rs.next()) {
                 Pregunta pre = new Pregunta(rs.getInt("idPregunta"), rs.getString("descripcionPregunta"), 
                 rs.getString("fechaPregunta"),rs.getString("horaPregunta"), rs.getInt("idUsuarioPregunta"), 
-                rs.getInt("idAvisoPregunta"), rs.getString("descripcionRespuesta"));  
+                rs.getInt("idAvisoPregunta"));  
                 listaPreg.add(pre);
             }
             return listaPreg;
